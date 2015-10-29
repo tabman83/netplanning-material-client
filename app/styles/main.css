@@ -1,0 +1,31 @@
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size:14px;
+  height:100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Toolbar area */
+
+
+md-toolbar h1 {
+  margin: auto;
+  text-align:center;
+}
+
+md-toolbar .md-button {
+    min-width: auto;
+}
+/* Sidenav area */
+
+md-list .md-button {
+  color: inherit;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+  margin: 0;
+}
+md-list .md-button.selected {
+    color: #03a9f4;
+}

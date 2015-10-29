@@ -1,0 +1,8 @@
+{
+  "name": "netplanning-client-2",
+  "private": true,
+  "dependencies": {
+    "angular-material": "master",
+    "angular-route": "~1.4.7"
+  }
+}

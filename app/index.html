@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="" ng-app="NetPlanningApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NetPlanning</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+
+    <style type="text/css">
+        /**
+        * Hide when Angular is not yet loaded and initialized
+        */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+  </head>
+
+  <body layout="row" ng-controller="AppCtrl as vm" ng-cloak>
+
+      <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+          <md-toolbar class="md-whiteframe-z1">
+              <h1>NetPlanning</h1>
+          </md-toolbar>
+
+          <md-list>
+              <!--
+              <md-item>
+                      <a>
+                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                          <div class="inset">
+                            <ng-md-icon icon="menu"></ng-md-icon>
+                          </div>
+                          <div class="inset">title</div>
+                        </md-item-content>
+                      </a>
+                  </md-item>
+                  <md-button href="/Today" layout-fill ng-class="{ 'selected': $route.current.name === 'TODAY' }">
+                  <md-button href="/Tomorrow" layout-fill ng-class="{ 'selected': $route.current.name === 'TOMORROW' }">
+              -->
+
+              <md-list-item md-ink-ripple href="/Today">
+                  <ng-md-icon class="md-avatar-icon" icon="menu"></ng-md-icon>
+                  <span translate>TODAY</span>
+              </md-list-item>
+              <md-list-item md-ink-ripple href="/Tomorrow">
+                  <ng-md-icon class="md-avatar-icon" icon="menu"></ng-md-icon>
+                  <span translate>TOMORROW</span>
+              </md-list-item>
+          </md-list>
+
+    </md-sidenav>
+
+
+    <div flex layout-fill layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" ng-cloak>
+
+        <md-toolbar layout="row" class="md-whiteframe-z1" md-scroll-shrink>
+            <md-button hide-gt-sm ng-click="vm.toggleSidenav('left')" aria-label="Show or Hide menu">
+                <ng-md-icon icon="menu" style="fill:white" size="32"></ng-md-icon>
+            </md-button>
+            <h1 flex ng-bind="$route.current.name"></h1>
+            <md-switch ng-model="showAll" aria-label="Finished?"></md-switch>
+        </md-toolbar>
+
+        <md-content flex id="content" ng-view></md-content>
+
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <script type="text/javascript">
+        angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.6.0/angular-material-icons.min.js"></script>
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/controllers/app.js"></script>
+    <script src="scripts/controllers/today.js"></script>
+    <script src="scripts/controllers/tomorrow.js"></script>
+    <!-- endbuild -->
+</body>
+</html>
