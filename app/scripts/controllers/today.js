@@ -1,16 +1,20 @@
-angular.module('NetPlanningApp').controller('TodayCtrl', function($scope) {
+angular.module('NetPlanningApp').controller('TodayCtrl', function($scope, DataService) {
 
-	this.isEditing = false;
+	var vm = this;
+
+	vm.selectedCount = 0;
 
 	var itemsSelection = function() {
-		return $scope.items.map(function(item) {
-			return item.date;
+		return DataService.items.map(function(item) {
+			return item.isSelected;
 		});
 	};
 
 	var itemsSelectionWatcher = $scope.$watch(itemsSelection, function(val) {
-		console.log(val);
-	});
+		vm.selectedCount = val.filter(function(isItemSelected) {
+			return isItemSelected;
+		}).length;
+	}, true);
 
 	$scope.$on('$destroy', function() {
 		itemsSelectionWatcher();

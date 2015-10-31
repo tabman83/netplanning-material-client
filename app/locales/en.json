@@ -1,0 +1,14 @@
+{
+	"TODAY": "today",
+	"TOMORROW": "tomorrow",
+	"SETTINGS": "settings",
+	"AVAILABLE": "available",
+	"AVAILABLE_BY_ME": "available by me",
+	"MORNING": "morning",
+	"AFTERNOON": "afternoon",
+	"LESSONS_CANCELLATION": "lessons cancellation",
+	"YOU_ARE_ABOUT_TO_CANCEL": "you are about to cancel {{num}} lessons",
+	"CANCEL_LESSONS": "cancel lessons",
+	"KEEP_SCHEDULE": "keep schedule",
+	"SELECTED": "selected"
+}

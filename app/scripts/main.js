@@ -1,9 +1,10 @@
-angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngMdIcons']).run(function($log, $rootScope, $route) {
+angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngMdIcons', 'pascalprecht.translate']).run(function($log, $translate) {
 
-	$log.log('NetPlanningApp is running.')
-	$rootScope.$route = $route;
+	$log.log('NetPlanningApp is running.');
 
-}).config(function($mdThemingProvider, $routeProvider, $locationProvider) {
+	$translate.use('en');
+
+}).config(function($mdThemingProvider, $routeProvider, $locationProvider, $translateProvider) {
 
 	$routeProvider.when('/Today', {
 		templateUrl: 'views/today.html',
@@ -20,5 +21,11 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngMdIcons']).run(fun
 	});
 
 	$locationProvider.html5Mode(true);
+
+	$translateProvider.useStaticFilesLoader({
+		prefix: 'locales/',
+		suffix: '.json'
+	});
+	$translateProvider.useSanitizeValueStrategy('escape');
 
 });

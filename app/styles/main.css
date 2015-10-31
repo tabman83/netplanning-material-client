@@ -9,12 +9,19 @@ html, body {
 /* Toolbar area */
 
 
-
+md-toolbar {
+    transition: background .15s;
+}
 .md-toolbar-tools md-switch {
     margin-right: 0;
 }
-/* Sidenav area */
 
+md-list-item > .md-avatar,
+md-list-item .md-list-item-inner > .md-avatar {
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+}
 md-list .md-button {
   color: inherit;
   font-weight: 500;

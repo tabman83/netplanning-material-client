@@ -1,59 +1,43 @@
-angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav) {
+angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdDialog, $translate, DataService) {
 
-	this.toggleSidenav = function(menuId) {
+	var vm = this;
+
+	vm.toggleSidenav = function(menuId) {
 		$mdSidenav(menuId).toggle();
 	};
 
-	// 0 available
-	// 1 available by me
-	// 2 recurrent lesson
-	// 3 1-time lesson
-    this.items = [{
-        name: 'Jubon Aurelie',
-		type: 2,
-        date: new Date(2015, 10, 2, 10, 30),
-		isSelected: false
-  	}, {
-		type: 0,
-        date: new Date(2015, 10, 2, 11, 00),
-		isSelected: false
-  	}, {
-        name: 'Castro Maurice',
-		type: 2,
-        date: new Date(2015, 10, 2, 11, 30),
-		isSelected: false
-  	}, {
-        name: 'Lijion Miriam',
-		type: 3,
-        date: new Date(2015, 10, 2, 12, 00),
-		isSelected: false
-  	}, {
-		type: 0,
-        date: new Date(2015, 10, 2, 12, 30),
-		isSelected: false
-  	}, {
-        name: 'Oboez Marc',
-		type: 3,
-        date: new Date(2015, 10, 2, 13, 00),
-		isSelected: false
-  	}, {
-        name: 'Ducette Ivette',
-		type: 2,
-        date: new Date(2015, 10, 2, 13, 30),
-		isSelected: false
-  	}, {
-        name: 'Devrais Aloise',
-		type: 3,
-        date: new Date(2015, 10, 2, 15, 00),
-		isSelected: false
-  	}, {
-		type: 1,
-        date: new Date(2015, 10, 2, 16, 00),
-		isSelected: false
-  	}, {
-		type: 1,
-        date: new Date(2015, 10, 2, 16, 30),
-		isSelected: false
-  	}];
+	vm.cancelSelection = function() {
+		angular.forEach(DataService.items, function(item) {
+			item.isSelected = false;
+		});
+	};
+
+	vm.cancelLessons = function() {
+		var numLessons = DataService.items.filter(function(item) {
+			return item.isSelected;
+		}).length;
+
+		var title = $translate.instant('LESSONS_CANCELLATION');
+		var content = $translate.instant('YOU_ARE_ABOUT_TO_CANCEL', { num: numLessons }) + '.';
+		var btnOk = $translate.instant('CANCEL_LESSONS');
+		var btnCancel = $translate.instant('KEEP_SCHEDULE');
+
+		var dialog = $mdDialog
+			.confirm()
+			.title(title)
+			.content(content)
+			.ariaLabel('Lessons cancellation')
+			.ok(btnOk)
+			.cancel(btnCancel);
+		$mdDialog
+			.show(dialog)
+			.then(function() {
+				console.log('Promise resolved');
+			}, function() {
+				console.log('Promise rejected');
+			});
+	};
+
+	vm.items = DataService.items;
 
 });
