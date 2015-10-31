@@ -9,13 +9,9 @@ html, body {
 /* Toolbar area */
 
 
-md-toolbar h1 {
-  margin: auto;
-  text-align:center;
-}
 
-md-toolbar .md-button {
-    min-width: auto;
+.md-toolbar-tools md-switch {
+    margin-right: 0;
 }
 /* Sidenav area */
 
