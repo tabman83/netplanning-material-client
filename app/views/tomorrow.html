@@ -1,1 +1,10 @@
-<h1>Tomorrow</h1>
+<md-toolbar layout="row" class="md-whiteframe-z1" md-scroll-shrink>
+	<md-button hide-gt-sm ng-click="app.toggleSidenav('left')" aria-label="Show or Hide menu">
+		<ng-md-icon icon="menu" style="fill:white" size="32"></ng-md-icon>
+	</md-button>
+	<h1 flex ng-bind="$route.current.name"></h1>
+	<md-switch ng-model="showAll" aria-label="showOnlyLessons?"></md-switch>
+</md-toolbar>
+<md-content flex id="content">
+	<h1>Tomorrow</h1>
+</md-content>

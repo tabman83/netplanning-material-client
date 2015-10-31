@@ -8,16 +8,17 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngMdIcons']).run(fun
 	$routeProvider.when('/Today', {
 		templateUrl: 'views/today.html',
 		controller: 'TodayCtrl',
-		controllerAs: 'vm',
+		controllerAs: 'today',
 		name: 'TODAY'
 	}).when('/Tomorrow', {
 		templateUrl: 'views/tomorrow.html',
 		controller: 'TomorrowCtrl',
-		controllerAs: 'vm',
+		controllerAs: 'tomorrow',
 		name: 'TOMORROW'
 	}).otherwise({
         redirectTo: '/Today'
 	});
 
 	$locationProvider.html5Mode(true);
+
 });

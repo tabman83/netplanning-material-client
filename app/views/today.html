@@ -1,57 +1,53 @@
-<section>
-	 <md-subheader class="md-primary">Unread Messages</md-subheader>
-	 <md-list>
-	   <md-list-item ng-repeat="message in vm.messages">
-		   <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
-		   <md-checkbox ng-model="message.selected"></md-checkbox>
-		 <p>
-		   {{message.notes}}
-		 </p>
-	   </md-list-item>
-	 </md-list>
-   </section>
-   <section>
-	 <md-subheader class="md-warn">Late Messages</md-subheader>
-	 <md-list layout="column" layout-padding>
-	   <md-list-item class="md-3-line" ng-repeat="message in vm.messages">
-		 <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
-		 <div class="md-list-item-text">
-		   <h3>{{message.what}}</h3>
-		   <h4>{{message.who}}</h4>
-		   <p>
-			 {{message.notes}}
-		   </p>
-		 </div>
-	   </md-list-item>
-	 </md-list>
-   </section>
-   <section>
-	 <md-subheader>Read Messages</md-subheader>
-	 <md-list layout="column" layout-padding>
-	   <md-list-item class="md-3-line" ng-repeat="message in vm.messages">
-		 <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
-		 <div class="md-list-item-text">
-		   <h3>{{message.what}}</h3>
-		   <h4>{{message.who}}</h4>
-		   <p>
-			 {{message.notes}}
-		   </p>
-		 </div>
-	   </md-list-item>
-	 </md-list>
-   </section>
-   <section>
-	 <md-subheader class="md-accent">Archived messages</md-subheader>
-	 <md-list layout="column" layout-padding>
-	   <md-list-item class="md-3-line" ng-repeat="message in vm.messages">
-		 <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
-		 <div class="md-list-item-text">
-		   <h3>{{message.what}}</h3>
-		   <h4>{{message.who}}</h4>
-		   <p>
-			 {{message.notes}}
-		   </p>
-		 </div>
-	   </md-list-item>
-	 </md-list>
-   </section>
+<md-toolbar layout="row" class="md-whiteframe-z1" md-scroll-shrink>
+	<md-button hide-gt-sm ng-click="app.toggleSidenav('left')" aria-label="Show or Hide menu">
+		<ng-md-icon icon="menu" style="fill:white" size="32"></ng-md-icon>
+	</md-button>
+	<h1 flex ng-bind="$route.current.name"></h1>
+	<md-switch ng-model="app.showOnlyLessons" aria-label="Show only lessons"></md-switch>
+</md-toolbar>
+<md-content flex id="content">
+	<section>
+		<md-subheader class="md-primary">Unread Messages</md-subheader>
+		<md-list>
+			<md-list-item ng-repeat="item in app.items | showOnlyLessons : app.showOnlyLessons">
+				<img ng-hide="vm.isCheckboxVisible" ng-src="http://dummyimage.com/40x40/{{item.type === 0 ? 'db1818' : '5bc43a'}}/000000.gif&text={{item.type === 0 ? 'R' : 'E'}}" class="md-avatar" alt="item.name" ng-click="vm.isCheckboxVisible = true">
+				<md-checkbox ng-show="vm.isCheckboxVisible" ng-model="isSelected"></md-checkbox>
+				<p ng-bind="item.name"></p>
+				<p class="time" ng-bind="item.date | date : 'shortTime'"></p>
+			</md-list-item>
+		</md-list>
+	</section>
+	<section>
+		<md-subheader class="md-warn">Late Messages</md-subheader>
+		<md-list>
+			<md-list-item ng-repeat="item in app.items | showOnlyLessons : app.showOnlyLessons">
+				<img ng-hide="vm.isCheckboxVisible" ng-src="http://api.randomuser.me/portraits/thumb/men/{{$index}}.jpg" class="md-avatar" alt="item.name" ng-click="vm.isCheckboxVisible = true">
+				<md-checkbox ng-show="vm.isCheckboxVisible" ng-model="isSelected"></md-checkbox>
+				<p ng-bind="item.name"></p>
+				<p class="time" ng-bind="item.date | date : 'shortTime'"></p>
+			</md-list-item>
+		</md-list>
+	</section>
+	<section>
+		<md-subheader>Read Messages</md-subheader>
+		<md-list>
+			<md-list-item ng-repeat="item in app.items | showOnlyLessons : app.showOnlyLessons">
+				<img ng-hide="vm.isCheckboxVisible" ng-src="http://api.randomuser.me/portraits/thumb/men/{{$index}}.jpg" class="md-avatar" alt="item.name" ng-click="vm.isCheckboxVisible = true">
+				<md-checkbox ng-show="vm.isCheckboxVisible" ng-model="isSelected"></md-checkbox>
+				<p ng-bind="item.name"></p>
+				<p class="time" ng-bind="item.date | date : 'shortTime'"></p>
+			</md-list-item>
+		</md-list>
+	</section>
+	<section>
+		<md-subheader class="md-accent">Archived messages</md-subheader>
+		<md-list>
+			<md-list-item ng-repeat="item in app.items | showOnlyLessons : app.showOnlyLessons">
+				<img ng-hide="vm.isCheckboxVisible" ng-src="http://api.randomuser.me/portraits/thumb/men/{{$index}}.jpg" class="md-avatar" alt="item.name" ng-click="vm.isCheckboxVisible = true">
+				<md-checkbox ng-show="vm.isCheckboxVisible" ng-model="isSelected"></md-checkbox>
+				<p ng-bind="item.name"></p>
+				<p class="time" ng-bind="item.date | date : 'shortTime'"></p>
+			</md-list-item>
+		</md-list>
+	</section>
+</md-content>

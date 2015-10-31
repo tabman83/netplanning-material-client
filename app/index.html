@@ -29,7 +29,7 @@
     </style>
   </head>
 
-  <body layout="row" ng-controller="AppCtrl as vm" ng-cloak>
+  <body layout="row" ng-controller="AppCtrl as app" ng-cloak>
 
       <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
           <md-toolbar class="md-whiteframe-z1">
@@ -37,47 +37,25 @@
           </md-toolbar>
 
           <md-list>
-              <!--
-              <md-item>
-                      <a>
-                        <md-item-content md-ink-ripple layout="row" layout-align="start center">
-                          <div class="inset">
-                            <ng-md-icon icon="menu"></ng-md-icon>
-                          </div>
-                          <div class="inset">title</div>
-                        </md-item-content>
-                      </a>
-                  </md-item>
-                  <md-button href="/Today" layout-fill ng-class="{ 'selected': $route.current.name === 'TODAY' }">
-                  <md-button href="/Tomorrow" layout-fill ng-class="{ 'selected': $route.current.name === 'TOMORROW' }">
-              -->
 
-              <md-list-item md-ink-ripple href="/Today">
+              <md-list-item md-ink-ripple href="/Today" ng-click="app.toggleSidenav('left')">
                   <ng-md-icon class="md-avatar-icon" icon="menu"></ng-md-icon>
                   <span translate>TODAY</span>
               </md-list-item>
-              <md-list-item md-ink-ripple href="/Tomorrow">
+              <md-list-item md-ink-ripple href="/Tomorrow" ng-click="app.toggleSidenav('left')">
                   <ng-md-icon class="md-avatar-icon" icon="menu"></ng-md-icon>
                   <span translate>TOMORROW</span>
+              </md-list-item>
+              <md-list-item md-ink-ripple href="/Tomorrow" ng-click="app.toggleSidenav('left')">
+                  <ng-md-icon class="md-avatar-icon" icon="menu"></ng-md-icon>
+                  <span translate>SETTINGS</span>
               </md-list-item>
           </md-list>
 
     </md-sidenav>
 
 
-    <div flex layout-fill layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" ng-cloak>
-
-        <md-toolbar layout="row" class="md-whiteframe-z1" md-scroll-shrink>
-            <md-button hide-gt-sm ng-click="vm.toggleSidenav('left')" aria-label="Show or Hide menu">
-                <ng-md-icon icon="menu" style="fill:white" size="32"></ng-md-icon>
-            </md-button>
-            <h1 flex ng-bind="$route.current.name"></h1>
-            <md-switch ng-model="showAll" aria-label="Finished?"></md-switch>
-        </md-toolbar>
-
-        <md-content flex id="content" ng-view></md-content>
-
-    </div>
+    <div flex layout-fill layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" ng-cloak ng-view></div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -110,6 +88,7 @@
     <script src="scripts/controllers/app.js"></script>
     <script src="scripts/controllers/today.js"></script>
     <script src="scripts/controllers/tomorrow.js"></script>
+    <script src="scripts/filters/showOnlyLessons.js"></script>
     <!-- endbuild -->
 </body>
 </html>
