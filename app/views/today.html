@@ -21,8 +21,8 @@
 		<md-subheader class="md-primary">{{'MORNING' | translate}}</md-subheader>
 		<md-list>
 			<md-list-item ng-repeat="item in app.items | itemsInTheMorning | showOnlyLessons : app.showOnlyLessons">
-				<img ng-if="item.type > 1" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/40x40/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
-				<img ng-if="item.type < 2" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/40x40/db1818/000000.gif&text=T{{item.type}}" class="md-avatar" alt="available">
+				<img ng-if="item.type > 1" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
+				<img ng-if="item.type < 2" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="available">
 				<md-checkbox ng-disabled="item.type === 0" ng-show="today.selectedCount" ng-model="item.isSelected"></md-checkbox>
 				<p ng-bind="item.name" ng-if="item.type > 1" ></p>
 				<p translate ng-if="item.type === 0">AVAILABLE</p>
@@ -35,8 +35,8 @@
 		<md-subheader class="md-primary">{{'AFTERNOON' | translate}}</md-subheader>
 		<md-list>
 			<md-list-item ng-repeat="item in app.items | itemsInTheAfternoon | showOnlyLessons : app.showOnlyLessons">
-				<img ng-if="item.type > 1" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/40x40/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
-				<img ng-if="item.type < 2" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/40x40/db1818/000000.gif&text=T{{item.type}}" class="md-avatar" alt="available">
+				<img ng-if="item.type > 1" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
+				<img ng-if="item.type < 2" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="available">
 				<md-checkbox ng-disabled="item.type === 0" ng-show="today.selectedCount" ng-model="item.isSelected"></md-checkbox>
 				<p ng-bind="item.name" ng-if="item.type > 1" ></p>
 				<p translate ng-if="item.type === 0">AVAILABLE</p>
