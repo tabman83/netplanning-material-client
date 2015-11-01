@@ -39,5 +39,6 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	};
 
 	vm.items = DataService.items;
+	vm.lastUpdate = DataService.lastUpdate;
 
 });

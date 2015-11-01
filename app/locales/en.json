@@ -10,5 +10,7 @@
 	"YOU_ARE_ABOUT_TO_CANCEL": "you are about to cancel {{num}} lessons",
 	"CANCEL_LESSONS": "cancel lessons",
 	"KEEP_SCHEDULE": "keep schedule",
-	"SELECTED": "selected"
+	"SELECTED": "selected",
+	"LAST_UPDATED": "last updated",
+	"LOGOUT": "logout"
 }

@@ -18,7 +18,7 @@
 
 <md-content flex id="content">
 	<section>
-		<md-subheader class="md-primary" translate>MORNING</md-subheader>
+		<md-subheader class="md-primary">{{'MORNING' | translate}}</md-subheader>
 		<md-list>
 			<md-list-item ng-repeat="item in app.items | itemsInTheMorning | showOnlyLessons : app.showOnlyLessons">
 				<img ng-if="item.type > 1" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/40x40/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
@@ -32,7 +32,7 @@
 		</md-list>
 	</section>
 	<section>
-		<md-subheader class="md-primary" translate>AFTERNOON</md-subheader>
+		<md-subheader class="md-primary">{{'AFTERNOON' | translate}}</md-subheader>
 		<md-list>
 			<md-list-item ng-repeat="item in app.items | itemsInTheAfternoon | showOnlyLessons : app.showOnlyLessons">
 				<img ng-if="item.type > 1" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/40x40/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">

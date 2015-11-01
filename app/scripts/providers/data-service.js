@@ -7,7 +7,8 @@ angular.module('NetPlanningApp').provider('DataService', function () {
 
         function DataService() {
             var data = {
-                items: []
+                items: [],
+                lastUpdate: new Date(0)
             };
 
             Object.defineProperties(this, {
@@ -15,6 +16,11 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                     enumerable: false,
                     configurable: false,
                     get: function() { return data.items; }
+                },
+                lastUpdate: {
+                    enumerable: false,
+                    configurable: false,
+                    get: function() { return data.lastUpdate; }
                 }
             });
 
@@ -70,6 +76,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
 			        date: new Date(2015, 10, 2, 16, 30),
 					isSelected: false
 			  	});
+                data.lastUpdate = new Date();
             };
 
             this.logout = function() {

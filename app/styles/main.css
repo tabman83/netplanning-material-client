@@ -15,7 +15,12 @@ md-toolbar {
 .md-toolbar-tools md-switch {
     margin-right: 0;
 }
-
+.md-toolbar-tools-bottom {
+    font-size: small;
+}
+.md-toolbar-tools-bottom>*:last-child {
+    opacity: 0.8;
+}
 md-list-item > .md-avatar,
 md-list-item .md-list-item-inner > .md-avatar {
     width: 20px;

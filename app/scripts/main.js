@@ -1,10 +1,21 @@
-angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngMdIcons', 'pascalprecht.translate']).run(function($log, $translate) {
+angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngMdIcons', 'pascalprecht.translate', 'angularMoment']).run(function($log, $translate) {
 
 	$log.log('NetPlanningApp is running.');
 
 	$translate.use('en');
 
 }).config(function($mdThemingProvider, $routeProvider, $locationProvider, $translateProvider) {
+
+	var customBlueMap = $mdThemingProvider.extendPalette('light-blue', {
+		'contrastDefaultColor': 'light',
+		'contrastDarkColors': ['50'],
+		'50': 'ffffff'
+	});
+	$mdThemingProvider.definePalette('customBlue', customBlueMap);
+	$mdThemingProvider.theme('default').primaryPalette('customBlue', {
+		'default': '500',
+		'hue-1': '50'
+	}).accentPalette('pink');
 
 	$routeProvider.when('/Today', {
 		templateUrl: 'views/today.html',
@@ -17,7 +28,7 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngMdIcons', 'pascalp
 		controllerAs: 'tomorrow',
 		name: 'TOMORROW'
 	}).otherwise({
-        redirectTo: '/Today'
+		redirectTo: '/Today'
 	});
 
 	$locationProvider.html5Mode(true);
