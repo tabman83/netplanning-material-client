@@ -49,20 +49,20 @@
         <md-list>
 
             <md-list-item md-ink-ripple href="/Today" ng-click="app.toggleSidenav('left')">
-                <ng-md-icon class="md-avatar-icon" icon="menu"></ng-md-icon>
-                <span translate>TODAY</span>
+                <md-icon md-svg-src="images/ic_today_48px.svg" aria-label="today"></md-icon>
+                <span class="capitalize" flex translate>TODAY</span>
             </md-list-item>
             <md-list-item md-ink-ripple href="/Tomorrow" ng-click="app.toggleSidenav('left')">
-                <ng-md-icon class="md-avatar-icon" icon="menu"></ng-md-icon>
-                <span translate>TOMORROW</span>
+                <md-icon md-svg-src="images/ic_event_note_48px.svg" aria-label="tomorrow"></md-icon>
+                <span class="capitalize" flex translate>TOMORROW</span>
             </md-list-item>
-            <md-list-item md-ink-ripple href="/Tomorrow" ng-click="app.toggleSidenav('left')">
-                <ng-md-icon class="md-avatar-icon" icon="menu"></ng-md-icon>
-                <span translate>SETTINGS</span>
+            <md-list-item md-ink-ripple href="/Settings" ng-click="app.toggleSidenav('left')">
+                <md-icon md-svg-src="images/ic_settings_48px.svg" aria-label="settings"></md-icon>
+                <span class="capitalize" flex translate>SETTINGS</span>
             </md-list-item>
             <md-list-item md-ink-ripple ng-click="app.toggleSidenav('left')">
-                <ng-md-icon class="md-avatar-icon" icon="menu"></ng-md-icon>
-                <span translate>LOGOUT</span>
+                <md-icon md-svg-src="images/ic_exit_to_app_48px.svg" aria-label="logout"></md-icon>
+                <span class="capitalize" flex translate>LOGOUT</span>
             </md-list-item>
         </md-list>
 
@@ -101,7 +101,6 @@
         <script type="text/javascript">
         angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
         </script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.6.0/angular-material-icons.min.js"></script>
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/main.js"></script>

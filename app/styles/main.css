@@ -21,6 +21,9 @@ md-toolbar {
 .md-toolbar-tools-bottom>*:last-child {
     opacity: 0.8;
 }
+.capitalize {
+    text-transform: capitalize;
+}
 md-list-item > .md-avatar,
 md-list-item .md-list-item-inner > .md-avatar {
     width: 20px;

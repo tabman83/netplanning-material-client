@@ -1,5 +1,5 @@
 {
-  "name": "netplanning-client-2",
+  "name": "netplanning-material-client",
   "private": true,
   "dependencies": {
     "angular-material": "master",

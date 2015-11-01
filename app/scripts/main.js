@@ -1,4 +1,4 @@
-angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngMdIcons', 'pascalprecht.translate', 'angularMoment']).run(function($log, $translate) {
+angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'pascalprecht.translate', 'angularMoment']).run(function($log, $translate) {
 
 	$log.log('NetPlanningApp is running.');
 

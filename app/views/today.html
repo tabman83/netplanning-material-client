@@ -1,38 +1,38 @@
 <md-toolbar class="md-whiteframe-z1" ng-class="{ 'md-accent': today.selectedCount }">
 	<div class="md-toolbar-tools">
 		<md-button class="md-icon-button" hide-gt-sm ng-click="app.toggleSidenav('left')" aria-label="Show or Hide menu" ng-if="!today.selectedCount">
-			<ng-md-icon icon="menu" style="fill:white" size="24"></ng-md-icon>
+			<md-icon md-svg-src="images/ic_menu_48px.svg" aria-label="menu"></md-icon>
 		</md-button>
 		<md-button class="md-icon-button" aria-label="Cancel edit mode" ng-click="app.cancelSelection()" ng-if="today.selectedCount">
-			<ng-md-icon icon="arrow_back" style="fill:white" size="24"></ng-md-icon>
+			<md-icon md-svg-src="images/ic_arrow_back_48px.svg" aria-label="cancel"></md-icon>
 		</md-button>
-		<h2 ng-if="!today.selectedCount"><span translate>TODAY</span></h2>
+		<h2 ng-if="!today.selectedCount"><span class="capitalize" translate>TODAY</span></h2>
 		<h2 ng-if="today.selectedCount"><span ng-bind="today.selectedCount"></span> <span translate>SELECTED</span></h2>
 		<span flex></span>
 		<md-switch ng-model="app.showOnlyLessons" aria-label="Show only lessons" ng-if="!today.selectedCount"></md-switch>
 		<md-button class="md-icon-button" aria-label="Cancel items" ng-if="today.selectedCount" ng-click="app.cancelLessons()">
-			<ng-md-icon icon="delete" style="fill:white" size="24"></ng-md-icon>
+			<md-icon md-svg-src="images/ic_delete_48px.svg" aria-label="delete"></md-icon>
 		</md-button>
 	</div>
 </md-toolbar>
 
 <md-content flex id="content">
 	<section>
-		<md-subheader class="md-primary">{{'MORNING' | translate}}</md-subheader>
+		<md-subheader class="capitalize md-primary">{{'MORNING' | translate}}</md-subheader>
 		<md-list>
 			<md-list-item ng-repeat="item in app.items | itemsInTheMorning | showOnlyLessons : app.showOnlyLessons">
 				<img ng-if="item.type > 1" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
 				<img ng-if="item.type < 2" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="available">
 				<md-checkbox ng-disabled="item.type === 0" ng-show="today.selectedCount" ng-model="item.isSelected"></md-checkbox>
 				<p ng-bind="item.name" ng-if="item.type > 1" ></p>
-				<p translate ng-if="item.type === 0">AVAILABLE</p>
-				<p translate ng-if="item.type === 1">MADE AVAILABLE BY ME</p>
+				<p translate class="capitalize" ng-if="item.type === 0">AVAILABLE</p>
+				<p translate class="capitalize" ng-if="item.type === 1">MADE AVAILABLE BY ME</p>
 				<p class="time" ng-bind="item.date | date : 'shortTime'"></p>
 			</md-list-item>
 		</md-list>
 	</section>
 	<section>
-		<md-subheader class="md-primary">{{'AFTERNOON' | translate}}</md-subheader>
+		<md-subheader class="capitalize md-primary">{{'AFTERNOON' | translate}}</md-subheader>
 		<md-list>
 			<md-list-item ng-repeat="item in app.items | itemsInTheAfternoon | showOnlyLessons : app.showOnlyLessons">
 				<img ng-if="item.type > 1" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
