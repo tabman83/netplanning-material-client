@@ -20,10 +20,11 @@
 	<section>
 		<md-subheader class="capitalize md-primary">{{'MORNING' | translate}}</md-subheader>
 		<md-list>
-			<md-list-item ng-repeat="item in app.items | itemsInTheMorning | showOnlyLessons : app.showOnlyLessons">
-				<img ng-if="item.type > 1" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
-				<img ng-if="item.type < 2" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="available">
-				<md-checkbox ng-disabled="item.type === 0" ng-show="today.selectedCount" ng-model="item.isSelected"></md-checkbox>
+			<md-list-item ng-repeat="item in app.items | itemsInTheMorning | showOnlyLessons : app.showOnlyLessons"> <!-- 5bc43a-->
+				<img ng-if="item.type < 2" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/cccccc/000000.gif&text=T{{item.type}}" class="md-avatar" alt="available">
+				<img ng-if="item.type === 2" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
+				<img ng-if="item.type === 3" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
+				<md-checkbox ng-show="today.selectedCount" ng-model="item.isSelected"></md-checkbox>
 				<p ng-bind="item.name" ng-if="item.type > 1" ></p>
 				<p translate class="capitalize" ng-if="item.type === 0">AVAILABLE</p>
 				<p translate class="capitalize" ng-if="item.type === 1">MADE AVAILABLE BY ME</p>
@@ -35,9 +36,10 @@
 		<md-subheader class="capitalize md-primary">{{'AFTERNOON' | translate}}</md-subheader>
 		<md-list>
 			<md-list-item ng-repeat="item in app.items | itemsInTheAfternoon | showOnlyLessons : app.showOnlyLessons">
-				<img ng-if="item.type > 1" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
-				<img ng-if="item.type < 2" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="available">
-				<md-checkbox ng-disabled="item.type === 0" ng-show="today.selectedCount" ng-model="item.isSelected"></md-checkbox>
+				<img ng-if="item.type < 2" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/cccccc/000000.gif&text=T{{item.type}}" class="md-avatar" alt="available">
+				<img ng-if="item.type === 2" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
+				<img ng-if="item.type === 3" ng-hide="today.selectedCount" ng-src="http://dummyimage.com/20x20/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
+				<md-checkbox ng-show="today.selectedCount" ng-model="item.isSelected"></md-checkbox>
 				<p ng-bind="item.name" ng-if="item.type > 1" ></p>
 				<p translate ng-if="item.type === 0">AVAILABLE</p>
 				<p translate ng-if="item.type === 1">AVAILABLE_BY_ME</p>
