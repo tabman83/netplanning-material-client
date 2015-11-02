@@ -1,0 +1,17 @@
+<md-toolbar class="md-whiteframe-z1">
+	<div class="md-toolbar-tools">
+		<md-button class="md-icon-button" hide-gt-sm ng-click="app.toggleSidenav('left')" aria-label="Show or Hide menu">
+			<md-icon md-svg-src="images/ic_menu_48px.svg" aria-label="menu"></md-icon>
+		</md-button>
+		<h2><span class="capitalize" translate>SETTINGS</span></h2>
+	</div>
+</md-toolbar>
+
+<md-content flex id="content" class="md-padding">
+	<md-input-container class="md-block">
+		<label translate class="capitalize">LANGUAGE</label>
+		<md-select ng-model="size">
+			<md-option ng-repeat="(key, language) in app.languages" value="{{key}}">{{language}}</md-option>
+		</md-select>
+	</md-input-container>
+</md-content>

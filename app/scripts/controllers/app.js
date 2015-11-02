@@ -2,6 +2,11 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 
 	var vm = this;
 
+	vm.languages = {
+		'en': 'English',
+		'it': 'Italiano'
+	};
+
 	vm.toggleSidenav = function(menuId) {
 		$mdSidenav(menuId).toggle();
 	};

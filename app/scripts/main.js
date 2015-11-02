@@ -20,13 +20,15 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'pascalprecht.transla
 	$routeProvider.when('/Today', {
 		templateUrl: 'views/today.html',
 		controller: 'TodayCtrl',
-		controllerAs: 'today',
-		name: 'TODAY'
+		controllerAs: 'today'
 	}).when('/Tomorrow', {
 		templateUrl: 'views/tomorrow.html',
 		controller: 'TomorrowCtrl',
-		controllerAs: 'tomorrow',
-		name: 'TOMORROW'
+		controllerAs: 'tomorrow'
+	}).when('/Settings', {
+		templateUrl: 'views/settings.html',
+		controller: 'SettingsCtrl',
+		controllerAs: 'settings'
 	}).otherwise({
 		redirectTo: '/Today'
 	});

@@ -12,5 +12,6 @@
 	"KEEP_SCHEDULE": "keep schedule",
 	"SELECTED": "selected",
 	"LAST_UPDATED": "last updated",
-	"LOGOUT": "logout"
+	"LOGOUT": "logout",
+	"LANGUAGE": "language"
 }
