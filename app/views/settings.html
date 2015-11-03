@@ -11,7 +11,7 @@
 	<md-input-container class="md-block">
 		<label translate class="capitalize">LANGUAGE</label>
 		<md-select ng-model="size">
-			<md-option ng-repeat="(key, language) in app.languages" value="{{key}}">{{language}}</md-option>
+			<md-option ng-repeat="(key, language) in setting.availableLanguages" value="{{key}}">{{language}}</md-option>
 		</md-select>
 	</md-input-container>
 </md-content>

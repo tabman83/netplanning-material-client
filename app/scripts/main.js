@@ -1,8 +1,6 @@
-angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'pascalprecht.translate', 'angularMoment']).run(function($log, $translate) {
+angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'pascalprecht.translate', 'angularMoment']).run(function($log, $translate) {
 
 	$log.log('NetPlanningApp is running.');
-
-	$translate.use('en');
 
 }).config(function($mdThemingProvider, $routeProvider, $locationProvider, $translateProvider) {
 

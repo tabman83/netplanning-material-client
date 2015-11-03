@@ -1,11 +1,17 @@
-angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdDialog, $translate, DataService) {
+angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdDialog, $scope, $localStorage, $translate, DataService) {
 
 	var vm = this;
 
-	vm.languages = {
-		'en': 'English',
-		'it': 'Italiano'
-	};
+
+	vm.$storage = $localStorage.$default({
+    	language: 'en'
+	});
+	$scope.$watch('$storage.language', function(val) {
+		console.log(val);
+	});
+	vm.$storage = 'a';
+	//$translate.use('en');
+
 
 	vm.toggleSidenav = function(menuId) {
 		$mdSidenav(menuId).toggle();
