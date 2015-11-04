@@ -2,16 +2,10 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 
 	var vm = this;
 
-
-	vm.$storage = $localStorage.$default({
-    	language: 'en'
+	$localStorage.$default({
+		language: 'en'
 	});
-	$scope.$watch('$storage.language', function(val) {
-		console.log(val);
-	});
-	vm.$storage = 'a';
-	//$translate.use('en');
-
+	$translate.use($localStorage.language);
 
 	vm.toggleSidenav = function(menuId) {
 		$mdSidenav(menuId).toggle();
