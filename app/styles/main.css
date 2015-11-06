@@ -11,10 +11,8 @@ html, body {
 .login-background {
     background-color:#efefef;
 }
-@media (min-width: 600px) {
-    .login-background {
-        min-height: 100%;
-    }
+.login-background {
+    min-height: 100%;
 }
 .login-background h2.md-title {
     margin-top: -60px;
