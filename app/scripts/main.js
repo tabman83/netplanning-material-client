@@ -4,6 +4,10 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'pascalp
 
 }).config(function($mdThemingProvider, $routeProvider, $locationProvider, $translateProvider) {
 
+	String.prototype.capitalize = function() {
+	    return this.charAt(0).toUpperCase() + this.slice(1);
+	};
+
 	var customBlueMap = $mdThemingProvider.extendPalette('light-blue', {
 		'contrastDefaultColor': 'light',
 		'contrastDarkColors': ['50'],

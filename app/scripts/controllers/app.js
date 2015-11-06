@@ -25,8 +25,8 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	$translate.use($localStorage.language);
 
 	vm.logout = function() {
-		var title = $translate.instant('LOGOUT');
-		var content = $translate.instant('ARE_YOU_SURE_YOU_WANT_TO_LOGOUT') + ' ?';
+		var title = $translate.instant('LOGOUT').capitalize();
+		var content = $translate.instant('ARE_YOU_SURE_YOU_WANT_TO_LOGOUT').capitalize() + ' ?';
 		var btnOk = $translate.instant('OK');
 		var btnCancel = $translate.instant('CANCEL');
 
@@ -60,8 +60,8 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 			return item.isSelected;
 		}).length;
 
-		var title = $translate.instant('LESSONS_CANCELLATION');
-		var content = $translate.instant('YOU_ARE_ABOUT_TO_CANCEL', { num: numLessons }) + '.';
+		var title = $translate.instant('LESSONS_CANCELLATION').capitalize();
+		var content = $translate.instant('YOU_ARE_ABOUT_TO_CANCEL', { num: numLessons }).capitalize() + '.';
 		var btnOk = $translate.instant('CANCEL_LESSONS');
 		var btnCancel = $translate.instant('KEEP_SCHEDULE');
 

@@ -18,5 +18,7 @@
 	"PASSWORD": "password",
 	"LOGIN": "login",
 	"ARE_YOU_SURE_YOU_WANT_TO_LOGOUT": "are you sure you want to logout",
-	"ALL": "all"
+	"ALL": "all",
+	"OK": "ok",
+	"CANCEL": "cancel"
 }
