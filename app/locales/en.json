@@ -15,5 +15,6 @@
 	"LOGOUT": "logout",
 	"LANGUAGE": "language",
 	"USERNAME": "username",
-	"PASSWORD": "password"
+	"PASSWORD": "password",
+	"LOGIN": "login"
 }

@@ -15,5 +15,6 @@
 	"LOGOUT": "esci",
 	"LANGUAGE": "lingua",
 	"USERNAME": "utente",
-	"PASSWORD": "password"
+	"PASSWORD": "password",
+	"LOGIN": "login"
 }
