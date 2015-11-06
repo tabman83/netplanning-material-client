@@ -20,5 +20,6 @@
 	"ARE_YOU_SURE_YOU_WANT_TO_LOGOUT": "sei sicuro di voler uscire",
 	"ALL": "tutto",
 	"OK": "ok",
-	"CANCEL": "annulla"
+	"CANCEL": "annulla",
+	"NO_ITEMS": "nessun elemento da mostrare"
 }

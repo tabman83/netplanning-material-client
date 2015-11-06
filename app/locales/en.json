@@ -20,5 +20,6 @@
 	"ARE_YOU_SURE_YOU_WANT_TO_LOGOUT": "are you sure you want to logout",
 	"ALL": "all",
 	"OK": "ok",
-	"CANCEL": "cancel"
+	"CANCEL": "cancel",
+	"NO_ITEMS": "no items to display"
 }
