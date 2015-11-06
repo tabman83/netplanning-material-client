@@ -47,11 +47,11 @@
         <md-list>
 
             <md-list-item md-ink-ripple href="/Today" ng-click="app.toggleSidenav('left')">
-                <md-icon md-svg-src="images/ic_today_48px.svg" aria-label="today"></md-icon>
+                <md-icon md-svg-src="images/ic_today_48px.svg" class="md-primary" aria-label="today"></md-icon>
                 <span class="capitalize" flex translate>TODAY</span>
             </md-list-item>
             <md-list-item md-ink-ripple href="/Tomorrow" ng-click="app.toggleSidenav('left')">
-                <md-icon md-svg-src="images/ic_event_note_48px.svg" aria-label="tomorrow"></md-icon>
+                <md-icon md-svg-src="images/ic_event_note_48px.svg" class="md-primary" aria-label="tomorrow"></md-icon>
                 <span class="capitalize" flex translate>TOMORROW</span>
             </md-list-item>
             <md-list-item md-ink-ripple href="/Settings" ng-click="app.toggleSidenav('left')">
@@ -59,7 +59,7 @@
                 <span class="capitalize" flex translate>SETTINGS</span>
             </md-list-item>
             <md-list-item md-ink-ripple ng-click="app.logout()">
-                <md-icon md-svg-src="images/ic_exit_to_app_48px.svg" aria-label="logout"></md-icon>
+                <md-icon md-svg-src="images/ic_exit_to_app_48px.svg" class="md-warn" aria-label="logout"></md-icon>
                 <span class="capitalize" flex translate>LOGOUT</span>
             </md-list-item>
         </md-list>
