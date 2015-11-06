@@ -17,5 +17,6 @@
 	"USERNAME": "utente",
 	"PASSWORD": "password",
 	"LOGIN": "login",
-	"ARE_YOU_SURE_YOU_WANT_TO_LOGOUT": "sei sicuro di voler uscire"
+	"ARE_YOU_SURE_YOU_WANT_TO_LOGOUT": "sei sicuro di voler uscire",
+	"ALL": "tutto"
 }

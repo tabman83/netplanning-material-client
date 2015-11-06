@@ -1,4 +1,4 @@
-angular.module('NetPlanningApp').controller('TodayCtrl', function($scope, DataService) {
+angular.module('NetPlanningApp').controller('LessonsCtrl', function($scope, DataService) {
 
 	var vm = this;
 
