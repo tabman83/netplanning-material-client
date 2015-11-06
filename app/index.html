@@ -31,7 +31,7 @@
 
 <body layout="row" ng-controller="AppCtrl as app" ng-cloak>
 
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+    <md-sidenav ng-if="isLoggedIn" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
         <md-toolbar class="md-tall md-hue-2 md-whiteframe-z1">
             <span flex></span>
             <div layout="column" class="md-toolbar-tools-bottom inset">
@@ -107,6 +107,7 @@
         <script src="scripts/controllers/today.js"></script>
         <script src="scripts/controllers/tomorrow.js"></script>
         <script src="scripts/controllers/settings.js"></script>
+        <script src="scripts/controllers/login.js"></script>
         <script src="scripts/providers/data-service.js"></script>
         <script src="scripts/filters/show-only-lessons.js"></script>
         <script src="scripts/filters/items-in-the-morning.js"></script>

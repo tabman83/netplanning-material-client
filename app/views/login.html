@@ -1,0 +1,19 @@
+<div layout="row" layout-align="center center" style="background-color:#efefef;height:100%">
+	<md-card flex-gt-sm="90" flex-gt-md="80">
+		<md-card-content>
+			<h2 class="md-title">LOGIN</h2>
+			<md-input-container class="md-block">
+				<label translate class="capitalize">USERNAME</label>
+				<input ng-model="login.username" type="text" autofocus autocomplete="off" capitalize="off">
+			</md-input-container>
+			<md-input-container class="md-block">
+				<label translate class="capitalize">PASSWORD</label>
+				<input ng-model="login.password" type="password">
+			</md-input-container>
+		</md-card-content>
+		<div class="md-actions" layout="row" layout-align="end center">
+	        <md-button>LOGIN</md-button>
+	        <md-button>CANCEL</md-button>
+	  	</div>
+	</md-card>
+</div>

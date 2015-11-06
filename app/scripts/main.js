@@ -27,6 +27,10 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'pascalp
 		templateUrl: 'views/settings.html',
 		controller: 'SettingsCtrl',
 		controllerAs: 'settings'
+	}).when('/Login', {
+		templateUrl: 'views/login.html',
+		controller: 'LoginCtrl',
+		controllerAs: 'login'
 	}).otherwise({
 		redirectTo: '/Today'
 	});

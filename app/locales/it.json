@@ -13,5 +13,7 @@
 	"SELECTED": "selezionate",
 	"LAST_UPDATED": "ultimo aggiornamento",
 	"LOGOUT": "esci",
-	"LANGUAGE": "lingua"
+	"LANGUAGE": "lingua",
+	"USERNAME": "utente",
+	"PASSWORD": "password"
 }

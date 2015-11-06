@@ -6,6 +6,8 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 		language: 'en'
 	});
 
+	vm.isLoggedIn = false;
+
 	$scope.$watch(function() {
 		return $localStorage.language;
 	}, function(val) {
