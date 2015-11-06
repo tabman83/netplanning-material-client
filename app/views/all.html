@@ -6,7 +6,7 @@
 		<md-button class="md-icon-button" aria-label="Cancel edit mode" ng-click="app.cancelSelection()" ng-if="day.selectedCount">
 			<md-icon md-svg-src="images/ic_arrow_back_48px.svg" aria-label="cancel"></md-icon>
 		</md-button>
-		<h2 ng-if="!day.selectedCount"><span class="capitalize" translate>TOMORROW</span></h2>
+		<h2 ng-if="!day.selectedCount"><span class="capitalize" translate>ALL</span></h2>
 		<h2 ng-if="day.selectedCount"><span ng-bind="day.selectedCount"></span> <span translate>SELECTED</span></h2>
 		<span flex></span>
 		<md-switch ng-model="app.showOnlyLessons" aria-label="Show only lessons" ng-if="!day.selectedCount"></md-switch>
@@ -28,7 +28,7 @@
 				<p ng-bind="item.name" ng-if="item.type > 1" ></p>
 				<p translate class="capitalize" ng-if="item.type === 0">AVAILABLE</p>
 				<p translate class="capitalize" ng-if="item.type === 1">AVAILABLE_BY_ME</p>
-				<p class="time" ng-bind="item.date | date : 'shortTime'"></p>
+				<p class="time" ng-bind="item.date | date : 'EEE d MMM h:mm'"></p>
 			</md-list-item>
 		</md-list>
 	</section>
@@ -43,7 +43,7 @@
 				<p ng-bind="item.name" ng-if="item.type > 1" ></p>
 				<p translate class="capitalize" ng-if="item.type === 0">AVAILABLE</p>
 				<p translate class="capitalize" ng-if="item.type === 1">AVAILABLE_BY_ME</p>
-				<p class="time" ng-bind="item.date | date : 'shortTime'"></p>
+				<p class="time" ng-bind="item.date | date : 'EEE d MMM h:mm'"></p>
 			</md-list-item>
 		</md-list>
 	</section>
