@@ -5,16 +5,17 @@
 			<h2 class="md-title">NetPlanning <span translate class="capitalize">LOGIN</span></h2>
 			<md-input-container class="md-block" md-no-float>
 				<!-- <label translate class="capitalize">USERNAME</label> -->
-				<input ng-model="login.username" type="text" placeholder="{{'USERNAME'}}" autofocus autocomplete="off" capitalize="off">
+				<input ng-disabled="login.isLoading" ng-model="login.username" type="text" placeholder="{{'USERNAME'}}" autofocus autocomplete="off" capitalize="off">
 			</md-input-container>
 			<md-input-container class="md-block" md-no-float>
 				<!-- <label translate class="capitalize">PASSWORD</label> -->
-				<input ng-model="login.password" type="password" placeholder="{{'PASSWORD'}}">
+				<input ng-disabled="login.isLoading" ng-model="login.password" type="password" placeholder="{{'PASSWORD'}}">
 			</md-input-container>
 		</md-card-content>
+		<md-progress-linear md-mode="indeterminate" ng-class="{ 'hidden': !login.isLoading }"></md-progress-linear>
 		<div class="md-actions" layout="row" layout-align="end center">
-	        <md-button>{{ 'LOGIN' | translate }}</md-button>
-	        <md-button>{{ 'CANCEL' | translate }}</md-button>
+	        <md-button ng-disabled="login.isLoading" ng-click="login.login()">{{ 'LOGIN' | translate }}</md-button>
+	        <md-button ng-disabled="login.isLoading" ng-click="login.cancel()">{{ 'CANCEL' | translate }}</md-button>
 	  	</div>
 	</md-card>
 </div>

@@ -30,8 +30,7 @@
 </head>
 
 <body layout="row" ng-controller="AppCtrl as app" ng-cloak>
-
-    <md-sidenav ng-if="isLoggedIn" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+    <md-sidenav ng-if="app.isLoggedIn" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
         <md-toolbar class="md-tall md-hue-2 md-whiteframe-z1">
             <span flex></span>
             <div layout="column" class="md-toolbar-tools-bottom inset">
@@ -59,7 +58,7 @@
                 <md-icon md-svg-src="images/ic_settings_48px.svg" aria-label="settings"></md-icon>
                 <span class="capitalize" flex translate>SETTINGS</span>
             </md-list-item>
-            <md-list-item md-ink-ripple ng-click="app.toggleSidenav('left')">
+            <md-list-item md-ink-ripple ng-click="app.logout()">
                 <md-icon md-svg-src="images/ic_exit_to_app_48px.svg" aria-label="logout"></md-icon>
                 <span class="capitalize" flex translate>LOGOUT</span>
             </md-list-item>

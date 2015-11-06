@@ -1,4 +1,4 @@
-angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdDialog, $scope, $localStorage, $translate, DataService) {
+angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdDialog, $scope, $location, $localStorage, $translate, DataService) {
 
 	var vm = this;
 
@@ -7,6 +7,14 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	});
 
 	vm.isLoggedIn = false;
+	$scope.$watch( function() {
+		return DataService.isLoggedIn()
+	}, function(val) {
+		vm.isLoggedIn = val;
+	});
+
+	vm.items = DataService.items;
+	vm.lastUpdate = DataService.lastUpdate;
 
 	$scope.$watch(function() {
 		return $localStorage.language;
@@ -15,6 +23,27 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	});
 
 	$translate.use($localStorage.language);
+
+	vm.logout = function() {
+		var title = $translate.instant('LOGOUT');
+		var content = $translate.instant('ARE_YOU_SURE_YOU_WANT_TO_LOGOUT') + ' ?';
+		var btnOk = $translate.instant('OK');
+		var btnCancel = $translate.instant('CANCEL');
+
+		var dialog = $mdDialog
+			.confirm()
+			.title(title)
+			.content(content)
+			.ariaLabel('Lessons cancellation')
+			.ok(btnOk)
+			.cancel(btnCancel);
+		$mdDialog
+			.show(dialog)
+			.then(DataService.logout)
+			.then(function() {
+				$location.url('/Login');
+			});
+	};
 
 	vm.toggleSidenav = function(menuId) {
 		$mdSidenav(menuId).toggle();
@@ -51,8 +80,5 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 				console.log('Promise rejected');
 			});
 	};
-
-	vm.items = DataService.items;
-	vm.lastUpdate = DataService.lastUpdate;
 
 });

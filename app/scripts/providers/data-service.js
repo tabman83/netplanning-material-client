@@ -1,9 +1,8 @@
 angular.module('NetPlanningApp').provider('DataService', function () {
     'use strict';
-
     //var apiEndpoint = location.protocol + '//' + (settings.WEBSERVICES_HOSTNAME) + ':' + settings.WEBSERVICES_PORT + '/api';
 
-    this.$get = function($http) {
+    this.$get = function($http, $timeout, $localStorage) {
 
         function DataService() {
             var data = {
@@ -23,6 +22,10 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                     get: function() { return data.lastUpdate; }
                 }
             });
+
+            this.isLoggedIn = function() {
+                return !!$localStorage.sessionId;
+            };
 
             this.loadData = function() {
 				// 0 available
@@ -80,12 +83,22 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             };
 
             this.logout = function() {
-                return $http.post(apiEndpoint + '/Users/Logout').success(function() {
+                $timeout(1000).then(function() {
+                    delete $localStorage.sessionId;
                 });
+                /*
+                return $http.post(apiEndpoint + '/Users/Logout').success(function() {
+                    delete $localStorage;
+                });*/
             };
 
-            this.login = function(email, password, isRememberMeEnabled) {
+            this.login = function(email, password) {
 				var that = this;
+                return $timeout(2000).then(function() {
+                    $localStorage.sessionId = 'asd91jkl2';
+                    that.loadData();
+                });
+                /*
                 return $http.post(apiEndpoint + '/Users/Login', {
                     email: email,
                     password: password
@@ -93,6 +106,8 @@ angular.module('NetPlanningApp').provider('DataService', function () {
 					that.loadData();
                 }).error(function() {
                 });
+                */
+                //$timeout(1000)
             };
 
             //if ($window.sessionStorage.userInfo) {
