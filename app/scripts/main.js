@@ -21,16 +21,16 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'pascalp
 
 	$routeProvider.when('/Today', {
 		templateUrl: 'views/today.html',
-		controller: 'LessonsCtrl',
-		controllerAs: 'today'
+		controller: 'DayCtrl',
+		controllerAs: 'day'
 	}).when('/Tomorrow', {
 		templateUrl: 'views/tomorrow.html',
-		controller: 'LessonsCtrl',
-		controllerAs: 'tomorrow'
+		controller: 'DayCtrl',
+		controllerAs: 'day'
 	}).when('/All', {
 		templateUrl: 'views/all.html',
-		controller: 'LessonsCtrl',
-		controllerAs: 'all'
+		controller: 'DayCtrl',
+		controllerAs: 'day'
 	}).when('/Settings', {
 		templateUrl: 'views/settings.html',
 		controller: 'SettingsCtrl',
