@@ -27,6 +27,28 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
     'use strict';
 
     this.$get = function($http, $timeout, $localStorage, settings) {
+        /*
+        switch( className ) {
+            case 'dispo' : // available
+            case 'indispo' : // not available at all
+            case 'indispoPonctuelle': // made unavailable by you
+            case 'reserve' : // One-Off reservation
+            case 'recurrente' : // Automatic Rebooking
+            case 'training' :
+            case 'dispo_stag2' : // Slots made available by you
+            case 's_indispo2' : // no more bookable beacause time passed
+            case 'training' : // training lesson
+            case 'reserveRemplacement' // substitution
+            case 'instantHelp' : // instant help
+            case 'special1' : // tutorial lesson
+            case 'special2' : // special lesson
+        }
+        */
+        function Item(data) {
+            angular.extend(this, data);
+            this.date = new Date(data.begin);
+            this.isAvailability = (data.kind === 'dispo' || data.kind === 'dispo_stag2');
+        }
 
         function DataService() {
             var data = {
@@ -52,16 +74,23 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
             };
 
             this.loadData = function() {
-                /*
 
-                $http.post(settings.apiUrl + '/login', {
-                    username: 't',
-                    password: 'a'
+                $http.get(settings.apiUrl + '/lessons').success(function(result) {
+                    result.lessons.forEach(function(item) {
+                        data.items.push(new Item(item));
+                    });
+                    console.log(data.items);
+                    data.lastUpdate = new Date(result.lastCheck);
+                });
+
+                /*
+                var items = Item.query();
+                items.$promise.then(function() {
+                    data.items.length = 0;
+                    data.items.push(items);
+                    data.lastUpdate = new Date();
                 });*/
-                // 0 available
-                // 1 available by me
-                // 2 recurrent lesson
-                // 3 1-time lesson
+/*
                 data.items.push({
                     name: 'Jubon Aurelie',
                     type: 2,
@@ -108,8 +137,7 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
                     type: 1,
                     date: new Date(2015, 10, 2, 16, 30),
                     isSelected: false
-                });
-                data.lastUpdate = new Date();
+                });*/
             };
 
             this.logout = function() {
@@ -134,11 +162,9 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
                 });
             };
 
-            //if ($window.sessionStorage.userInfo) {
-                //userInfo = JSON.parse($window.sessionStorage.userInfo);
-                //$http.defaults.headers.common.Authorization = 'Basic ' + userInfo.SessionId;
-                //this.loadData();
-            //}
+            if ($localStorage.authToken) {
+                this.loadData();
+            }
         };
 
         return new DataService();

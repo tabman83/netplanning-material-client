@@ -1,6 +1,4 @@
-angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'pascalprecht.translate', 'angularMoment']).run(function($log, $rootScope, $location, DataService) {
-
-	$log.log('NetPlanningApp is running.');
+angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResource', 'pascalprecht.translate', 'angularMoment']).run(function($rootScope, $location, DataService) {
 
 	$rootScope.$on('$locationChangeStart', function (event, next, current) {
 		// redirect to login page if not logged in and trying to access a restricted page
