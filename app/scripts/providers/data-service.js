@@ -1,32 +1,13 @@
-angular.module('NetPlanningApp').factory('SignInterceptor', function($q, $window) {
-    var secret = 'sVkJsK41#>P_GN?:y)]FPL~r?MV3`0x-!N{4J.X4`Xu87M-<.T:+??;el@yKU_73';//new $window.TextEncoder('utf-8').encode('sVkJsK41#>P_GN?:y)]FPL~r?MV3`0x-!N{4J.X4`Xu87M-<.T:+??;el@yKU_73');
-
-    var requestInterceptor = {
+angular.module('NetPlanningApp').factory('SignInterceptor', function($q, $window, settings) {
+    return {
         request: function (config) {
-            if(config.url.indexOf('/v1/') > -1 ) {
-                //var signature = asmCrypto.HMAC_SHA256.hex( JSON.stringify(config.data || {}), 'sVkJsK41#>P_GN?:y)]FPL~r?MV3`0x-!N{4J.X4`Xu87M-<.T:+??;el@yKU_73' )
-                var signature = CryptoJS.HmacMD5(JSON.stringify(config.data || {}), secret);
+            if(config.url.indexOf(settings.apiUrl) > -1 ) {
+                var signature = CryptoJS.HmacMD5(JSON.stringify(config.data || {}), settings.secret);
                 config.headers['Signature'] = signature.toString();
-                console.log(config.headers.Signature, config);
-                /*
-                var dataToSign = encoder.encode(JSON.stringify(config.data || {})); //new $window.TextEncoder('utf-8').encode(JSON.stringify(config.data || {}));
-                return cryptoKeyPromise.then(function(cryptoKey) {
-                    return window.crypto.subtle.sign({
-                        name: 'HMAC',
-                    }, cryptoKey, dataToSign);
-                }).then(function(signature) {
-
-                    config.headers['Signature'] = btoa(new Uint8Array(signature));
-                    console.log(config.headers.Signature, config);
-                    return $q.when(config);
-                });
-    */
             }
             return config;
         }
     };
-
-    return requestInterceptor;
 });
 angular.module('NetPlanningApp').factory('AuthInterceptor', function($window){
     return {
@@ -40,11 +21,10 @@ angular.module('NetPlanningApp').config(function($httpProvider) {
     $httpProvider.interceptors.push('SignInterceptor');
     $httpProvider.interceptors.push('AuthInterceptor');
 });
-angular.module('NetPlanningApp').provider('DataService', function () {
+angular.module('NetPlanningApp').provider('DataService', function (settings) {
     'use strict';
-    //var apiEndpoint = location.protocol + '//' + (settings.WEBSERVICES_HOSTNAME) + ':' + settings.WEBSERVICES_PORT + '/api';
 
-    this.$get = function($http, $timeout, $localStorage) {
+    this.$get = function($http, $timeout, $localStorage, settings) {
 
         function DataService() {
             var data = {
@@ -66,14 +46,16 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             });
 
             this.isLoggedIn = function() {
-                return !!$localStorage.sessionId;
+                return !!$localStorage.sessionToken;
             };
 
             this.loadData = function() {
-                $http.post('http://localhost:50000/v1/login', {
+                /*
+
+                $http.post(settings.apiUrl + '/login', {
                     username: 't',
                     password: 'a'
-                });
+                });*/
                 // 0 available
                 // 1 available by me
                 // 2 recurrent lesson
@@ -134,35 +116,30 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                 });
                 /*
                 return $http.post(apiEndpoint + '/Users/Logout').success(function() {
-                delete $localStorage;
-            });*/
+                delete $localStorage;*/
+            };
+
+            this.login = function(username, password) {
+                var that = this;
+                return $http.post(settings.apiUrl + '/login', {
+                    username: username,
+                    password: password
+                }).success(function(val) {
+                    console.log(val);
+                    $localStorage.sessionToken = val;
+                    that.loadData();
+                }).error(function() {
+                    delete $localStorage.sessionId;
+                });
+            };
+
+            //if ($window.sessionStorage.userInfo) {
+                //userInfo = JSON.parse($window.sessionStorage.userInfo);
+                //$http.defaults.headers.common.Authorization = 'Basic ' + userInfo.SessionId;
+                //this.loadData();
+            //}
         };
 
-        this.login = function(email, password) {
-            var that = this;
-            return $timeout(2000).then(function() {
-                $localStorage.sessionId = 'asd91jkl2';
-                that.loadData();
-            });
-            /*
-            return $http.post(apiEndpoint + '/Users/Login', {
-            email: email,
-            password: password
-        }).success(function(result) {
-        that.loadData();
-    }).error(function() {
-});
-*/
-//$timeout(1000)
-};
-
-//if ($window.sessionStorage.userInfo) {
-//userInfo = JSON.parse($window.sessionStorage.userInfo);
-//$http.defaults.headers.common.Authorization = 'Basic ' + userInfo.SessionId;
-this.loadData();
-//}
-}
-
-return new DataService();
-};
+        return new DataService();
+    };
 });

@@ -4,15 +4,17 @@ angular.module('NetPlanningApp').controller('LoginCtrl', function($location, Dat
 
 	vm.username = 'R1225';
 	vm.password = 'SXA112';
-
+	vm.errorMessage = 'Network error.';
 	vm.isLoading = false;
 
 	vm.login = function() {
 		vm.isLoading = true;
-		DataService.login(vm.username, vm.password).then(function() {
+		vm.errorMessage = null;
+		DataService.login(vm.username, vm.password).success(function() {
 			$location.url('/Today');
-		}).catch(function(error) {
+		}).error(function(error) {
 			// error occurred
+			vm.errorMessage = error ? error.message : 'Network error.';
 		}).finally(function() {
 			vm.isLoading = false;
 		});

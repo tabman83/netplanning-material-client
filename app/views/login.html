@@ -11,6 +11,7 @@
 				<!-- <label translate class="capitalize">PASSWORD</label> -->
 				<input ng-disabled="login.isLoading" ng-model="login.password" type="password" placeholder="{{'PASSWORD'}}">
 			</md-input-container>
+			<span class="md-body-1 md-warn" ng-bind="login.errorMessage"></span>
 		</md-card-content>
 		<md-progress-linear md-mode="indeterminate" ng-class="{ 'hidden': !login.isLoading }"></md-progress-linear>
 		<div class="md-actions md-padding" layout="row" layout-align="center center">
