@@ -4,7 +4,7 @@ angular.module('NetPlanningApp').controller('LoginCtrl', function($location, Dat
 
 	vm.username = 'R1225';
 	vm.password = 'SXA112';
-	vm.errorMessage = 'Network error.';
+	vm.errorMessage = null;
 	vm.isLoading = false;
 
 	vm.login = function() {

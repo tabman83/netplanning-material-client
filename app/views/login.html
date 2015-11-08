@@ -1,21 +1,21 @@
 <div layout="row" layout-align="center center" class="login-background" >
-	<md-card flex-sm="100" flex-gt-sm="50" flex-gt-md="30" flex-gt-lg="20">
+	<md-card flex-sm="100" flex-gt-sm="50" flex-gt-md="30" flex-gt-lg="30">
 		<img ng-src="images/login-background.png" class="md-card-image" style="background: linear-gradient(#0143A3,#0273D4);">
 		<md-card-content>
-			<h2 class="md-title">NetPlanning <span translate class="capitalize">LOGIN</span></h2>
+			<h2 class="md-title">NetPlanning Teacher <span translate class="capitalize">LOGIN</span></h2>
 			<md-input-container class="md-block" md-no-float>
 				<!-- <label translate class="capitalize">USERNAME</label> -->
-				<input ng-disabled="login.isLoading" ng-model="login.username" type="text" placeholder="{{'USERNAME'}}" autofocus autocomplete="off" capitalize="off">
+				<input ng-disabled="login.isLoading" ng-model="login.username" type="text" placeholder="{{'USERNAME' | translate}}" autofocus autocomplete="off" capitalize="off">
 			</md-input-container>
 			<md-input-container class="md-block" md-no-float>
 				<!-- <label translate class="capitalize">PASSWORD</label> -->
-				<input ng-disabled="login.isLoading" ng-model="login.password" type="password" placeholder="{{'PASSWORD'}}">
+				<input ng-disabled="login.isLoading" ng-model="login.password" type="password" placeholder="{{'PASSWORD' | translate}}">
 			</md-input-container>
-			<span class="md-body-1 md-warn" ng-bind="login.errorMessage"></span>
+			<span ng-if="login.errorMessage" ng-bind="login.errorMessage"></span>
 		</md-card-content>
 		<md-progress-linear md-mode="indeterminate" ng-class="{ 'hidden': !login.isLoading }"></md-progress-linear>
 		<div class="md-actions md-padding" layout="row" layout-align="center center">
-	        <md-button flex class="md-raised md-primary" ng-disabled="login.isLoading" ng-click="login.login()">{{ 'LOGIN' | translate }}</md-button>
+	        <md-button flex class="md-raised md-primary" ng-disabled="login.isLoading || !login.username.length || !login.password.length" ng-click="login.login()">{{ 'LOGIN' | translate }}</md-button>
 	  	</div>
 	</md-card>
 </div>

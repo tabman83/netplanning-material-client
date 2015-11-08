@@ -1,7 +1,7 @@
-angular.module('NetPlanningApp').factory('SignInterceptor', function($q, $window, settings) {
+angular.module('NetPlanningApp').factory('SignInterceptor', function($localStorage, settings) {
     return {
         request: function (config) {
-            if(config.url.indexOf(settings.apiUrl) > -1 ) {
+            if(config.url.indexOf(settings.apiUrl) > -1) {
                 var signature = CryptoJS.HmacMD5(JSON.stringify(config.data || {}), settings.secret);
                 config.headers['Signature'] = signature.toString();
             }
@@ -9,10 +9,12 @@ angular.module('NetPlanningApp').factory('SignInterceptor', function($q, $window
         }
     };
 });
-angular.module('NetPlanningApp').factory('AuthInterceptor', function($window){
+angular.module('NetPlanningApp').factory('AuthInterceptor', function($localStorage, settings){
     return {
         request: function(config) {
-            config.headers['Authorization'] = 'Bearer '+$window.localStorage.getItem('authToken');
+            if(config.url.indexOf(settings.apiUrl) > -1) {
+                config.headers['Authorization'] = 'Bearer ' + $localStorage.authToken;
+            }
             return config;
         }
     };
@@ -46,7 +48,7 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
             });
 
             this.isLoggedIn = function() {
-                return !!$localStorage.sessionToken;
+                return !!$localStorage.authToken;
             };
 
             this.loadData = function() {
@@ -112,7 +114,7 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
 
             this.logout = function() {
                 $timeout(1000).then(function() {
-                    delete $localStorage.sessionId;
+                    delete $localStorage.authToken;
                 });
                 /*
                 return $http.post(apiEndpoint + '/Users/Logout').success(function() {
@@ -124,12 +126,11 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
                 return $http.post(settings.apiUrl + '/login', {
                     username: username,
                     password: password
-                }).success(function(val) {
-                    console.log(val);
-                    $localStorage.sessionToken = val;
+                }).success(function(result) {
+                    $localStorage.authToken = result.authToken;
                     that.loadData();
                 }).error(function() {
-                    delete $localStorage.sessionId;
+                    delete $localStorage.authToken;
                 });
             };
 
