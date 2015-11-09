@@ -64,6 +64,7 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
             this.isUserCancelled = this.kind === 'indispoPonctuelle';
             this.isUnavailable = this.kind === 'indispo';
             this.isSystemAvailability = this.kind === 'dispo';
+            this.dayOfYear = moment(data.begin).dayOfYear();
         }
 
         function DataService() {
