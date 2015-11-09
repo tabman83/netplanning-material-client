@@ -21,5 +21,7 @@
 	"ALL": "all",
 	"OK": "ok",
 	"CANCEL": "cancel",
-	"NO_ITEMS": "no items to display"
+	"NO_ITEMS": "no items to display",
+	"USER_CANCELLED": "user cancelled",
+	"UNAVAILABLE": "unavailable"
 }

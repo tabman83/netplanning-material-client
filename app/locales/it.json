@@ -21,5 +21,7 @@
 	"ALL": "tutto",
 	"OK": "ok",
 	"CANCEL": "annulla",
-	"NO_ITEMS": "nessun elemento da mostrare"
+	"NO_ITEMS": "nessun elemento da mostrare",
+	"USER_CANCELLED": "annullato dall'utente",
+	"UNAVAILABLE": "non disponibile"
 }

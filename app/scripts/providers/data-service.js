@@ -46,8 +46,24 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
         */
         function Item(data) {
             angular.extend(this, data);
+            var now = moment();
+            var tomorrow = moment().add(1, 'days');
             this.date = new Date(data.begin);
-            this.isAvailability = (data.kind === 'dispo' || data.kind === 'dispo_stag2');
+            this.isLesson = !!data.name;
+            this.isToday = now.isSame(this.date, 'day');
+            this.isTomorrow = tomorrow.isSame(this.date, 'day');
+            this.isSpecialLesson = this.kind === 'special2';
+            this.isTutorialLesson = this.kind === 'special1';
+            this.isInstantHelp = this.kind === 'instantHelp';
+            this.isSubstitution = this.kind === 'reserveRemplacement';
+            this.isUnbookableAsTimeElapsed = this.kind === 's_indispo2';
+            this.isUserAvailability = this.kind === 'dispo_stag2';
+            this.isTrainingLesson = this.kind === 'training';
+            this.isAutoRebooking = this.kind === 'recurrente';
+            this.isOneOff = this.kind === 'reserve';
+            this.isUserCancelled = this.kind === 'indispoPonctuelle';
+            this.isUnavailable = this.kind === 'indispo';
+            this.isSystemAvailability = this.kind === 'dispo';
         }
 
         function DataService() {
@@ -74,70 +90,15 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
             };
 
             this.loadData = function() {
-
                 $http.get(settings.apiUrl + '/lessons').success(function(result) {
                     result.lessons.forEach(function(item) {
                         data.items.push(new Item(item));
                     });
                     console.log(data.items);
                     data.lastUpdate = new Date(result.lastCheck);
+                }).error(function(error) {
+                    console.log(error);
                 });
-
-                /*
-                var items = Item.query();
-                items.$promise.then(function() {
-                    data.items.length = 0;
-                    data.items.push(items);
-                    data.lastUpdate = new Date();
-                });*/
-/*
-                data.items.push({
-                    name: 'Jubon Aurelie',
-                    type: 2,
-                    date: new Date(2015, 10, 2, 10, 30),
-                    isSelected: false
-                }, {
-                    type: 0,
-                    date: new Date(2015, 10, 2, 11, 0),
-                    isSelected: false
-                }, {
-                    name: 'Castro Maurice',
-                    type: 2,
-                    date: new Date(2015, 10, 2, 11, 30),
-                    isSelected: false
-                }, {
-                    name: 'Lijion Miriam',
-                    type: 3,
-                    date: new Date(2015, 10, 2, 12, 0),
-                    isSelected: false
-                }, {
-                    type: 0,
-                    date: new Date(2015, 10, 2, 12, 30),
-                    isSelected: false
-                }, {
-                    name: 'Oboez Marc',
-                    type: 3,
-                    date: new Date(2015, 10, 2, 13, 0),
-                    isSelected: false
-                }, {
-                    name: 'Ducette Ivette',
-                    type: 2,
-                    date: new Date(2015, 10, 2, 13, 30),
-                    isSelected: false
-                }, {
-                    name: 'Devrais Aloise',
-                    type: 3,
-                    date: new Date(2015, 10, 2, 15, 0),
-                    isSelected: false
-                }, {
-                    type: 1,
-                    date: new Date(2015, 10, 2, 16, 0),
-                    isSelected: false
-                }, {
-                    type: 1,
-                    date: new Date(2015, 10, 2, 16, 30),
-                    isSelected: false
-                });*/
             };
 
             this.logout = function() {

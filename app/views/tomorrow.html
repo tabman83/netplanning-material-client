@@ -16,38 +16,20 @@
 	</div>
 </md-toolbar>
 
-<md-content ng-if="!(app.items | itemsTomorrow).length">
+<md-content ng-if="!(app.items | filter : {isTomorrow: true}).length">
 	<p class="md-padding capitalize" translate>NO_ITEMS</p>
 </md-content>
-<md-content ng-if="(app.items | itemsTomorrow).length">
+<md-content ng-if="(app.items | filter : {isTomorrow: true}).length" ng-init="dateFormat = 'shortTime'">
 	<section>
 		<md-subheader class="capitalize md-primary">{{'MORNING' | translate}}</md-subheader>
 		<md-list>
-			<md-list-item ng-repeat="item in app.items | itemsTomorrow | itemsInTheMorning | showOnlyLessons : app.showOnlyLessons"> <!-- 5bc43a-->
-				<img ng-if="item.type < 2" ng-hide="day.selectedCount" ng-src="http://dummyimage.com/20x20/cccccc/000000.gif&text=T{{item.type}}" class="md-avatar" alt="available">
-				<img ng-if="item.type === 2" ng-hide="day.selectedCount" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
-				<img ng-if="item.type === 3" ng-hide="day.selectedCount" ng-src="http://dummyimage.com/20x20/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
-				<md-checkbox ng-show="day.selectedCount" ng-model="item.isSelected"></md-checkbox>
-				<p ng-bind="item.name" ng-if="item.type > 1" ></p>
-				<p translate class="capitalize" ng-if="item.type === 0">AVAILABLE</p>
-				<p translate class="capitalize" ng-if="item.type === 1">AVAILABLE_BY_ME</p>
-				<p class="time" ng-bind="item.date | date : 'shortTime'"></p>
-			</md-list-item>
+			<md-list-item ng-repeat="item in app.items | filter : {isTomorrow: true} | itemsInTheMorning | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
 		</md-list>
 	</section>
 	<section>
 		<md-subheader class="capitalize md-primary">{{'AFTERNOON' | translate}}</md-subheader>
 		<md-list>
-			<md-list-item ng-repeat="item in app.items | itemsTomorrow | itemsInTheAfternoon | showOnlyLessons : app.showOnlyLessons">
-				<img ng-if="item.type < 2" ng-hide="day.selectedCount" ng-src="http://dummyimage.com/20x20/cccccc/000000.gif&text=T{{item.type}}" class="md-avatar" alt="available">
-				<img ng-if="item.type === 2" ng-hide="day.selectedCount" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
-				<img ng-if="item.type === 3" ng-hide="day.selectedCount" ng-src="http://dummyimage.com/20x20/5bc43a/000000.gif&text=T{{item.type}}" class="md-avatar" alt="item.name">
-				<md-checkbox ng-show="day.selectedCount" ng-model="item.isSelected"></md-checkbox>
-				<p ng-bind="item.name" ng-if="item.type > 1" ></p>
-				<p translate class="capitalize" ng-if="item.type === 0">AVAILABLE</p>
-				<p translate class="capitalize" ng-if="item.type === 1">AVAILABLE_BY_ME</p>
-				<p class="time" ng-bind="item.date | date : 'shortTime'"></p>
-			</md-list-item>
+			<md-list-item ng-repeat="item in app.items | filter : {isTomorrow: true} | itemsInTheAfternoon | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
 		</md-list>
 	</section>
 </md-content>
