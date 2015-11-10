@@ -46,9 +46,9 @@
                         <div class="name">Firstname Lastname</div>
                         <div class="desc">NetPlanning Teacher</div>
                     </div>
-                    <a href="#" ng-click="app.update()">
-                        <md-icon md-svg-src="images/ic_cached_48px.svg" class="md-accent" aria-label="update"></md-icon>
-                    </a>
+                    <md-button ng-click="app.update()" ng-disabled="app.isLoading">
+                        <md-icon md-svg-src="images/ic_cached_48px.svg" class="md-accent" ng-class="{ 'rotate': app.isLoading }" aria-label="update" ></md-icon>
+                    </md-button>
                 </div>
             </div>
         </md-toolbar>

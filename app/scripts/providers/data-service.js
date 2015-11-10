@@ -26,7 +26,7 @@ angular.module('NetPlanningApp').config(function($httpProvider) {
 angular.module('NetPlanningApp').provider('DataService', function (settings) {
     'use strict';
 
-    this.$get = function($http, $timeout, $localStorage, settings) {
+    this.$get = function($http, $timeout, $localStorage, $log, settings) {
         /*
         switch( className ) {
             case 'dispo' : // available
@@ -71,19 +71,24 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
             var self = this;
             this.lastUpdate = 0;
             this.items = [];
+            this.isLoading = false;
 
             this.isLoggedIn = function() {
                 return !!$localStorage.authToken;
             };
 
             this.loadData = function() {
+                self.isLoading = true;
                 $http.get(settings.apiUrl + '/lessons').success(function(result) {
+                    self.items.length = 0;
                     result.lessons.forEach(function(item) {
                         self.items.push(new Item(item));
                     });
                     self.lastUpdate = new Date(result.lastCheck);
                 }).error(function(error) {
-                    console.log(error);
+                    $log.log('Error in loadData()', error);
+                }).finally(function() {
+                    self.isLoading = false;
                 });
             };
 

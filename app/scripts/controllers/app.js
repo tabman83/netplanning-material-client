@@ -7,12 +7,19 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	});
 
 	vm.isLoggedIn = false;
+	vm.isLoading = true;
 	vm.items = DataService.items;
 
 	$scope.$watch(function() {
 		return DataService.isLoggedIn()
 	}, function(val) {
 		vm.isLoggedIn = val;
+	});
+
+	$scope.$watch(function() {
+		return DataService.isLoading
+	}, function(val) {
+		vm.isLoading = val;
 	});
 
 	$scope.$watch(function() {
@@ -30,6 +37,10 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	});
 
 	$translate.use($localStorage.language);
+
+	vm.update = function() {
+		DataService.loadData();
+	};
 
 	vm.logout = function() {
 		var title = $translate.instant('LOGOUT').capitalize();

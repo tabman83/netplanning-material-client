@@ -19,13 +19,25 @@ html, body {
     margin-bottom: 40px;
     color: white;
 }
-
+md-toolbar .md-button {
+    padding: 0;
+    margin: 0;
+    min-width: initial;
+    min-height: initial;
+    line-height: initial;
+}
 .last-updated {
     font-size: small;
     text-align: center;
     opacity: 0.8;
 }
-
+@keyframes spin {
+    from {transform:rotate(360deg);}
+    to {transform:rotate(0deg);}
+}
+md-icon.rotate {
+    animation: spin 1.5s infinite 0s linear;
+}
 /* Toolbar area */
 md-toolbar {
     transition: background .15s;
