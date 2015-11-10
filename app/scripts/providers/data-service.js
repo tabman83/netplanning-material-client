@@ -69,7 +69,7 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
 
         function DataService() {
             var self = this;
-            this.lastUpdate = 0;
+            this.lastUpdate = new Date(0);
             this.items = [];
             this.isLoading = false;
 

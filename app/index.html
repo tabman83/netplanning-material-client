@@ -77,7 +77,11 @@
             </md-list-item>-->
         </md-list>
         <span flex></span>
-        <div class="md-padding last-updated"><span translate>LAST_UPDATED</span> <span am-time-ago="app.lastUpdate"></span></div>
+        <div class="md-padding last-updated">
+            <span translate>LAST_UPDATED</span>
+            <span ng-if="+app.lastUpdate" am-time-ago="app.lastUpdate"></span>
+            <span ng-if="!+app.lastUpdate" translate>NEVER</span>
+        </div>
         <div layout="row">
             <md-button flex class="md-raised md-warn" ng-click="app.logout()">
                 <md-icon md-svg-src="images/ic_exit_to_app_48px.svg" aria-label="logout"></md-icon>
