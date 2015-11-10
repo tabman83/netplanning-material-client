@@ -15,7 +15,7 @@
 		</md-button>
 	</div>
 </md-toolbar>
-
+<md-progress-linear md-mode="indeterminate" ng-class="{ 'hidden': !app.isLoading }"></md-progress-linear>
 <md-content ng-if="!app.items.length">
 	<p class="md-padding capitalize" translate>NO_ITEMS</p>
 </md-content>
