@@ -43,7 +43,7 @@
                 </svg>
                 <div layout="row" layout-align="space-between end">
                     <div>
-                        <div class="name">Firstname Lastname</div>
+                        <div class="name text-capitalize" ng-bind="app.username"></div>
                         <div class="desc">NetPlanning Teacher</div>
                     </div>
                     <md-button ng-click="app.update()" ng-disabled="app.isLoading">

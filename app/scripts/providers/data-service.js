@@ -72,6 +72,7 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
             this.lastUpdate = new Date(0);
             this.items = [];
             this.isLoading = false;
+            this.username = '';
 
             this.isLoggedIn = function() {
                 return !!$localStorage.authToken;
@@ -85,6 +86,7 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
                         self.items.push(new Item(item));
                     });
                     self.lastUpdate = new Date(result.lastCheck);
+                    self.username = result.username;
                 }).error(function(error) {
                     $log.log('Error in loadData()', error);
                 }).finally(function() {
