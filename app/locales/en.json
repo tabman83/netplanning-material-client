@@ -23,5 +23,6 @@
 	"CANCEL": "cancel",
 	"NO_ITEMS": "no items to display",
 	"USER_CANCELLED": "user cancelled",
-	"UNAVAILABLE": "unavailable"
+	"UNAVAILABLE": "unavailable",
+	"UPDATE": "update"
 }

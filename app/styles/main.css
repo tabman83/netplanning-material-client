@@ -19,9 +19,14 @@ html, body {
     margin-bottom: 40px;
     color: white;
 }
+
+.last-updated {
+    font-size: small;
+    text-align: center;
+    opacity: 0.8;
+}
+
 /* Toolbar area */
-
-
 md-toolbar {
     transition: background .15s;
 }
@@ -31,7 +36,7 @@ md-toolbar {
 .md-toolbar-tools-bottom {
     font-size: small;
 }
-.md-toolbar-tools-bottom>*:last-child {
+.md-toolbar-tools-bottom .desc {
     opacity: 0.8;
 }
 .capitalize {
