@@ -39,9 +39,15 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	$translate.use($localStorage.language);
 
 	vm.update = function() {
-		var errorMessage = $translate.instant('ERROR_LOADING_DATA');
+		var errorMessage = '<md-icon md-svg-src="images/ic_settings_48px.svg" class="md-warn" aria-label="settings"></md-icon>';
+		errorMessage += $translate.instant('ERROR_LOADING_DATA');
 		DataService.loadData().catch(function() {
-			$mdToast.showSimple(errorMessage);
+			//$mdToast.showSimple(errorMessage);
+			$mdToast.show({
+				templateUrl: 'partials/toast-error.html',
+				position: 'top right',
+				hideDelay: 800
+			});
 		});
 	};
 
