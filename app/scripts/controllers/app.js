@@ -7,13 +7,20 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	});
 
 	vm.isLoggedIn = false;
-	$scope.$watch( function() {
+	vm.items = DataService.items;
+
+	$scope.$watch(function() {
 		return DataService.isLoggedIn()
 	}, function(val) {
 		vm.isLoggedIn = val;
 	});
 
-	vm.items = DataService.items;
+	$scope.$watch(function() {
+		return DataService.lastUpdate
+	}, function(val) {
+		vm.lastUpdate = val;
+	});
+
 	vm.lastUpdate = DataService.lastUpdate;
 
 	$scope.$watch(function() {

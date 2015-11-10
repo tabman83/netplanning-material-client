@@ -19,7 +19,7 @@
 <md-content ng-if="!(app.items | filter : {isTomorrow: true}).length">
 	<p class="md-padding capitalize" translate>NO_ITEMS</p>
 </md-content>
-<md-content ng-if="(app.items | filter : {isTomorrow: true}).length" ng-init="dateFormat = 'shortTime'">
+<md-content ng-if="(app.items | filter : {isTomorrow: true}).length">
 	<section>
 		<md-subheader class="capitalize md-primary">{{'MORNING' | translate}}</md-subheader>
 		<md-list>

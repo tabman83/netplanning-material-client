@@ -68,23 +68,9 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
         }
 
         function DataService() {
-            var data = {
-                items: [],
-                lastUpdate: new Date(0)
-            };
-
-            Object.defineProperties(this, {
-                items: {
-                    enumerable: false,
-                    configurable: false,
-                    get: function() { return data.items; }
-                },
-                lastUpdate: {
-                    enumerable: false,
-                    configurable: false,
-                    get: function() { return data.lastUpdate; }
-                }
-            });
+            var self = this;
+            this.lastUpdate = 0;
+            this.items = [];
 
             this.isLoggedIn = function() {
                 return !!$localStorage.authToken;
@@ -93,10 +79,9 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
             this.loadData = function() {
                 $http.get(settings.apiUrl + '/lessons').success(function(result) {
                     result.lessons.forEach(function(item) {
-                        data.items.push(new Item(item));
+                        self.items.push(new Item(item));
                     });
-                    console.log(data.items);
-                    data.lastUpdate = new Date(result.lastCheck);
+                    self.lastUpdate = new Date(result.lastCheck);
                 }).error(function(error) {
                     console.log(error);
                 });

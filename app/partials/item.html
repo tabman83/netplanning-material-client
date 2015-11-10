@@ -7,4 +7,4 @@
 <p translate class="capitalize" ng-if="item.isSystemAvailability">AVAILABLE</p>
 <p translate class="capitalize" ng-if="item.isUserAvailability">AVAILABLE_BY_ME</p>
 <p class="capitalize" ng-if="item.isUserCancelled">{{'UNAVAILABLE' | translate}} (reason)</p>
-<p class="time" ng-bind="item.date | date : dateFormat"></p>
+<p class="time" ng-bind="item.date | date : 'shortTime'"></p>

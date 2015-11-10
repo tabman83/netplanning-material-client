@@ -20,10 +20,10 @@
 	<p class="md-padding capitalize" translate>NO_ITEMS</p>
 </md-content>
 <md-content ng-if="app.items.length" ng-init="dateFormat = 'EEE d MMM h:mm'">
-	<section>
-		<md-subheader class="capitalize md-primary">SECTION</md-subheader>
+	<section ng-repeat="(dayOfYear, dayItems) in app.items | groupBy : 'dayOfYear'">
+		<md-subheader class="capitalize md-primary">{{dayItems[0].date | date : 'fullDate'}}</md-subheader>
 		<md-list>
-			<md-list-item ng-repeat="item in app.items | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
+			<md-list-item ng-repeat="item in dayItems | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
 		</md-list>
 	</section>
 </md-content>
