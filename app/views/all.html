@@ -19,7 +19,7 @@
 <md-content ng-if="!app.items.length">
 	<p class="md-padding capitalize" translate>NO_ITEMS</p>
 </md-content>
-<md-content ng-if="app.items.length" ng-init="dateFormat = 'EEE d MMM h:mm'">
+<md-content ng-if="app.items.length">
 	<section ng-repeat="(dayOfYear, dayItems) in app.items | groupBy : 'dayOfYear'">
 		<md-subheader class="capitalize md-primary">{{dayItems[0].date | date : 'fullDate'}}</md-subheader>
 		<md-list>

@@ -2,6 +2,7 @@
 	"TODAY": "today",
 	"TOMORROW": "tomorrow",
 	"SETTINGS": "settings",
+	"ABOUT": "about",
 	"AVAILABLE": "available",
 	"AVAILABLE_BY_ME": "available by me",
 	"MORNING": "morning",
@@ -26,5 +27,10 @@
 	"UNAVAILABLE": "unavailable",
 	"UPDATE": "update",
 	"NEVER": "never",
-	"ERROR_LOADING_DATA": "error loading data"
+	"ERROR_LOADING_DATA": "error loading data",
+
+	"ABOUTE_LINE_1": "NetPlanning Teacher is the unofficial Telelangue app and it is available for PC, MAC, iOS, Android e Windows Phone. Unofficiale just means that it is not officially supported by Telelangue itself but don't worry, your username and password are super safe with us!",
+	"ABOUTE_LINE_2": "This app is a beerware so it is completely free for you and should we meet some day, and you think this stuff is worth it, you can buy me a beer in return.",
+	"ABOUTE_LINE_3": "Next version updates include: push notifications for realtime updates of new and cancelled lessons; a nice and handy calendar view.",
+	"ABOUTE_LINE_4": "NetPlanning Teacher was developed by Antonino Parisi (tabman83@gmail.com)"
 }

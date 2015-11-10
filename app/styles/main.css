@@ -8,12 +8,14 @@ html, body {
 .hidden {
     visibility: hidden;
 }
-.login-background {
+.login-background,
+.about-background {
     background-color:#efefef;
 }
 .login-background {
     min-height: 100%;
 }
+.about-background h2.md-title,
 .login-background h2.md-title {
     margin-top: -60px;
     margin-bottom: 40px;

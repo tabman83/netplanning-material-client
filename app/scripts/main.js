@@ -42,6 +42,8 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResou
 		templateUrl: 'views/settings.html',
 		controller: 'SettingsCtrl',
 		controllerAs: 'settings'
+	}).when('/About', {
+		templateUrl: 'views/about.html'
 	}).when('/Login', {
 		templateUrl: 'views/login.html',
 		controller: 'LoginCtrl',
