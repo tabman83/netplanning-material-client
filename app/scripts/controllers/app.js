@@ -1,4 +1,4 @@
-angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdDialog, $scope, $location, $localStorage, $translate, DataService) {
+angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdDialog, $mdToast, $scope, $location, $localStorage, $translate, DataService) {
 
 	var vm = this;
 
@@ -39,7 +39,10 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	$translate.use($localStorage.language);
 
 	vm.update = function() {
-		DataService.loadData();
+		var errorMessage = $translate.instant('ERROR_LOADING_DATA');
+		DataService.loadData().catch(function() {
+			$mdToast.showSimple(errorMessage);
+		});
 	};
 
 	vm.logout = function() {

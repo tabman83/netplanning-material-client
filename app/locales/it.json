@@ -25,5 +25,6 @@
 	"USER_CANCELLED": "annullato dall'utente",
 	"UNAVAILABLE": "non disponibile",
 	"UPDATE": "aggiorna",
-	"NEVER": "mai"
+	"NEVER": "mai",
+	"ERROR_LOADING_DATA": "error loading data"
 }

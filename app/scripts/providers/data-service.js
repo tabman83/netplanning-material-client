@@ -79,7 +79,7 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
 
             this.loadData = function() {
                 self.isLoading = true;
-                $http.get(settings.apiUrl + '/lessons').success(function(result) {
+                return $http.get(settings.apiUrl + '/lessons').success(function(result) {
                     self.items.length = 0;
                     result.lessons.forEach(function(item) {
                         self.items.push(new Item(item));
