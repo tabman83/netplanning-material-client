@@ -17,8 +17,10 @@
     "toolbar": false,
     "resizable": true,
     "fullscreen": false,
-    "width": 800,
-    "height": 600
+    "width": 1024,
+    "height": 768,
+	"min_width": 870,
+    "min_height": 520
   },
   "homepage": "http://netplanning.thenino.net",
   "devDependencies": {
