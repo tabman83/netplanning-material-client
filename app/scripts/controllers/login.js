@@ -1,5 +1,6 @@
 angular.module('NetPlanningApp').controller('LoginCtrl', function($location, DataService) {
-
+	'use strict';
+	
 	var vm = this;
 
 	vm.username = '';

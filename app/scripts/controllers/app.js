@@ -1,4 +1,5 @@
 angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdDialog, $mdToast, $scope, $location, $localStorage, $translate, DataService) {
+	'use strict';
 
 	var vm = this;
 
@@ -12,19 +13,19 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	vm.username = DataService.username;
 
 	$scope.$watch(function() {
-		return DataService.isLoggedIn()
+		return DataService.isLoggedIn();
 	}, function(val) {
 		vm.isLoggedIn = val;
 	});
 
 	$scope.$watch(function() {
-		return DataService.isLoading
+		return DataService.isLoading;
 	}, function(val) {
 		vm.isLoading = val;
 	});
 
 	$scope.$watch(function() {
-		return DataService.lastUpdate
+		return DataService.lastUpdate;
 	}, function(val) {
 		vm.lastUpdate = val;
 	});

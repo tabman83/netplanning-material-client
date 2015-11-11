@@ -1,32 +1,36 @@
-angular.module('NetPlanningApp').factory('SignInterceptor', function($localStorage, settings) {
+angular.module('NetPlanningApp').factory('SignInterceptor', function($localStorage, settings, CryptoJS) {
+    'use strict';
     return {
         request: function (config) {
             if(config.url.indexOf(settings.apiUrl) > -1) {
                 var signature = CryptoJS.HmacMD5(JSON.stringify(config.data || {}), settings.secret);
-                config.headers['Signature'] = signature.toString();
+                config.headers.Signature = signature.toString();
             }
             return config;
         }
     };
 });
-angular.module('NetPlanningApp').factory('AuthInterceptor', function($localStorage, settings){
+angular.module('NetPlanningApp').factory('AuthInterceptor', function($localStorage, settings) {
+    'use strict';
     return {
         request: function(config) {
             if(config.url.indexOf(settings.apiUrl) > -1) {
-                config.headers['Authorization'] = 'Bearer ' + $localStorage.authToken;
+                config.headers.Authorization = 'Bearer ' + $localStorage.authToken;
             }
             return config;
         }
     };
 });
 angular.module('NetPlanningApp').config(function($httpProvider) {
+    'use strict';
+
     $httpProvider.interceptors.push('SignInterceptor');
     $httpProvider.interceptors.push('AuthInterceptor');
 });
-angular.module('NetPlanningApp').provider('DataService', function (settings) {
+angular.module('NetPlanningApp').provider('DataService', function () {
     'use strict';
 
-    this.$get = function($http, $timeout, $localStorage, $log, settings) {
+    this.$get = function($http, $timeout, $localStorage, $log, settings, moment) {
         /*
         switch( className ) {
             case 'dispo' : // available
@@ -119,7 +123,7 @@ angular.module('NetPlanningApp').provider('DataService', function (settings) {
             if ($localStorage.authToken) {
                 this.loadData();
             }
-        };
+        }
 
         return new DataService();
     };

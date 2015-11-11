@@ -1,6 +1,7 @@
 angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResource', 'pascalprecht.translate', 'angularMoment', 'angular.filter', 'angulartics', 'angulartics.google.analytics']).run(function($rootScope, $location, DataService) {
+	'use strict';
 
-	$rootScope.$on('$locationChangeStart', function (event, next, current) {
+	$rootScope.$on('$locationChangeStart', function () {
 		// redirect to login page if not logged in and trying to access a restricted page
 		var restrictedPage = $location.path() !== '/Login';
 
@@ -9,7 +10,14 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResou
 		}
 	});
 
+}).factory('moment', function ($window) {
+    'use strict';
+    return $window.moment;
+}).factory('CryptoJS', function ($window) {
+    'use strict';
+    return $window.CryptoJS;
 }).config(function($mdThemingProvider, $routeProvider, $locationProvider, $translateProvider) {
+	'use strict';
 
 	String.prototype.capitalize = function() {
 	    return this.charAt(0).toUpperCase() + this.slice(1);

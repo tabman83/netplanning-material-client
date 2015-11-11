@@ -1,5 +1,6 @@
 angular.module('NetPlanningApp').controller('DayCtrl', function($scope, DataService) {
-
+	'use strict';
+	
 	var vm = this;
 
 	vm.selectedCount = 0;
