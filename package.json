@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/tabman83/netplanning-material-client.git"
   },
-  "homepage": "http://netplanning.thenino.net"
+  "homepage": "http://netplanning.thenino.net",
   "devDependencies": {
     "autoprefixer-core": "^4.0.2",
     "browser-sync": "^1.8.2",
