@@ -1,10 +1,9 @@
 # netplanning-material-client
-Client app for NetPlanning
+NetPlanning Teacher is the unofficial Telelangue app and it is available for PC, MAC, iOS, Android and Windows Phone.
 
 ## Source installation
 
-- Install dependencies: `npm install --global yo gulp bower`
-- Install the generator: `npm install --global generator-gulp-webapp`
+- Install dependencies: `npm install --global yo gulp bower cordova nwjs`
 
 ## Commands
 
