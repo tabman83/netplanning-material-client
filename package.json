@@ -40,7 +40,7 @@
   },
   "window": {
     "title": "NetPlanning Teacher",
-    "toolbar": true,
+    "toolbar": false,
     "resizable": true,
     "fullscreen": false,
     "width": 800,
