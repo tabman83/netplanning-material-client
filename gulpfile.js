@@ -31,6 +31,7 @@ gulp.task('html', ['styles'], function () {
 
   return gulp.src('app/**/*.html')
     .pipe(assets)
+	.pipe($.if('*.js', $.ngAnnotate({single_quotes: true})))
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.csso()))
     .pipe(assets.restore())
@@ -78,6 +79,21 @@ gulp.task('locales', function () {
 
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
+gulp.task('serve:dist', ['styles', 'fonts'], function () {
+  browserSync({
+    notify: false,
+    port: 9000,
+    server: {
+		baseDir: ['dist'],
+		middleware: [
+			modRewrite([
+				'^[^\\.]*$ /index.html [L]'
+			])
+		]
+    }
+  });
+});
+  
 gulp.task('serve', ['styles', 'fonts'], function () {
   browserSync({
     notify: false,
