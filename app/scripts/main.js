@@ -60,7 +60,8 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResou
 		redirectTo: '/Today'
 	});
 
-	$locationProvider.html5Mode(true);
+	// does not play nice with nw.js
+	//$locationProvider.html5Mode(true);
 
 	$translateProvider.useStaticFilesLoader({
 		prefix: 'locales/',
