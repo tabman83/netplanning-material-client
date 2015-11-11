@@ -3,10 +3,20 @@
   "engines": {
     "node": ">=0.10.0"
   },
+  "name": "netplanning-material-client",
+  "version": "1.0.0",
+  "author": "Antonino Parisi",
+  "description": "Unofficial NetPlanning client application.",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tabman83/netplanning-material-client.git"
+  },
+  "homepage": "http://netplanning.thenino.net"
   "devDependencies": {
     "autoprefixer-core": "^4.0.2",
-	"connect-modrewrite": "^0.8.1",
     "browser-sync": "^1.8.2",
+    "connect-modrewrite": "^0.8.1",
     "del": "^1.1.1",
     "gulp": "^3.6.0",
     "gulp-cache": "^0.2.2",
@@ -23,6 +33,7 @@
     "gulp-useref": "^1.0.2",
     "jshint-stylish": "^1.0.0",
     "main-bower-files": "^2.5.0",
+    "nw-builder": "^2.0.2",
     "opn": "^1.0.0",
     "wiredep": "^2.0.0"
   }
