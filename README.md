@@ -10,6 +10,7 @@ NetPlanning Teacher is the unofficial Telelangue app and it is available for PC,
 - Run `yo gulp-webapp` to scaffold your webapp
 - Run `gulp serve` to preview and watch for changes
 - Run `gulp serve:test` to run the tests in the browser
-- Run `gulp` to build your webapp for production
+- Run `gulp` to build the webapp for production
 - Run `gulp serve:dist` to preview the production build
-- Run `nwjs` to build the standalone app for production
+- Run `gulp nwjs` to build the standalone app for production
+- Run `gulp cordova` to build the cordova app for production
