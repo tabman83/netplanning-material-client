@@ -3,7 +3,7 @@ NetPlanning Teacher is the unofficial Telelangue app and it is available for PC,
 
 ## Source installation
 
-- Install dependencies: `npm install --global yo gulp bower cordova nwjs`
+- Install dependencies: `npm install --global yo gulp bower cordova nwjs ionic`
 
 ## Commands
 
