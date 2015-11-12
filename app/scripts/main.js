@@ -1,4 +1,4 @@
-angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResource', 'pascalprecht.translate', 'angularMoment', 'angular.filter', 'angulartics', 'angulartics.google.analytics']).run(function($rootScope, $location, DataService) {
+angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResource', 'ngSanitize', 'pascalprecht.translate', 'angularMoment', 'angular.filter', 'angulartics', 'angulartics.google.analytics']).run(function($rootScope, $location, DataService) {
 	'use strict';
 
 	$rootScope.$on('$locationChangeStart', function () {
@@ -16,12 +16,14 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResou
 }).factory('CryptoJS', function ($window) {
     'use strict';
     return $window.CryptoJS;
-}).config(function($mdThemingProvider, $routeProvider, $locationProvider, $translateProvider) {
+}).config(function($mdThemingProvider, $routeProvider, $locationProvider, $compileProvider, $translateProvider) {
 	'use strict';
 
 	String.prototype.capitalize = function() {
 	    return this.charAt(0).toUpperCase() + this.slice(1);
 	};
+
+	$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|ghttps?|ms-appx|x-wmapp0):/);
 
 	var customBlueMap = $mdThemingProvider.extendPalette('light-blue', {
 		'contrastDefaultColor': 'light',
