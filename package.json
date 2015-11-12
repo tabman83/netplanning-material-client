@@ -19,7 +19,7 @@
     "fullscreen": false,
     "width": 1024,
     "height": 768,
-	"min_width": 870,
+    "min_width": 870,
     "min_height": 520
   },
   "homepage": "http://netplanning.thenino.net",
@@ -48,6 +48,7 @@
     "nw-builder": "^2.0.2",
     "opn": "^1.0.0",
     "run-sequence": "^1.1.4",
+    "shelljs": "^0.5.3",
     "wiredep": "^2.0.0"
   },
   "dependencies": {

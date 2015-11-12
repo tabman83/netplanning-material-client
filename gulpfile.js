@@ -10,6 +10,7 @@ var modRewrite = require('connect-modrewrite');
 var NwBuilder = require('nw-builder');
 var runSequence = require('run-sequence');
 var installed = require('installed');
+var sh = require('shelljs');
 
 gulp.task('styles', function () {
     return gulp.src('app/styles/main.css')
@@ -143,16 +144,21 @@ gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras', 'locales'], f
     return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
-/*
-gulp.task('default', ['clean'], function (done) {
-    gulp.start('build', done);
-});
-*/
-
 gulp.task('default', function (done) {
     runSequence(
         'clean',
         'build',
+        done
+    );
+});
+
+/** cordova nwjs tasks **************************/
+
+gulp.task('nwjs', function (done) {
+    runSequence(
+        'nwjs:clean',
+        'default',
+        'nwjs:build',
         done
     );
 });
@@ -183,38 +189,48 @@ gulp.task('nwjs:build', function () {
 	});
 });
 
-gulp.task('nwjs', function (done) {
+gulp.task('nwjs:clean', function (done) {
+    del('nwjs').then(function() {
+		done();
+	});
+});
+
+
+/** cordova gulp tasks **************************/
+
+gulp.task('cordova', function (done) {
     runSequence(
-        'nwjs:clean',
+        'cordova:clean',
         'default',
-        'nwjs:build',
+        'cordova:copy-source',
+        'cordova:config-for-default',
+        'cordova:build:all',
         done
     );
 });
 
-gulp.task('nwjs:clean', function (done) {
-    del([
-        'nwjs'
-    ]).then(function () {
-        done();
-    });
-});
-
-gulp.task('nwjs:copy-source', function () {
-    return gulp.src('dist/**/*')
-        .pipe(gulp.dest('nwjs/src'));
-});
-
-gulp.task('prova', function () {
-	installed(process.cwd(), {
-		dev: false,
-		depth: 0,
-		extraneous: false
-	}, function(err, pkgs) {
-		if (err) throw err;
-		var names = pkgs.map(function(dep) {
-			return dep.name;
-		});
-		console.log(names);
+gulp.task('cordova:clean', function (done) {
+    del('cordova/www').then(function() {
+		done();
 	});
+});
+
+gulp.task('cordova:copy-source', function () {
+	return gulp.src('dist/**').pipe(gulp.dest('cordova/www'));
+});
+
+gulp.task('cordova:config-for-default', function () {
+    gulp.src('config.xml', { 
+		base: '.'
+	}).pipe(gulp.dest('cordova/'));	
+});
+
+gulp.task('cordova:build:all', function (done) {
+    sh.cd('cordova');
+    sh.exec('cordova prepare');
+    sh.exec('copy -r ../resources/ resources/');
+    sh.exec('ionic resources');
+    sh.exec('cordova build');
+    sh.cd('..');
+    done();
 });
