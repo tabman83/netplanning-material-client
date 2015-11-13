@@ -52,8 +52,8 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             angular.extend(this, data);
             var now = moment();
             var tomorrow = moment().add(1, 'days');
-            this.date = new Date(data.begin);
-            this.isLesson = !!data.name;
+            this.date = new Date(this.begin);
+            this.isLesson = !!this.name;
             this.isToday = now.isSame(this.date, 'day');
             this.isTomorrow = tomorrow.isSame(this.date, 'day');
             this.isSpecialLesson = this.kind === 'special2';
@@ -68,7 +68,12 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             this.isUserCancelled = this.kind === 'indispoPonctuelle';
             this.isUnavailable = this.kind === 'indispo';
             this.isSystemAvailability = this.kind === 'dispo';
-            this.dayOfYear = moment(data.begin).dayOfYear();
+            this.dayOfYear = moment(this.begin).dayOfYear();
+            if(this.isLesson) {
+                console.log(this.name);
+                this.name = this.name.toLowerCase();
+
+            }
         }
 
         function DataService() {

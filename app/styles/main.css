@@ -37,7 +37,7 @@ md-toolbar .md-button {
     from {transform:rotate(360deg);}
     to {transform:rotate(0deg);}
 }
-md-icon.rotate {
+md-icon.spin {
     animation: spin 1.5s infinite 0s linear;
 }
 /* Toolbar area */
