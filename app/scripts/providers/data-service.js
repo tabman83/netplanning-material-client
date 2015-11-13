@@ -70,9 +70,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             this.isSystemAvailability = this.kind === 'dispo';
             this.dayOfYear = moment(this.begin).dayOfYear();
             if(this.isLesson) {
-                console.log(this.name);
                 this.name = this.name.toLowerCase();
-
             }
         }
 
