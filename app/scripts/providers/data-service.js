@@ -81,19 +81,20 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             this.isLoading = false;
             this.username = '';
 
+            var toItems = function(rawItem) {
+                return new Item(rawItem);
+            }
+
             this.isLoggedIn = function() {
                 return !!$localStorage.authToken;
             };
 
             this.loadData = function() {
                 self.isLoading = true;
-                return $http.get(settings.apiUrl + '/lessons').success(function(result) {
-                    self.items.length = 0;
-                    result.lessons.forEach(function(item) {
-                        self.items.push(new Item(item));
-                    });
-                    self.lastUpdate = new Date(result.lastCheck);
-                    self.username = result.username;
+                return $http.get(settings.apiUrl + '/items').success(function(result, statusCode, headers) {
+                    var items = result.map(toItems);
+                    Array.prototype.push.apply(self.items, items);
+                    self.lastUpdate = new Date(headers('last-check'));
                 }).error(function(error) {
                     $log.log('Error in loadData()', error);
                 }).finally(function() {
