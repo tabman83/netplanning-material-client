@@ -10,7 +10,7 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	vm.isLoggedIn = false;
 	vm.isLoading = true;
 	vm.items = DataService.items;
-	vm.username = DataService.username;
+	vm.profile = DataService.profile;
 
 	$scope.$watch(function() {
 		return DataService.isLoggedIn();

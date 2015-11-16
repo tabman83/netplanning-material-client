@@ -79,7 +79,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             this.lastUpdate = new Date(0);
             this.items = [];
             this.isLoading = false;
-            this.username = '';
+            this.profile = {};
 
             var toItems = function(rawItem) {
                 return new Item(rawItem);
@@ -91,6 +91,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
 
             this.loadData = function() {
                 self.isLoading = true;
+                self.profile = $localStorage.profile;
                 return $http.get(settings.apiUrl + '/items').success(function(result, statusCode, headers) {
                     var items = result.map(toItems);
                     Array.prototype.push.apply(self.items, items);
@@ -112,13 +113,15 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             };
 
             this.login = function(username, password) {
-                var that = this;
                 return $http.post(settings.apiUrl + '/login', {
                     username: username,
                     password: password
                 }).success(function(result) {
                     $localStorage.authToken = result.authToken;
-                    that.loadData();
+                    $localStorage.profile = {
+                        name: result.name.toLowerCase()
+                    };
+                    self.loadData();
                 }).error(function() {
                     delete $localStorage.authToken;
                 });
