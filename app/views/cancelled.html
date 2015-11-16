@@ -15,7 +15,7 @@
 	<section ng-repeat="(dayOfYear, dayItems) in app.changes | itemsCancelled | groupBy : 'dayOfYear'">
 		<md-subheader class="capitalize md-primary">{{dayItems[0].date | date : 'fullDate'}}</md-subheader>
 		<md-list>
-			<md-list-item ng-repeat="item in dayItems | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
+			<md-list-item ng-repeat="item in dayItems | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/change.html'"></md-list-item>
 		</md-list>
 	</section>
 </md-content>

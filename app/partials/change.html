@@ -1,0 +1,4 @@
+<img ng-if="item.isAutoRebooking" ng-src="http://dummyimage.com/20x20/5bc43a/000000.gif&text=AR" class="md-avatar" alt="item.name">
+<img ng-if="item.isOneOff" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=OO" class="md-avatar" alt="item.name">
+<p ng-bind-html="item.name" class="capitalize"></p>
+<p class="time" ng-bind="item.date | date : 'shortTime'"></p>

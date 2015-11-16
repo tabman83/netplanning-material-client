@@ -48,6 +48,8 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             case 'special2' : // special lesson
         }
         */
+        var unavailabilities = ['s_indispo2', 'dispo_stag2', 'dispo', 'indispo', 'indispoPonctuelle'];
+
         function Item(data) {
             angular.extend(this, data);
             var now = moment();
@@ -84,7 +86,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
 
             var toItems = function(rawItem) {
                 return new Item(rawItem);
-            }
+            };
 
             this.isLoggedIn = function() {
                 return !!$localStorage.authToken;
