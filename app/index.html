@@ -72,10 +72,12 @@
             <md-list-item md-ink-ripple href="#/New" ng-click="app.toggleSidenav('left')">
                 <md-icon md-svg-src="images/ic_add_circle_outline_48px.svg" aria-label="new"></md-icon>
                 <p class="capitalize" flex translate>NEW</p>
+                <span ng-bind="(app.changes | itemsAdded).length"></span>
             </md-list-item>
             <md-list-item md-ink-ripple href="#/Cancelled" ng-click="app.toggleSidenav('left')">
                 <md-icon md-svg-src="images/ic_remove_circle_outline_48px.svg" aria-label="cancelled"></md-icon>
                 <p class="capitalize" flex translate>CANCELLED</p>
+                <span ng-bind="(app.changes | itemsCancelled).length"></span>
             </md-list-item>
             <md-divider></md-divider>
             <md-list-item md-ink-ripple href="#/Settings" ng-click="app.toggleSidenav('left')">
@@ -166,6 +168,8 @@
     <script src="scripts/filters/show-only-lessons.js"></script>
     <script src="scripts/filters/items-in-the-morning.js"></script>
     <script src="scripts/filters/items-in-the-afternoon.js"></script>
+    <script src="scripts/filters/items-added.js"></script>
+    <script src="scripts/filters/items-cancelled.js"></script>
     <!-- endbuild -->
     </body>
 </html>

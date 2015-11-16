@@ -30,7 +30,7 @@ angular.module('NetPlanningApp').config(function($httpProvider) {
 angular.module('NetPlanningApp').provider('DataService', function () {
     'use strict';
 
-    this.$get = function($http, $timeout, $localStorage, $log, settings, moment) {
+    this.$get = function($http, $timeout, $localStorage, $q, $log, settings, moment) {
         /*
         switch( className ) {
             case 'dispo' : // available
@@ -78,6 +78,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             var self = this;
             this.lastUpdate = new Date(0);
             this.items = [];
+            this.changes = [];
             this.isLoading = false;
             this.profile = {};
 
@@ -92,13 +93,20 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             this.loadData = function() {
                 self.isLoading = true;
                 self.profile = $localStorage.profile;
-                return $http.get(settings.apiUrl + '/items').success(function(result, statusCode, headers) {
+                var getItemsPromise = $http.get(settings.apiUrl + '/items').success(function(result, statusCode, headers) {
                     var items = result.map(toItems);
                     Array.prototype.push.apply(self.items, items);
                     self.lastUpdate = new Date(headers('last-check'));
                 }).error(function(error) {
-                    $log.log('Error in loadData()', error);
-                }).finally(function() {
+                    $log.log('Error in loadData / getItems', error);
+                });
+                var getChangesPromise = $http.get(settings.apiUrl + '/changes').success(function(result) {
+                    var changes = result.map(toItems);
+                    Array.prototype.push.apply(self.changes, changes);
+                }).error(function(error) {
+                    $log.log('Error in loadData / getChanges', error);
+                });
+                return $q.all([getItemsPromise, getChangesPromise]).finally(function() {
                     self.isLoading = false;
                 });
             };

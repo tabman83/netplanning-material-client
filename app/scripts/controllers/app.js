@@ -10,6 +10,7 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	vm.isLoggedIn = false;
 	vm.isLoading = true;
 	vm.items = DataService.items;
+	vm.changes = DataService.changes;
 	vm.profile = DataService.profile;
 
 	$scope.$watch(function() {
