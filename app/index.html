@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
 
     <style type="text/css">
     /**
@@ -56,19 +56,21 @@
         <md-list>
             <md-list-item md-ink-ripple href="#/Today" ng-click="app.toggleSidenav('left')">
                 <md-icon md-svg-src="images/ic_today_48px.svg" class="md-primary" aria-label="today"></md-icon>
-                <span class="capitalize" flex translate>TODAY</span>
+                <p class="capitalize" flex translate>TODAY</p>
+                <span ng-bind="(app.items | filter : {isToday: true}).length"></span>
             </md-list-item>
             <md-list-item md-ink-ripple href="#/Tomorrow" ng-click="app.toggleSidenav('left')">
                 <md-icon md-svg-src="images/ic_event_note_48px.svg" class="md-primary" aria-label="tomorrow"></md-icon>
-                <span class="capitalize" flex translate>TOMORROW</span>
+                <p class="capitalize" flex translate>TOMORROW</p>
+                <span ng-bind="(app.items | filter : {isTomorrow: true}).length"></span>
             </md-list-item>
             <md-list-item md-ink-ripple href="#/All" ng-click="app.toggleSidenav('left')">
                 <md-icon md-svg-src="images/ic_view_week_48px.svg" class="md-primary" aria-label="all"></md-icon>
-                <span class="capitalize" flex translate>ALL</span>
+                <p class="capitalize" flex translate>ALL</p>
             </md-list-item>
             <md-list-item md-ink-ripple href="#/Settings" ng-click="app.toggleSidenav('left')">
                 <md-icon md-svg-src="images/ic_settings_48px.svg" aria-label="settings"></md-icon>
-                <span class="capitalize" flex translate>SETTINGS</span>
+                <p class="capitalize" flex translate>SETTINGS</p>
             </md-list-item>
 			<!--
             <md-list-item md-ink-ripple href="#/About" ng-click="app.toggleSidenav('left')">
