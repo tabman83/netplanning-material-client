@@ -6,5 +6,5 @@
 <p ng-bind-html="item.name" class="capitalize" ng-if="item.isLesson"></p>
 <p translate class="capitalize" ng-if="item.isSystemAvailability">AVAILABLE</p>
 <p translate class="capitalize" ng-if="item.isUserAvailability">AVAILABLE_BY_ME</p>
-<p class="capitalize" ng-if="item.isUserCancelled">{{'UNAVAILABLE' | translate}} (reason)</p>
+<p class="capitalize" ng-if="item.isUserCancelled">{{'UNAVAILABLE' | translate}} ({{item.reason}})</p>
 <p class="time" ng-bind="item.date | date : 'shortTime'"></p>
