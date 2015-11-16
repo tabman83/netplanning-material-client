@@ -48,6 +48,14 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResou
 		templateUrl: 'views/all.html',
 		controller: 'DayCtrl',
 		controllerAs: 'day'
+	}).when('/New', {
+		templateUrl: 'views/new.html',
+		controller: 'ChangesCtrl',
+		controllerAs: 'changes'
+	}).when('/Cancelled', {
+		templateUrl: 'views/cancelled.html',
+		controller: 'ChangesCtrl',
+		controllerAs: 'changes'
 	}).when('/Settings', {
 		templateUrl: 'views/settings.html',
 		controller: 'SettingsCtrl',

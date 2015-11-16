@@ -1,0 +1,27 @@
+<md-toolbar class="md-whiteframe-z1">
+	<div class="md-toolbar-tools">
+		<md-button class="md-icon-button" hide-gt-sm ng-click="app.toggleSidenav('left')" aria-label="Show or Hide menu">
+			<md-icon md-svg-src="images/ic_menu_48px.svg" aria-label="menu"></md-icon>
+		</md-button>
+		<h2><span class="capitalize" translate>NEW</span></h2>
+		<span flex></span>
+	</div>
+</md-toolbar>
+<md-progress-linear md-mode="indeterminate" ng-class="{ 'hidden': !app.isLoading }"></md-progress-linear>
+<md-content ng-if="!(app.items | filter : {isToday: true}).length">
+	<p class="md-padding capitalize" translate>NO_ITEMS</p>
+</md-content>
+<md-content ng-if="(app.items | filter : {isToday: true}).length">
+	<section>
+		<md-subheader class="capitalize md-primary">{{'MORNING' | translate}}</md-subheader>
+		<md-list>
+			<md-list-item ng-repeat="item in app.items | filter : {isToday: true} | itemsInTheMorning | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
+		</md-list>
+	</section>
+	<section>
+		<md-subheader class="capitalize md-primary">{{'AFTERNOON' | translate}}</md-subheader>
+		<md-list>
+			<md-list-item ng-repeat="item in app.items | filter : {isToday: true} | itemsInTheAfternoon | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
+		</md-list>
+	</section>
+</md-content>
