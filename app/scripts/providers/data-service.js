@@ -97,6 +97,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                 self.profile = $localStorage.profile;
                 var getItemsPromise = $http.get(settings.apiUrl + '/items').success(function(result, statusCode, headers) {
                     var items = result.map(toItems);
+                    self.items.length = 0;
                     Array.prototype.push.apply(self.items, items);
                     self.lastUpdate = new Date(headers('last-check'));
                 }).error(function(error) {
@@ -104,6 +105,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                 });
                 var getChangesPromise = $http.get(settings.apiUrl + '/changes').success(function(result) {
                     var changes = result.map(toItems);
+                    self.changes.length = 0;
                     Array.prototype.push.apply(self.changes, changes);
                 }).error(function(error) {
                     $log.log('Error in loadData / getChanges', error);
