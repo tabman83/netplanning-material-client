@@ -44,6 +44,11 @@ md-icon.spin {
 md-toolbar {
     transition: background .15s;
 }
+md-list-item>p:first-of-type {
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+}
 .md-toolbar-tools md-switch {
     margin-right: 0;
 }
