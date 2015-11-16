@@ -92,8 +92,8 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 
 		var title = $translate.instant('LESSONS_CANCELLATION').capitalize();
 		var content = $translate.instant('YOU_ARE_ABOUT_TO_CANCEL', { num: numLessons }).capitalize() + '.';
-		var btnOk = $translate.instant('CANCEL_LESSONS');
-		var btnCancel = $translate.instant('KEEP_SCHEDULE');
+		var btnOk = $translate.instant('CONFIRM');
+		var btnCancel = $translate.instant('BACK');
 
 		var dialog = $mdDialog
 			.confirm()
