@@ -3,9 +3,10 @@ angular.module('NetPlanningApp').controller('SettingsCtrl', function($localStora
 
 	var vm = this;
 
-	vm.$localStorage = $localStorage;	
+	vm.$localStorage = $localStorage;
 	vm.availableLanguages = {
 		'en': 'English',
-		'it': 'Italiano'
+		'it': 'Italiano',
+		'fr': 'French'
 	};
 });
