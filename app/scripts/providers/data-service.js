@@ -118,6 +118,8 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             this.logout = function() {
                 $timeout(1000).then(function() {
                     delete $localStorage.authToken;
+                    delete $localStorage.profile;
+                    delete $localStorage.language;
                 });
                 /*
                 return $http.post(apiEndpoint + '/Users/Logout').success(function() {
