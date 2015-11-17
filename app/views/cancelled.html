@@ -7,12 +7,12 @@
 		<span flex></span>
 	</div>
 </md-toolbar>
-<md-progress-linear md-mode="indeterminate" ng-class="{ 'hidden': !app.isLoading }"></md-progress-linear>
-<md-content ng-if="!(app.changes | itemsCancelled).length">
+<md-progress-linear md-mode="indeterminate" ng-class="{ 'hidden': !app.DataService.isLoading }"></md-progress-linear>
+<md-content ng-if="!(app.DataService.changes | itemsCancelled).length">
 	<p class="md-padding capitalize" translate>NO_ITEMS</p>
 </md-content>
-<md-content ng-if="(app.changes | itemsCancelled).length">
-	<section ng-repeat="(dayOfYear, dayItems) in app.changes | itemsCancelled | groupBy : 'dayOfYear'">
+<md-content ng-if="(app.DataService.changes | itemsCancelled).length">
+	<section ng-repeat="(dayOfYear, dayItems) in app.DataService.changes | itemsCancelled | groupBy : 'dayOfYear'">
 		<md-subheader class="capitalize md-primary">{{dayItems[0].date | date : 'fullDate'}}</md-subheader>
 		<md-list>
 			<md-list-item ng-repeat="item in dayItems | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/change.html'"></md-list-item>

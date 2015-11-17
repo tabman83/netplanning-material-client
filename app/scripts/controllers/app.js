@@ -3,32 +3,10 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 
 	var vm = this;
 
+	vm.DataService = DataService;
+
 	$localStorage.$default({
 		language: settings.defaultLanguage
-	});
-
-	vm.isLoggedIn = false;
-	vm.isLoading = true;
-	vm.items = DataService.items;
-	vm.changes = DataService.changes;
-	vm.profile = DataService.profile;
-
-	$scope.$watch(function() {
-		return DataService.isLoggedIn();
-	}, function(val) {
-		vm.isLoggedIn = val;
-	});
-
-	$scope.$watch(function() {
-		return DataService.isLoading;
-	}, function(val) {
-		vm.isLoading = val;
-	});
-
-	$scope.$watch(function() {
-		return DataService.lastUpdate;
-	}, function(val) {
-		vm.lastUpdate = val;
 	});
 
 	$scope.$watch(function() {

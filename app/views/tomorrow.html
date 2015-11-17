@@ -15,21 +15,21 @@
 		</md-button>
 	</div>
 </md-toolbar>
-<md-progress-linear md-mode="indeterminate" ng-class="{ 'hidden': !app.isLoading }"></md-progress-linear>
-<md-content ng-if="!(app.items | filter : {isTomorrow: true}).length">
+<md-progress-linear md-mode="indeterminate" ng-class="{ 'hidden': !app.DataService.isLoading }"></md-progress-linear>
+<md-content ng-if="!(app.DataService.items | filter : {isTomorrow: true}).length">
 	<p class="md-padding capitalize" translate>NO_ITEMS</p>
 </md-content>
-<md-content ng-if="(app.items | filter : {isTomorrow: true}).length">
+<md-content ng-if="(app.DataService.items | filter : {isTomorrow: true}).length">
 	<section>
 		<md-subheader class="capitalize md-primary">{{'MORNING' | translate}}</md-subheader>
 		<md-list>
-			<md-list-item ng-repeat="item in app.items | filter : {isTomorrow: true} | itemsInTheMorning | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
+			<md-list-item ng-repeat="item in app.DataService.items | filter : {isTomorrow: true} | itemsInTheMorning | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
 		</md-list>
 	</section>
 	<section>
 		<md-subheader class="capitalize md-primary">{{'AFTERNOON' | translate}}</md-subheader>
 		<md-list>
-			<md-list-item ng-repeat="item in app.items | filter : {isTomorrow: true} | itemsInTheAfternoon | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
+			<md-list-item ng-repeat="item in app.DataService.items | filter : {isTomorrow: true} | itemsInTheAfternoon | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
 		</md-list>
 	</section>
 </md-content>
