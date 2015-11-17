@@ -4,16 +4,13 @@
 		<md-card-content>
 			<h2 class="md-title">NetPlanning Teacher <span translate class="capitalize">LOGIN</span></h2>
 			<md-input-container class="md-block" md-no-float>
-				<!-- <label translate class="capitalize">USERNAME</label> -->
 				<input ng-disabled="login.isLoading" ng-model="login.username" type="text" placeholder="{{'USERNAME' | translate}}" autofocus autocomplete="off" capitalize="off">
 			</md-input-container>
 			<md-input-container class="md-block" md-no-float>
-				<!-- <label translate class="capitalize">PASSWORD</label> -->
 				<input ng-disabled="login.isLoading" ng-model="login.password" type="password" placeholder="{{'PASSWORD' | translate}}">
 			</md-input-container>
 			<md-input-container class="md-block" md-no-float>
-				<!-- <label translate class="capitalize">LANGUAGE</label> -->
-				<md-select ng-model="login.$localStorage.language">
+				<md-select ng-model="login.$localStorage.language" aria-label="select language">
 					<md-option ng-repeat="(key, language) in login.availableLanguages" value="{{key}}">{{language}}</md-option>
 				</md-select>
 			</md-input-container>
