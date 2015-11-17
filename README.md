@@ -31,6 +31,7 @@ List of pending features.
 - ☑ Add French language
 - ☑ Clear your profile upon logout
 - ☐ Cancel a lesson
+- ☐ Offline access
 
 ### V2
 - ☐ Push notifications
