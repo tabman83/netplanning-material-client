@@ -27,7 +27,7 @@ List of pending features.
 - ☐ Proper app icons
 - ☑ Improve lesson icon
 - ☐ Localization for dates (leverages moment-with-locales)
-- ☐ Pick your language from login menu
+- ☑ Pick your language from the login page
 - ☑ Add French language
 - ☑ Clear your profile upon logout
 - ☐ Cancel a lesson
