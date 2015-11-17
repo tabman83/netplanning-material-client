@@ -39,7 +39,7 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 		$translate.use(val);
 	});
 
-	$translate.use($localStorage.language);
+	//$translate.use($localStorage.language);
 
 	vm.update = function() {
 		var errorMessage = '<md-icon md-svg-src="images/ic_settings_48px.svg" class="md-warn" aria-label="settings"></md-icon>';
