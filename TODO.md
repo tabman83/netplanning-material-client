@@ -5,6 +5,7 @@ V1
 --
 
 - Proper app icons
+- Improve lesson icon
 - Localization for dates (leverages moment-with-locales)
 - Pick your language from login menu
 - Add French language
