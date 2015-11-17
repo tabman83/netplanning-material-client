@@ -63,8 +63,8 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 		var dialog = $mdDialog
 			.confirm()
 			.title(title)
-			.content(content)
-			.ariaLabel('Lessons cancellation')
+			.textContent(content)
+			.ariaLabel('Logout')
 			.ok(btnOk)
 			.cancel(btnCancel);
 		$mdDialog
@@ -98,7 +98,7 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 		var dialog = $mdDialog
 			.confirm()
 			.title(title)
-			.content(content)
+			.textContent(content)
 			.ariaLabel('Lessons cancellation')
 			.ok(btnOk)
 			.cancel(btnCancel);
