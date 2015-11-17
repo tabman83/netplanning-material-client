@@ -228,7 +228,7 @@ gulp.task('cordova:config-for-default', function () {
 gulp.task('cordova:build:all', function (done) {
     sh.cd('cordova');
     sh.exec('cordova prepare');
-    sh.exec('copy -r ../resources/ resources/');
+    sh.exec('copy ..\\resources\\*.* resources\\');
     sh.exec('ionic resources');
     sh.exec('cordova build');
     sh.cd('..');
