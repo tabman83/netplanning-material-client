@@ -31,15 +31,11 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 		vm.lastUpdate = val;
 	});
 
-	vm.lastUpdate = DataService.lastUpdate;
-
 	$scope.$watch(function() {
 		return $localStorage.language;
 	}, function(val) {
 		$translate.use(val);
 	});
-
-	//$translate.use($localStorage.language);
 
 	vm.update = function() {
 		var errorMessage = '<md-icon md-svg-src="images/ic_settings_48px.svg" class="md-warn" aria-label="settings"></md-icon>';
