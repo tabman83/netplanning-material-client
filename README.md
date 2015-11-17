@@ -19,3 +19,19 @@ NetPlanning Teacher is the unofficial Telelangue app and it is available for PC,
 * Any modern web browser (Chrome, Firefox, Edge, Safari) by simply hosting it
 * Mobile platforms (iOS, Android, Windows) by packaging the app using Cordova
 * Desktop platforms (Windows, Mac OS X, Linux) by packaging the app using NW.js
+ 
+## ToDo
+List of pending features.
+
+### V1
+- ☐ Proper app icons
+- ☑ Improve lesson icon
+- ☐ Localization for dates (leverages moment-with-locales)
+- ☐ Pick your language from login menu
+- ☑ Add French language
+- ☐ Clear your profile upon logout
+- ☐ Cancel a lesson
+
+### V2
+- ☐ Push notifications
+- ☐ Calendar view
