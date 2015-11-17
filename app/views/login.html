@@ -1,4 +1,4 @@
-<div layout="row" layout-align="center center" class="login-background" >
+<form layout="row" layout-align="center center" class="login-background" ng-submit="login.login()">
 	<md-card flex-sm="100" flex-gt-sm="50" flex-gt-md="30" flex-gt-lg="30">
 		<img ng-src="images/login-background.png" class="md-card-image" style="background: linear-gradient(#0143A3,#0273D4);">
 		<md-card-content>
@@ -18,7 +18,7 @@
 		</md-card-content>
 		<md-progress-linear md-mode="indeterminate" ng-class="{ 'hidden': !login.isLoading }"></md-progress-linear>
 		<div class="md-actions md-padding" layout="row" layout-align="center center">
-	        <md-button flex class="md-raised md-primary" ng-disabled="login.isLoading || !login.username.length || !login.password.length" ng-click="login.login()">{{ 'LOGIN' | translate }}</md-button>
+	        <md-button type="submit" flex class="md-raised md-primary" ng-disabled="login.isLoading || !login.username.length || !login.password.length">{{ 'LOGIN' | translate }}</md-button>
 	  	</div>
 	</md-card>
-</div>
+</form>
