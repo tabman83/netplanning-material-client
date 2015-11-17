@@ -32,6 +32,7 @@ List of pending features.
 - ☑ Clear your profile upon logout
 - ☐ Cancel a lesson
 - ☐ Offline access
+- ☐ Remove unneeded icons
 
 ### V2
 - ☐ Push notifications
