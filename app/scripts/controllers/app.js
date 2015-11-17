@@ -44,7 +44,7 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	vm.update = function() {
 		var errorMessage = '<md-icon md-svg-src="images/ic_settings_48px.svg" class="md-warn" aria-label="settings"></md-icon>';
 		errorMessage += $translate.instant('ERROR_LOADING_DATA');
-		DataService.loadData().catch(function() {
+		DataService.loadData(true).catch(function() {
 			//$mdToast.showSimple(errorMessage);
 			$mdToast.show({
 				templateUrl: 'partials/toast-error.html',

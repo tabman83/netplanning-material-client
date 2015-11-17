@@ -92,10 +92,10 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                 return !!$localStorage.authToken;
             };
 
-            this.loadData = function() {
+            this.loadData = function(force) {
                 self.isLoading = true;
                 self.profile = $localStorage.profile;
-                var getItemsPromise = $http.get(settings.apiUrl + '/items').success(function(result, statusCode, headers) {
+                var getItemsPromise = $http.get(settings.apiUrl + '/items?force=' + force).success(function(result, statusCode, headers) {
                     var items = result.map(toItems);
                     self.items.length = 0;
                     Array.prototype.push.apply(self.items, items);
@@ -133,14 +133,14 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                     $localStorage.profile = {
                         name: result.name.toLowerCase()
                     };
-                    self.loadData();
+                    self.loadData(false);
                 }).error(function() {
                     delete $localStorage.authToken;
                 });
             };
 
             if ($localStorage.authToken) {
-                this.loadData();
+                this.loadData(false);
             }
         }
 
