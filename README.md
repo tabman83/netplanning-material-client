@@ -24,7 +24,7 @@ NetPlanning Teacher is the unofficial Telelangue app and it is available for PC,
 List of pending features.
 
 ### V1
-- ☐ Proper app icons
+- ☑ Proper app icons
 - ☑ Improve lesson icon
 - ☐ Localization for dates (leverages moment-with-locales)
 - ☑ Pick your language from the login page
