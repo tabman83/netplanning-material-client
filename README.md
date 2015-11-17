@@ -29,7 +29,7 @@ List of pending features.
 - ☐ Localization for dates (leverages moment-with-locales)
 - ☐ Pick your language from login menu
 - ☑ Add French language
-- ☐ Clear your profile upon logout
+- ☑ Clear your profile upon logout
 - ☐ Cancel a lesson
 
 ### V2
