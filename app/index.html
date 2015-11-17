@@ -31,7 +31,7 @@
 
 <body layout="row" ng-controller="AppCtrl as app" ng-cloak>
 
-    <md-sidenav ng-if="app.DataService.isLoggedIn" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" layout="column">
+    <md-sidenav ng-if="app.DataService.isLoggedIn()" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" layout="column">
 
         <md-toolbar class="md-tall md-hue-2 md-whiteframe-z1">
             <span flex></span>

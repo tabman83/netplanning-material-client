@@ -114,7 +114,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             };
 
             this.logout = function() {
-                $timeout(1000).then(function() {
+                return $timeout(0).then(function() {
                     delete $localStorage.authToken;
                     delete $localStorage.profile;
                     $localStorage.language = settings.defaultLanguage;
