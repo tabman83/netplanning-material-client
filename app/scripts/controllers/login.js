@@ -1,12 +1,19 @@
-angular.module('NetPlanningApp').controller('LoginCtrl', function($location, DataService) {
+angular.module('NetPlanningApp').controller('LoginCtrl', function($location, $localStorage, DataService) {
 	'use strict';
-	
+
 	var vm = this;
 
 	vm.username = '';
 	vm.password = '';
 	vm.errorMessage = null;
 	vm.isLoading = false;
+
+	vm.$localStorage = $localStorage;
+	vm.availableLanguages = {
+		'en': 'English',
+		'it': 'Italiano',
+		'fr': 'French'
+	};
 
 	vm.login = function() {
 		vm.isLoading = true;

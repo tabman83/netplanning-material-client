@@ -1,10 +1,10 @@
-angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdDialog, $mdToast, $scope, $location, $localStorage, $translate, DataService) {
+angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdDialog, $mdToast, $scope, $location, $localStorage, $translate, settings, DataService) {
 	'use strict';
 
 	var vm = this;
 
 	$localStorage.$default({
-		language: 'en'
+		language: settings.defaultLanguage
 	});
 
 	vm.isLoggedIn = false;

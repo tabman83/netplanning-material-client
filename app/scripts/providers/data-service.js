@@ -119,7 +119,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                 $timeout(1000).then(function() {
                     delete $localStorage.authToken;
                     delete $localStorage.profile;
-                    delete $localStorage.language;
+                    $localStorage.language = settings.defaultLanguage;
                 });
                 /*
                 return $http.post(apiEndpoint + '/Users/Logout').success(function() {

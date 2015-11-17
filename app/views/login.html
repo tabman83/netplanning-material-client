@@ -11,6 +11,12 @@
 				<!-- <label translate class="capitalize">PASSWORD</label> -->
 				<input ng-disabled="login.isLoading" ng-model="login.password" type="password" placeholder="{{'PASSWORD' | translate}}">
 			</md-input-container>
+			<md-input-container class="md-block" md-no-float>
+				<!-- <label translate class="capitalize">LANGUAGE</label> -->
+				<md-select ng-model="login.$localStorage.language">
+					<md-option ng-repeat="(key, language) in login.availableLanguages" value="{{key}}">{{language}}</md-option>
+				</md-select>
+			</md-input-container>
 			<span ng-if="login.errorMessage" ng-bind="login.errorMessage"></span>
 		</md-card-content>
 		<md-progress-linear md-mode="indeterminate" ng-class="{ 'hidden': !login.isLoading }"></md-progress-linear>
