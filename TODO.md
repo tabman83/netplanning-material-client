@@ -9,6 +9,7 @@ V1
 - Pick your language from login menu
 - Add French language
 - Clear your profile upon logout
+- Cancel a lesson
 
 V2
 --
