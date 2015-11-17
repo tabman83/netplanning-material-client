@@ -26,7 +26,7 @@ List of pending features.
 ### V1
 - ☑ Proper app icons
 - ☑ Improve lesson icon
-- ☐ Localization for dates (leverages moment-with-locales)
+- ☑ Localization for dates (leverages moment-with-locales)
 - ☑ Pick your language from the login page
 - ☑ Add French language
 - ☑ Clear your profile upon logout
