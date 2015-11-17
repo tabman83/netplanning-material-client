@@ -13,7 +13,7 @@
 </md-content>
 <md-content ng-if="(app.DataService.changes | itemsCancelled).length">
 	<section ng-repeat="(dayOfYear, dayItems) in app.DataService.changes | itemsCancelled | groupBy : 'dayOfYear'">
-		<md-subheader class="capitalize md-primary">{{dayItems[0].date | date : 'fullDate'}}</md-subheader>
+		<md-subheader class="capitalize md-primary">{{dayItems[0].date | amDateFormat : 'dddd LL'}}</md-subheader>
 		<md-list>
 			<md-list-item ng-repeat="item in dayItems | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/change.html'"></md-list-item>
 		</md-list>

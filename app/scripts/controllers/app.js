@@ -1,4 +1,4 @@
-angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdDialog, $mdToast, $scope, $location, $localStorage, $translate, settings, DataService) {
+angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdDialog, $mdToast, $scope, $location, $localStorage, $translate, amMoment, settings, DataService) {
 	'use strict';
 
 	var vm = this;
@@ -13,6 +13,7 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 		return $localStorage.language;
 	}, function(val) {
 		$translate.use(val);
+		amMoment.changeLocale(val);
 	});
 
 	vm.update = function() {
