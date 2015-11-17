@@ -1,7 +1,7 @@
-<img ng-click="item.isSelected = true" ng-if="item.isSystemAvailability || item.isUserAvailability || item.isUnbookableAsTimeElapsed" ng-hide="day.selectedCount" ng-src="http://dummyimage.com/20x20/cccccc/000000.gif&text=A" class="md-avatar" alt="available">
-<img ng-click="item.isSelected = true" ng-if="item.isAutoRebooking" ng-hide="day.selectedCount" ng-src="http://dummyimage.com/20x20/5bc43a/000000.gif&text=AR" class="md-avatar" alt="item.name">
-<img ng-click="item.isSelected = true" ng-if="item.isOneOff" ng-hide="day.selectedCount" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=OO" class="md-avatar" alt="item.name">
-<img ng-click="item.isSelected = true" ng-if="item.isUserCancelled" ng-hide="day.selectedCount" ng-src="http://dummyimage.com/20x20/cccccc/000000.gif&text=UC" class="md-avatar" alt="{{'USER_CANCELLED' | translate}}">
+<md-icon md-svg-src="images/ic_pause_circle_filled_48px.svg" class="items-icon gray" alt="available" ng-click="item.isSelected = true" ng-if="item.isSystemAvailability || item.isUserAvailability || item.isUnbookableAsTimeElapsed" ng-hide="day.selectedCount"></md-icon>
+<md-icon md-svg-src="images/ic_pause_circle_filled_48px.svg" class="items-icon gray" alt="{{'USER_CANCELLED' | translate}}" ng-click="item.isSelected = true" ng-if="item.isUserCancelled" ng-hide="day.selectedCount"></md-icon>
+<md-icon md-svg-src="images/ic_account_circle_48px.svg" class="items-icon green" alt="{{item.name}}" ng-click="item.isSelected = true" ng-if="item.isAutoRebooking" ng-hide="day.selectedCount"></md-icon>
+<md-icon md-svg-src="images/ic_account_circle_48px.svg" class="items-icon red" alt="{{item.name}}" ng-click="item.isSelected = true" ng-if="item.isOneOff" ng-hide="day.selectedCount"></md-icon>
 <md-checkbox ng-show="day.selectedCount" ng-model="item.isSelected" aria-label="select item"></md-checkbox>
 <p ng-bind-html="item.name" class="capitalize" ng-if="item.isLesson"></p>
 <p translate class="capitalize" ng-if="item.isSystemAvailability || item.isUnbookableAsTimeElapsed">AVAILABLE</p>

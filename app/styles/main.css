@@ -1,6 +1,5 @@
 html, body {
   font-family: 'Roboto', sans-serif;
-  font-size:14px;
   height:100%;
   margin: 0px;
   padding: 0px;
@@ -57,6 +56,22 @@ md-list-item>p:first-of-type {
 }
 .md-toolbar-tools-bottom .desc {
     opacity: 0.8;
+}
+md-list-item > md-icon:first-child:not(.md-avatar-icon).items-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 14px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+.items-icon.green {
+    color: #5bc43a;
+}
+.items-icon.red {
+    color: #db1818;
+}
+.items-icon.gray {
+    color: #cccccc;
 }
 .capitalize {
     text-transform: capitalize;

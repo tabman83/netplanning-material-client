@@ -1,4 +1,4 @@
-<img ng-if="item.isAutoRebooking" ng-src="http://dummyimage.com/20x20/5bc43a/000000.gif&text=AR" class="md-avatar" alt="item.name">
-<img ng-if="item.isOneOff" ng-src="http://dummyimage.com/20x20/db1818/000000.gif&text=OO" class="md-avatar" alt="item.name">
+<md-icon md-svg-src="images/ic_account_circle_48px.svg" class="items-icon green" alt="{{item.name}}" ng-click="item.isSelected = true" ng-if="item.isAutoRebooking"></md-icon>
+<md-icon md-svg-src="images/ic_account_circle_48px.svg" class="items-icon red" alt="{{item.name}}" ng-click="item.isSelected = true" ng-if="item.isOneOff"></md-icon>
 <p ng-bind-html="item.name" class="capitalize"></p>
 <span class="time" ng-bind="item.date | date : 'shortTime'"></span>
