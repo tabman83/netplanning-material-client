@@ -32,7 +32,9 @@ List of pending features.
 - ☑ Clear your profile upon logout
 - ☐ Cancel a lesson
 - ☐ Offline access
-- ☐ Remove unneeded icons
+- ☑ Remove unneeded icons
+- ☐ Test timezones
+- ☐ Prevent non-teacher accounts to log in
 
 ### V2
 - ☐ Push notifications
