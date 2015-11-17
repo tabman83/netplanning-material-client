@@ -33,8 +33,8 @@ List of pending features.
 - ☐ Cancel a lesson
 - ☐ Offline access
 - ☑ Remove unneeded icons
-- ☐ Test timezones
-- ☐ Prevent non-teacher accounts to log in
+- ☑ Test timezones
+- ☑ Prevent non-teacher accounts to log in
 
 ### V2
 - ☐ Push notifications
