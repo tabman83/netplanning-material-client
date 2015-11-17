@@ -9,7 +9,7 @@
 			<md-input-container class="md-block" md-no-float>
 				<input ng-disabled="login.isLoading" ng-model="login.password" type="password" placeholder="{{'PASSWORD' | translate}}">
 			</md-input-container>
-			<md-input-container class="md-block" md-no-float>
+			<md-input-container ng-disabled="login.isLoading" class="md-block" md-no-float>
 				<md-select ng-model="login.$localStorage.language" aria-label="select language">
 					<md-option ng-repeat="(key, language) in login.availableLanguages" value="{{key}}">{{language}}</md-option>
 				</md-select>
