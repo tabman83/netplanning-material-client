@@ -93,9 +93,10 @@
         </md-list>
         <span flex></span>
         <div class="md-padding last-updated">
-            <span translate>LAST_CHECK</span>
-            <span ng-if="+app.lastUpdate" am-time-ago="app.lastUpdate"></span>
-            <span ng-if="!+app.lastUpdate" translate>NEVER</span>
+            <span ng-if="!app.isLoading" translate>LAST_CHECK</span>
+            <span ng-if="!app.isLoading && +app.lastUpdate" am-time-ago="app.lastUpdate"></span>
+            <span ng-if="!app.isLoading && !+app.lastUpdate" translate>NEVER</span>
+            <span ng-if="app.isLoading" translate>UPDATING</span>
         </div>
         <div layout="row">
             <md-button flex class="md-raised md-warn" ng-click="app.logout()">
