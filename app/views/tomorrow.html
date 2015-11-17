@@ -20,13 +20,13 @@
 	<p class="md-padding capitalize" translate>NO_ITEMS</p>
 </md-content>
 <md-content ng-if="(app.DataService.items | filter : {isTomorrow: true}).length">
-	<section>
+	<section ng-if="(app.DataService.items | filter : {isToday: true} | itemsInTheMorning).length">
 		<md-subheader class="capitalize md-primary">{{'MORNING' | translate}}</md-subheader>
 		<md-list>
 			<md-list-item ng-repeat="item in app.DataService.items | filter : {isTomorrow: true} | itemsInTheMorning | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
 		</md-list>
 	</section>
-	<section>
+	<section ng-if="(app.DataService.items | filter : {isToday: true} | itemsInTheAfternoon).length">
 		<md-subheader class="capitalize md-primary">{{'AFTERNOON' | translate}}</md-subheader>
 		<md-list>
 			<md-list-item ng-repeat="item in app.DataService.items | filter : {isTomorrow: true} | itemsInTheAfternoon | showOnlyLessons : app.showOnlyLessons" ng-include="'partials/item.html'"></md-list-item>
