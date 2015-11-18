@@ -1,16 +1,4 @@
-angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResource', 'ngSanitize', 'ngTouch', 'pascalprecht.translate', 'angularMoment', 'angular.filter', 'angulartics', 'angulartics.google.analytics']).run(function($rootScope, $location, DataService) {
-	'use strict';
-
-	$rootScope.$on('$locationChangeStart', function () {
-		// redirect to login page if not logged in and trying to access a restricted page
-		var restrictedPage = $location.path() !== '/Login';
-
-		if (restrictedPage && !DataService.isLoggedIn) {
-			$location.path('/Login');
-		}
-	});
-
-}).factory('moment', function ($window) {
+angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResource', 'ngSanitize', 'ngTouch', 'pascalprecht.translate', 'angularMoment', 'angular.filter', 'angulartics', 'angulartics.google.analytics']).factory('moment', function ($window) {
     'use strict';
     return $window.moment;
 }).factory('CryptoJS', function ($window) {
