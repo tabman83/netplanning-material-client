@@ -1,4 +1,4 @@
-angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localStorage) {
+angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localStorage, $mdDialog, $translate) {
 	'use strict';
 
 	var vm = this;
@@ -48,7 +48,7 @@ angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localSt
 				console.log('Promise rejected');
 			});
 	};
-	
+
 	$scope.$on('$destroy', function() {
 		itemsSelectionWatcher();
 	});
