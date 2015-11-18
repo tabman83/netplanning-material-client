@@ -3,6 +3,7 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 
 	var vm = this;
 
+	vm.$storage = $localStorage;
 	vm.DataService = DataService;
 
 	$localStorage.$default({
@@ -19,8 +20,7 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	vm.update = function() {
 		var errorMessage = '<md-icon md-svg-src="images/ic_settings_48px.svg" class="md-warn" aria-label="settings"></md-icon>';
 		errorMessage += $translate.instant('ERROR_LOADING_DATA');
-		DataService.loadData(true).catch(function() {
-			//$mdToast.showSimple(errorMessage);
+		var a = DataService.loadData(true).catch(function() {
 			$mdToast.show({
 				templateUrl: 'partials/toast-error.html',
 				position: 'top right',

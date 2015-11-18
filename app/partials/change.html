@@ -1,4 +1,6 @@
-<md-icon md-svg-src="images/ic_account_circle_48px.svg" class="items-icon green" alt="{{item.name}}" ng-click="item.isSelected = true" ng-if="item.isAutoRebooking"></md-icon>
-<md-icon md-svg-src="images/ic_account_circle_48px.svg" class="items-icon red" alt="{{item.name}}" ng-click="item.isSelected = true" ng-if="item.isOneOff"></md-icon>
-<p ng-bind-html="item.name" class="capitalize"></p>
-<span class="time" ng-bind="item.date | amDateFormat : 'LT'"></span>
+<md-list-item>
+    <md-icon md-svg-src="images/ic_account_circle_48px.svg" class="items-icon green" alt="{{item.name}}" ng-click="item.isSelected = true" ng-if="item.isAutoRebooking"></md-icon>
+    <md-icon md-svg-src="images/ic_account_circle_48px.svg" class="items-icon red" alt="{{item.name}}" ng-click="item.isSelected = true" ng-if="item.isOneOff"></md-icon>
+    <p ng-bind-html="item.name" class="capitalize"></p>
+    <span class="time" ng-bind="item.date | amDateFormat : 'LT'"></span>
+</md-list-item>

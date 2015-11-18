@@ -1,12 +1,12 @@
-angular.module('NetPlanningApp').controller('DayCtrl', function($scope, DataService) {
+angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localStorage) {
 	'use strict';
-	
+
 	var vm = this;
 
 	vm.selectedCount = 0;
 
 	var itemsSelection = function() {
-		return DataService.items.map(function(item) {
+		return $localStorage.items.map(function(item) {
 			return item.isSelected;
 		});
 	};

@@ -5,7 +5,7 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResou
 		// redirect to login page if not logged in and trying to access a restricted page
 		var restrictedPage = $location.path() !== '/Login';
 
-		if (restrictedPage && !DataService.isLoggedIn()) {
+		if (restrictedPage && !DataService.isLoggedIn) {
 			$location.path('/Login');
 		}
 	});

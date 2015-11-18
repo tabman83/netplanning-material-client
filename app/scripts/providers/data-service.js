@@ -23,7 +23,6 @@ angular.module('NetPlanningApp').factory('AuthInterceptor', function($localStora
 });
 angular.module('NetPlanningApp').config(function($httpProvider) {
     'use strict';
-
     $httpProvider.interceptors.push('SignInterceptor');
     $httpProvider.interceptors.push('AuthInterceptor');
 });
@@ -31,22 +30,28 @@ angular.module('NetPlanningApp').provider('DataService', function () {
     'use strict';
 
     this.$get = function($http, $timeout, $localStorage, $q, $log, settings, moment) {
+
+        $localStorage.$default({
+            language: settings.defaultLanguage,
+            items: [],
+            changes: [],
+            lastUpdate: 0
+        });
+
         /*
-        switch( className ) {
-            case 'dispo' : // available
-            case 'indispo' : // not available at all
-            case 'indispoPonctuelle': // made unavailable by you
-            case 'reserve' : // One-Off reservation
-            case 'recurrente' : // Automatic Rebooking
-            case 'training' :
-            case 'dispo_stag2' : // Slots made available by you
-            case 's_indispo2' : // no more bookable beacause time passed
-            case 'training' : // training lesson
-            case 'reserveRemplacement' // substitution
-            case 'instantHelp' : // instant help
-            case 'special1' : // tutorial lesson
-            case 'special2' : // special lesson
-        }
+        case 'dispo' : // available
+        case 'indispo' : // not available at all
+        case 'indispoPonctuelle': // made unavailable by you
+        case 'reserve' : // One-Off reservation
+        case 'recurrente' : // Automatic Rebooking
+        case 'training' :
+        case 'dispo_stag2' : // Slots made available by you
+        case 's_indispo2' : // no more bookable beacause time passed
+        case 'training' : // training lesson
+        case 'reserveRemplacement' // substitution
+        case 'instantHelp' : // instant help
+        case 'special1' : // tutorial lesson
+        case 'special2' : // special lesson
         */
         function Item(data) {
             angular.extend(this, data);
@@ -76,52 +81,60 @@ angular.module('NetPlanningApp').provider('DataService', function () {
 
         function DataService() {
             var self = this;
-            this.lastUpdate = new Date(0);
-            this.items = [];
-            this.changes = [];
             this.isLoading = false;
-            this.profile = {};
+            this.isLoggedIn = false;
 
             var toItems = function(rawItem) {
                 return new Item(rawItem);
             };
 
-            this.isLoggedIn = function() {
-                return !!$localStorage.authToken;
+            var getItems = function(force) {
+                return $http.get(settings.apiUrl + '/items?force=' + force).then(function(result) {
+                    $localStorage.items.length = 0;
+                    Array.prototype.push.apply($localStorage.items, result.data.map(toItems));
+                    $localStorage.lastUpdate = +new Date(result.headers('last-check'));
+                    return result;
+                }).catch(function(reason) {
+                    $log.log('Error in getItems()', reason.status, reason.statusText);
+                    return $q.reject(reason);
+                });
             };
 
+            var getChanges = function() {
+                return $http.get(settings.apiUrl + '/changes').then(function(result) {
+                    $localStorage.changes.length = 0;
+                    Array.prototype.push.apply($localStorage.changes, result.data.map(toItems));
+                    return result;
+                }).catch(function(reason) {
+                    $log.log('Error in getChanges()', reason.status, reason.statusText);
+                    return $q.reject(reason);
+                });
+            }
+
             this.loadData = function(force) {
-                self.isLoading = true;
-                self.profile = $localStorage.profile;
-                var getItemsPromise = $http.get(settings.apiUrl + '/items?force=' + force).success(function(result, statusCode, headers) {
-                    var items = result.map(toItems);
-                    self.items.length = 0;
-                    Array.prototype.push.apply(self.items, items);
-                    self.lastUpdate = new Date(headers('last-check'));
-                }).error(function(error) {
-                    $log.log('Error in loadData / getItems', error);
-                });
-                var getChangesPromise = $http.get(settings.apiUrl + '/changes').success(function(result) {
-                    var changes = result.map(toItems);
-                    self.changes.length = 0;
-                    Array.prototype.push.apply(self.changes, changes);
-                }).error(function(error) {
-                    $log.log('Error in loadData / getChanges', error);
-                });
-                return $q.all([getItemsPromise, getChangesPromise]).finally(function() {
+                this.isLoading = true;
+                var getItemsPromise = getItems(force);
+                var loadPromise = null;
+                if(force) {
+                    // execute serially
+                    loadPromise = getItemsPromise.then(getChanges);
+                } else {
+                    // execute in parallel
+                    loadPromise = $q.all([getItemsPromise, getChanges()]);
+                }
+                return loadPromise.finally(function() {
                     self.isLoading = false;
                 });
             };
 
             this.logout = function() {
                 return $timeout(0).then(function() {
-                    delete $localStorage.authToken;
-                    delete $localStorage.profile;
+                    self.isLoggedIn = false;
                     $localStorage.language = settings.defaultLanguage;
+                    $localStorage.items.length = 0;
+                    $localStorage.changes.length = 0;
+                    $localStorage.lastUpdate = 0;
                 });
-                /*
-                return $http.post(apiEndpoint + '/Users/Logout').success(function() {
-                delete $localStorage;*/
             };
 
             this.login = function(username, password) {
@@ -133,6 +146,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                     $localStorage.profile = {
                         name: result.name.toLowerCase()
                     };
+                    self.isLoggedIn = true;
                     self.loadData(false);
                 }).error(function() {
                     delete $localStorage.authToken;
@@ -140,6 +154,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             };
 
             if ($localStorage.authToken) {
+                this.isLoggedIn = true;
                 this.loadData(false);
             }
         }
