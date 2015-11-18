@@ -36,9 +36,13 @@ md-toolbar .md-button {
     from {transform:rotate(360deg);}
     to {transform:rotate(0deg);}
 }
-md-icon.spin {
+md-icon.update-button-icon {
+    transform: scaleX(-1);
+}
+md-icon.update-button-icon.spin>svg {
     animation: spin 1.5s infinite 0s linear;
 }
+
 /* Toolbar area */
 md-toolbar {
     transition: background .15s;
