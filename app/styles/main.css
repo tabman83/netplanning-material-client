@@ -47,7 +47,9 @@ md-icon.update-button-icon.spin>svg {
 md-toolbar {
     transition: background .15s;
 }
-
+.md-toolbar-tools-bottom>div>div {
+    font-size: small;
+}
 .md-toolbar-tools-bottom>div>div,
 md-list-item>p:first-of-type {
     text-overflow: ellipsis;
