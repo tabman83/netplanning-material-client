@@ -6,6 +6,18 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	vm.$storage = $localStorage;
 	vm.DataService = DataService;
 
+	vm.username = '';
+	vm.password = '';
+	vm.errorMessage = null;
+
+	vm.$localStorage = $localStorage;
+	vm.availableLanguages = {
+		'en': 'English',
+		'it': 'Italiano',
+		'fr': 'French'
+	};
+
+
 	$localStorage.$default({
 		language: settings.defaultLanguage
 	});
@@ -20,12 +32,23 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	vm.update = function() {
 		var errorMessage = '<md-icon md-svg-src="images/ic_settings_48px.svg" class="md-warn" aria-label="settings"></md-icon>';
 		errorMessage += $translate.instant('ERROR_LOADING_DATA');
-		var a = DataService.loadData(true).catch(function() {
+		DataService.loadData(true).catch(function() {
 			$mdToast.show({
 				templateUrl: 'partials/toast-error.html',
 				position: 'top right',
 				hideDelay: 800
 			});
+		});
+	};
+
+	vm.login = function() {
+		vm.errorMessage = null;
+		DataService.login(vm.username, vm.password).then(function() {
+			DataService.loadData(false);
+		}).catch(function(reason) {
+			vm.errorMessage = reason.status > -1 ? reason.statusText : $translate.instant('NETWORK_ERROR');
+			vm.username = '';
+			vm.password = '';
 		});
 	};
 
@@ -44,10 +67,7 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 			.cancel(btnCancel);
 		$mdDialog
 			.show(dialog)
-			.then(DataService.logout)
-			.then(function() {
-				$location.url('/Login');
-			});
+			.then(DataService.logout);
 	};
 
 	vm.toggleSidenav = function(menuId) {

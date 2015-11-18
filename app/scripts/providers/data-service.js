@@ -122,7 +122,12 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                     // execute in parallel
                     loadPromise = $q.all([getItemsPromise, getChanges()]);
                 }
-                return loadPromise.finally(function() {
+                return loadPromise.catch(function(reason) {
+                    if(reason.status > 0 && reason.status < 500) {
+                        self.logout();
+                    }
+                    return $q.reject(reason);
+                }).finally(function() {
                     self.isLoading = false;
                 });
             };
@@ -138,18 +143,22 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             };
 
             this.login = function(username, password) {
+                this.isLoading = true;
                 return $http.post(settings.apiUrl + '/login', {
                     username: username,
                     password: password
-                }).success(function(result) {
-                    $localStorage.authToken = result.authToken;
+                }).then(function(result) {
+                    $localStorage.authToken = result.data.authToken;
                     $localStorage.profile = {
-                        name: result.name.toLowerCase()
+                        name: result.data.name.toLowerCase()
                     };
                     self.isLoggedIn = true;
-                    self.loadData(false);
-                }).error(function() {
+                    return result;
+                }).catch(function(reason) {
                     delete $localStorage.authToken;
+                    return $q.reject(reason);
+                }).finally(function() {
+                    self.isLoading = false;
                 });
             };
 

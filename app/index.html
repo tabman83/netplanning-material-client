@@ -99,7 +99,9 @@
         </div>
     </md-sidenav>
 
-    <div flex layout-fill layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" ng-cloak ng-view></div>
+    <div ng-if="app.DataService.isLoggedIn" flex layout-fill layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" ng-cloak ng-view></div>
+
+    <ng-include src="'partials/login.html'" flex layout-fill layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2" ng-cloak ng-if="!app.DataService.isLoggedIn"></ng-include>
 
 	<script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -157,8 +159,6 @@
     <script src="scripts/controllers/app.js"></script>
     <script src="scripts/controllers/day.js"></script>
     <script src="scripts/controllers/changes.js"></script>
-    <script src="scripts/controllers/settings.js"></script>
-    <script src="scripts/controllers/login.js"></script>
     <script src="scripts/providers/data-service.js"></script>
     <script src="scripts/filters/show-only-lessons.js"></script>
     <script src="scripts/filters/items-in-the-morning.js"></script>

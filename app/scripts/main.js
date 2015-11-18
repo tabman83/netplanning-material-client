@@ -57,20 +57,14 @@ angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResou
 		controller: 'ChangesCtrl',
 		controllerAs: 'changes'
 	}).when('/Settings', {
-		templateUrl: 'views/settings.html',
-		controller: 'SettingsCtrl',
-		controllerAs: 'settings'
+		templateUrl: 'views/settings.html'
 	}).when('/About', {
 		templateUrl: 'views/about.html'
-	}).when('/Login', {
-		templateUrl: 'views/login.html',
-		controller: 'LoginCtrl',
-		controllerAs: 'login'
 	}).otherwise({
 		redirectTo: '/Today'
 	});
 
-	// does not play nice with nw.js
+	// does not play nicely with nw.js
 	//$locationProvider.html5Mode(true);
 
 	$translateProvider.useStaticFilesLoader({

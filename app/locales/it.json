@@ -30,8 +30,5 @@
 	"NEW": "nuove",
 	"CANCELLED": "cancellate",
 	"UPDATING": "aggiornamento in corso...",
-	"ABOUTE_LINE_1": "NetPlanning Teacher è l'app non ufficiale della piattaforma Telelangue disponibile per PC, MAC, iOS, Android e Windows Phone. 'non ufficiale' vuol dire che non è supportata direttamente da Telelangue ma non preoccuparti, le tue credenziali sono al sicuro!",
-	"ABOUTE_LINE_2": "Questo software è di tipo beerware cioè è completamente gratuito ma se ci dovessimo incontrare accetterò in cambio che tu mi offra una buona birra.",
-	"ABOUTE_LINE_3": "Le novità attese per la prossima versione sono: notifiche direttamente sul dispositivo e in tempo reale in caso di prenotazione o cancellazione di una lezione; vista calendario di tutte le attività.",
-	"ABOUTE_LINE_4": "NetPlanning Teacher è stato sviluppato da Antonino Parisi (tabman83@gmail.com)"
+	"NETWORK_ERROR": "errore di rete"
 }

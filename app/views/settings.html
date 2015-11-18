@@ -10,8 +10,8 @@
 <md-content flex id="content" class="md-padding">
 	<md-input-container class="md-block">
 		<label translate class="capitalize">LANGUAGE</label>
-		<md-select ng-model="settings.$localStorage.language">
-			<md-option ng-repeat="(key, language) in settings.availableLanguages" value="{{key}}">{{language}}</md-option>
+		<md-select ng-model="app.$localStorage.language">
+			<md-option ng-repeat="(key, language) in app.availableLanguages" value="{{key}}">{{language}}</md-option>
 		</md-select>
 	</md-input-container>
 </md-content>
