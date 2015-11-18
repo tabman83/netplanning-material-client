@@ -31,7 +31,7 @@ List of pending features.
 - ☑ Add French language
 - ☑ Clear your profile upon logout
 - ☐ Cancel a lesson
-- ☐ Offline access
+- ☑ Offline access
 - ☑ Remove unneeded icons
 - ☑ Test timezones
 - ☑ Prevent non-teacher accounts to log in
