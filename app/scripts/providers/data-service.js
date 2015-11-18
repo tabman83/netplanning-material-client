@@ -109,7 +109,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                     $log.log('Error in getChanges()', reason.status, reason.statusText);
                     return $q.reject(reason);
                 });
-            }
+            };
 
             this.loadData = function(force) {
                 this.isLoading = true;
