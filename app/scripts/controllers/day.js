@@ -17,6 +17,38 @@ angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localSt
 		}).length;
 	}, true);
 
+	vm.cancelSelection = function() {
+		angular.forEach($localStorage.items, function(item) {
+			item.isSelected = false;
+		});
+	};
+
+	vm.cancelLessons = function() {
+		var numLessons = $localStorage.items.filter(function(item) {
+			return item.isSelected;
+		}).length;
+
+		var title = $translate.instant('LESSONS_CANCELLATION').capitalize();
+		var content = $translate.instant('YOU_ARE_ABOUT_TO_CANCEL', { num: numLessons }).capitalize() + '.';
+		var btnOk = $translate.instant('CONFIRM');
+		var btnCancel = $translate.instant('BACK');
+
+		var dialog = $mdDialog
+			.confirm()
+			.title(title)
+			.textContent(content)
+			.ariaLabel('Lessons cancellation')
+			.ok(btnOk)
+			.cancel(btnCancel);
+		$mdDialog
+			.show(dialog)
+			.then(function() {
+				console.log('Promise resolved');
+			}, function() {
+				console.log('Promise rejected');
+			});
+	};
+	
 	$scope.$on('$destroy', function() {
 		itemsSelectionWatcher();
 	});

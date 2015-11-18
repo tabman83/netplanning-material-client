@@ -3,14 +3,14 @@
 		<md-button class="md-icon-button" hide-gt-sm ng-click="app.toggleSidenav('left')" aria-label="Show or Hide menu" ng-if="!day.selectedCount">
 			<md-icon md-svg-src="images/ic_menu_48px.svg" aria-label="menu"></md-icon>
 		</md-button>
-		<md-button class="md-icon-button" aria-label="Cancel edit mode" ng-click="app.cancelSelection()" ng-if="day.selectedCount">
+		<md-button class="md-icon-button" aria-label="Cancel edit mode" ng-click="day.cancelSelection()" ng-if="day.selectedCount">
 			<md-icon md-svg-src="images/ic_arrow_back_48px.svg" aria-label="cancel"></md-icon>
 		</md-button>
 		<h2 ng-if="!day.selectedCount"><span class="capitalize" translate>ALL</span></h2>
 		<h2 ng-if="day.selectedCount"><span ng-bind="day.selectedCount"></span> <span translate>SELECTED</span></h2>
 		<span flex></span>
 		<md-switch ng-model="app.showOnlyLessons" aria-label="Show only lessons" ng-if="!day.selectedCount"></md-switch>
-		<md-button class="md-icon-button" aria-label="Cancel items" ng-if="day.selectedCount" ng-click="app.cancelLessons()">
+		<md-button class="md-icon-button" aria-label="Cancel items" ng-if="day.selectedCount" ng-click="day.cancelLessons()">
 			<md-icon md-svg-src="images/ic_delete_48px.svg" aria-label="delete"></md-icon>
 		</md-button>
 	</div>
