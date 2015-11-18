@@ -47,6 +47,7 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 			DataService.loadData(false);
 		}).catch(function(reason) {
 			vm.errorMessage = reason.status > -1 ? reason.statusText : $translate.instant('NETWORK_ERROR');
+		}).finally(function() {
 			vm.username = '';
 			vm.password = '';
 		});
