@@ -57,6 +57,7 @@ md-list-item>p:first-of-type {
 .md-toolbar-tools-bottom .desc {
     opacity: 0.8;
 }
+md-list-item .md-list-item-inner > md-icon:first-child:not(.md-avatar-icon).items-icon,
 md-list-item > md-icon:first-child:not(.md-avatar-icon).items-icon {
     width: 32px;
     height: 32px;
