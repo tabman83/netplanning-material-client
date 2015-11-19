@@ -19,17 +19,17 @@
 <md-content ng-if="!(app.$storage.items | filter : {isTomorrow: true}).length">
 	<p class="md-padding capitalize" translate>NO_ITEMS</p>
 </md-content>
-<md-content ng-if="(app.$storage.items | filter : {isTomorrow: true}).length">
-	<section ng-if="(app.$storage.items | filter : {isTomorrow: true} | itemsInTheMorning).length">
+<md-content ng-if="(dayItems = (app.$storage.items | filter : {isTomorrow: true})).length">
+	<section ng-if="(morningItems = (dayItems | itemsInTheMorning)).length">
 		<md-subheader class="capitalize md-primary">{{'MORNING' | translate}}</md-subheader>
 		<md-list>
-			<netplanning-item src="partials/item.html" ng-repeat="item in app.$storage.items | filter : {isTomorrow: true} | itemsInTheMorning | showOnlyLessons : app.showOnlyLessons"></netplanning-item>
+			<netplanning-item src="partials/item.html" ng-repeat="item in morningItems | showOnlyLessons : app.showOnlyLessons track by item._id"></netplanning-item>
 		</md-list>
 	</section>
-	<section ng-if="(app.$storage.items | filter : {isTomorrow: true} | itemsInTheAfternoon).length">
+	<section ng-if="(afternoonItems = (dayItems | itemsInTheAfternoon)).length">
 		<md-subheader class="capitalize md-primary">{{'AFTERNOON' | translate}}</md-subheader>
 		<md-list>
-			<netplanning-item src="partials/item.html" ng-repeat="item in app.$storage.items | filter : {isTomorrow: true} | itemsInTheAfternoon | showOnlyLessons : app.showOnlyLessons"></netplanning-item>
+			<netplanning-item src="partials/item.html" ng-repeat="item in afternoonItems | showOnlyLessons : app.showOnlyLessons track by item._id"></netplanning-item>
 		</md-list>
 	</section>
 </md-content>

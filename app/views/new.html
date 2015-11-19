@@ -12,10 +12,10 @@
 	<p class="md-padding capitalize" translate>NO_ITEMS</p>
 </md-content>
 <md-content ng-if="(app.$storage.changes | itemsAdded).length">
-	<section ng-repeat="(dayOfYear, dayItems) in app.$storage.changes | itemsAdded | groupBy : 'dayOfYear'">
+	<section ng-repeat="(dayOfYear, dayItems) in ::app.$storage.changes | itemsAdded | groupBy : 'dayOfYear' track by dayOfYear">
 		<md-subheader class="capitalize md-primary">{{dayItems[0].date | amDateFormat : 'dddd LL'}}</md-subheader>
 		<md-list>
-			<netplanning-item src="partials/change.html" ng-repeat="item in dayItems | showOnlyLessons : app.showOnlyLessons"></netplanning-item>
+			<netplanning-item src="partials/change.html" ng-repeat="item in dayItems | showOnlyLessons : app.showOnlyLessons track by item._id"></netplanning-item>
 		</md-list>
 	</section>
 </md-content>

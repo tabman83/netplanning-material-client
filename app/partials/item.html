@@ -1,12 +1,12 @@
 <md-list-item>
-    <md-icon md-svg-src="images/ic_pause_circle_filled_48px.svg" class="items-icon gray" alt="available" ng-click="item.isSelected = true" ng-if="item.isSystemAvailability || item.isUserAvailability || item.isUnbookableAsTimeElapsed" ng-hide="day.selectedCount"></md-icon>
-    <md-icon md-svg-src="images/ic_pause_circle_filled_48px.svg" class="items-icon gray" alt="{{'USER_CANCELLED' | translate}}" ng-click="item.isSelected = true" ng-if="item.isUserCancelled" ng-hide="day.selectedCount"></md-icon>
-    <md-icon md-svg-src="images/ic_account_circle_48px.svg" class="items-icon green" alt="{{item.name}}" ng-click="item.isSelected = true" ng-if="item.isAutoRebooking" ng-hide="day.selectedCount"></md-icon>
-    <md-icon md-svg-src="images/ic_account_circle_48px.svg" class="items-icon red" alt="{{item.name}}" ng-click="item.isSelected = true" ng-if="item.isOneOff" ng-hide="day.selectedCount"></md-icon>
+    <md-icon md-svg-src="images/ic_pause_circle_filled_48px.svg" class="items-icon gray" alt="available" ng-click="item.isSelected = true" ng-if=":: (item.isSystemAvailability || item.isUserAvailability || item.isUnbookableAsTimeElapsed)" ng-hide="day.selectedCount"></md-icon>
+    <md-icon md-svg-src="images/ic_pause_circle_filled_48px.svg" class="items-icon gray" alt="{{:: ('USER_CANCELLED' | translate)}}" ng-click="item.isSelected = true" ng-if=":: item.isUserCancelled" ng-hide="day.selectedCount"></md-icon>
+    <md-icon md-svg-src="images/ic_account_circle_48px.svg" class="items-icon green" alt="{{:: item.name}}" ng-click="item.isSelected = true" ng-if=":: item.isAutoRebooking" ng-hide="day.selectedCount"></md-icon>
+    <md-icon md-svg-src="images/ic_account_circle_48px.svg" class="items-icon red" alt="{{:: item.name}}" ng-click="item.isSelected = true" ng-if=":: item.isOneOff" ng-hide="day.selectedCount"></md-icon>
     <md-checkbox ng-if="day.selectedCount" ng-model="item.isSelected" aria-label="select item"></md-checkbox>
-    <p ng-bind-html="item.name" class="capitalize" ng-if="item.isLesson"></p>
-    <p translate class="capitalize" ng-if="item.isSystemAvailability || item.isUnbookableAsTimeElapsed">AVAILABLE</p>
-    <p translate class="capitalize" ng-if="item.isUserAvailability">AVAILABLE_BY_ME</p>
-    <p class="capitalize" ng-if="item.isUserCancelled">{{'UNAVAILABLE' | translate}} ({{item.reason}})</p>
-    <span class="time" ng-bind="item.date | amDateFormat : 'LT'"></span>
+    <p ng-bind-html=":: item.name" class="capitalize" ng-if=":: item.isLesson"></p>
+    <p translate class="capitalize" ng-if=":: (item.isSystemAvailability || item.isUnbookableAsTimeElapsed)">AVAILABLE</p>
+    <p translate class="capitalize" ng-if=":: item.isUserAvailability">AVAILABLE_BY_ME</p>
+    <p class="capitalize" ng-if=":: item.isUserCancelled">{{'UNAVAILABLE' | translate}} ({{item.reason}})</p>
+    <span class="time" ng-bind=":: (item.date | amDateFormat : 'LT')"></span>
 </md-list-item>
