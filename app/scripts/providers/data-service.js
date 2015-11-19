@@ -29,7 +29,7 @@ angular.module('NetPlanningApp').config(function($httpProvider) {
 angular.module('NetPlanningApp').provider('DataService', function () {
     'use strict';
 
-    this.$get = function($http, $timeout, $localStorage, $q, $log, settings, moment) {
+    this.$get = function($http, $window, $timeout, $localStorage, $q, $log, settings, moment) {
 
         $localStorage.$default({
             language: settings.defaultLanguage,
@@ -86,6 +86,42 @@ angular.module('NetPlanningApp').provider('DataService', function () {
 
             var toItems = function(rawItem) {
                 return new Item(rawItem);
+            };
+
+            var registerForPushNotificationsOniOS = function() {
+                var iosConfig = {
+                    'badge': true,
+                    'sound': true,
+                    'alert': true,
+                };
+                return $cordovaPush.register(iosConfig);
+            };
+
+            var registerForPushNotificationsOnAndroid = function() {
+                var androidConfig = {
+                    'senderID': 'replace_with_sender_id',
+                };
+                //settings.androidSenderId
+            };
+
+            var registerForPushNotifications = function() {
+                var device = $cordovaDevice.getDevice();
+
+                switch(device.platform) {
+                    case 'iOS':
+                        break;
+                    case 'Android';
+                        break;
+                }
+
+
+
+                return $http.post(settings.apiUrl + '/Tokens', {
+                    device: device.platform,
+                    uuid: device.uuid,
+                    model: device.model,
+                    version: device.version
+                });
             };
 
             var getItems = function(force) {
@@ -153,6 +189,9 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                         name: result.data.name.toLowerCase()
                     };
                     self.isLoggedIn = true;
+                    if(!!$window.cordova) {
+                        registerForPushNotifications();
+                    }
                     return result;
                 }).catch(function(reason) {
                     delete $localStorage.authToken;
@@ -165,6 +204,9 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             if ($localStorage.authToken) {
                 this.isLoggedIn = true;
                 this.loadData(false);
+                if(!!$window.cordova) {
+                    registerForPushNotifications();
+                }
             }
         }
 

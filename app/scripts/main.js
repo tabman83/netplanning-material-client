@@ -1,4 +1,7 @@
-angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResource', 'ngSanitize', 'ngTouch', 'pascalprecht.translate', 'angularMoment', 'angular.filter', 'angulartics', 'angulartics.google.analytics']).factory('moment', function ($window) {
+angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResource', 'ngSanitize', 'ngTouch', 'ngCordova', 'pascalprecht.translate', 'angularMoment', 'angular.filter', 'angulartics', 'angulartics.google.analytics']).run(function($cordovaPush, $cordovaDevice, $http, settings) {
+    'use strict';
+    // empty run module.
+}).factory('moment', function ($window) {
     'use strict';
     return $window.moment;
 }).factory('CryptoJS', function ($window) {

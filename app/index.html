@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="" ng-app="NetPlanningApp">
+<html lang="">
 <head>
     <meta charset="utf-8">
     <meta name="description" content="Unofficial NetPlanning application">
@@ -42,7 +42,7 @@
                     <path fill="#E0F7FA" d="M105.3 106.1c-.9-1.3-1.3-1.9-1.3-1.9l-.2-.3c-.6-.9-1.2-1.7-1.9-2.4-3.2-3.5-7.3-5.4-11.4-5.7 0 0 .1 0 .1.1l-.2-.1c-6.4 6.9-16 11.3-26.7 11.6-11.2-.3-21.1-5.1-27.5-12.6-.1.2-.2.4-.2.5-3.1.9-6 2.7-8.4 5.4l-.2.2s-.5.6-1.5 1.7c-.9 1.1-2.2 2.6-3.7 4.5-3.1 3.9-7.2 9.5-11.7 16.6-.9 1.4-1.7 2.8-2.6 4.3h109.6c-3.4-7.1-6.5-12.8-8.9-16.9-1.5-2.2-2.6-3.8-3.3-5z"/> <circle fill="#444" cx="76.3" cy="47.5" r="2"/> <circle fill="#444" cx="50.7" cy="47.6" r="2"/> <path fill="#444" d="M48.1 27.4c4.5 5.9 15.5 12.1 42.4 8.4-2.2-6.9-6.8-12.6-12.6-16.4C95.1 20.9 92 10 92 10c-1.4 5.5-11.1 4.4-11.1 4.4H62.1c-1.7-.1-3.4 0-5.2.3-12.8 1.8-22.6 11.1-25.7 22.9 10.6-1.9 15.3-7.6 16.9-10.2z"/>
                 </svg>
                 <div layout="row" layout-align="space-between end">
-                    <div class="capitalize" ng-bind="app.$storage.profile.name"></div>
+                    <div class="capitalize" ng-bind=":: app.$storage.profile.name"></div>
                     <md-button flex="none" ng-click="app.update()" ng-disabled="app.DataService.isLoading">
                         <md-icon md-svg-src="images/ic_cached_48px.svg" class="md-accent update-button-icon" ng-class="{ 'spin': app.DataService.isLoading }" aria-label="update" ></md-icon>
                     </md-button>
@@ -144,6 +144,7 @@
     <script src="/bower_components/angulartics-google-analytics/lib/angulartics-google-analytics.js"></script>
     <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/bower_components/ngCordova/dist/ng-cordova.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -165,5 +166,18 @@
     <script src="scripts/filters/items-cancelled.js"></script>
     <script src="scripts/directives/netplanning-item.js"></script>
     <!-- endbuild -->
-    </body>
+
+    <script src="cordova.js"></script>
+    <script>
+    angular.element(document).ready(function () {
+       if (!!window.cordova) {
+            window.document.addEventListener('deviceready', function () {
+                angular.bootstrap(document.body, ['NetPlanningApp']);
+            }, false);
+        } else {
+            angular.bootstrap(document.body, ['NetPlanningApp']);
+        }
+     });
+     </script>
+</body>
 </html>
