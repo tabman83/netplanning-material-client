@@ -75,4 +75,9 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 		$mdSidenav(menuId).toggle();
 	};
 
+	vm.navigateAndToggleSidenav = function(location, menuId) {
+		$mdSidenav(menuId).toggle();
+		$location.path(location);
+	};
+
 });

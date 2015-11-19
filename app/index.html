@@ -51,33 +51,33 @@
         </md-toolbar>
 
         <md-list>
-            <md-list-item md-ink-ripple href="#/Today" ng-click="app.toggleSidenav('left')">
+            <md-list-item md-ink-ripple ng-click="app.navigateAndToggleSidenav('/Today', 'left')">
                 <md-icon md-svg-src="images/ic_today_48px.svg" class="md-primary" aria-label="today"></md-icon>
                 <p class="capitalize" flex translate>TODAY</p>
                 <span ng-bind="(app.$storage.items | filter : {isToday: true}).length"></span>
             </md-list-item>
-            <md-list-item md-ink-ripple href="#/Tomorrow" ng-click="app.toggleSidenav('left')">
+            <md-list-item md-ink-ripple ng-click="app.navigateAndToggleSidenav('/Tomorrow', 'left')">
                 <md-icon md-svg-src="images/ic_event_note_48px.svg" class="md-primary" aria-label="tomorrow"></md-icon>
                 <p class="capitalize" flex translate>TOMORROW</p>
                 <span ng-bind="(app.$storage.items | filter : {isTomorrow: true}).length"></span>
             </md-list-item>
-            <md-list-item md-ink-ripple href="#/All" ng-click="app.toggleSidenav('left')">
+            <md-list-item md-ink-ripple ng-click="app.navigateAndToggleSidenav('/All', 'left')">
                 <md-icon md-svg-src="images/ic_view_week_48px.svg" class="md-primary" aria-label="all"></md-icon>
                 <p class="capitalize" flex translate>ALL</p>
             </md-list-item>
             <md-divider></md-divider>
-            <md-list-item md-ink-ripple href="#/New" ng-click="app.toggleSidenav('left')">
+            <md-list-item md-ink-ripple ng-click="app.navigateAndToggleSidenav('/New', 'left')">
                 <md-icon md-svg-src="images/ic_add_circle_outline_48px.svg" aria-label="new"></md-icon>
                 <p class="capitalize" flex translate>NEW</p>
                 <span ng-bind="(app.$storage.changes | itemsAdded).length"></span>
             </md-list-item>
-            <md-list-item md-ink-ripple href="#/Cancelled" ng-click="app.toggleSidenav('left')">
+            <md-list-item md-ink-ripple ng-click="app.navigateAndToggleSidenav('/Cancelled', 'left')">
                 <md-icon md-svg-src="images/ic_remove_circle_outline_48px.svg" aria-label="cancelled"></md-icon>
                 <p class="capitalize" flex translate>CANCELLED</p>
                 <span ng-bind="(app.$storage.changes | itemsCancelled).length"></span>
             </md-list-item>
             <md-divider></md-divider>
-            <md-list-item md-ink-ripple href="#/Settings" ng-click="app.toggleSidenav('left')">
+            <md-list-item md-ink-ripple ng-click="app.navigateAndToggleSidenav('/Settings', 'left')">
                 <md-icon md-svg-src="images/ic_settings_48px.svg" aria-label="settings"></md-icon>
                 <p class="capitalize" flex translate>SETTINGS</p>
             </md-list-item>
