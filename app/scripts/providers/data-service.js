@@ -29,7 +29,7 @@ angular.module('NetPlanningApp').config(function($httpProvider) {
 angular.module('NetPlanningApp').provider('DataService', function () {
     'use strict';
 
-    this.$get = function($http, $window, $timeout, $localStorage, $q, $log, $rootScope, $cordovaDevice, $cordovaPush, settings, moment) {
+    this.$get = function($http, $window, $timeout, $localStorage, $q, $log, $rootScope, $cordovaDevice, $cordovaPushV5, settings, moment) {
 
         $localStorage.$default({
             language: settings.defaultLanguage,
@@ -100,37 +100,21 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             };
 
             var registerForPushNotifications = function() {
-                var deferred = $q.defer();
-                var platform = $cordovaDevice.getPlatform();
-                if(platform === 'iOS') {
-                    $cordovaPush.register({
+                var config = {
+                    ios: {
                         badge: true,
                         sound: true,
                         alert: true,
-                    }).then(function(deviceToken) {
-                        deferred.resolve(deviceToken);
-                    }).catch(function(reason) {
-                        deferred.reject(reason);
-                    });
-                } else if(platform === 'Android') {
-                    $cordovaPush.register({
+                    },
+                    android: {
                         senderID: settings.androidSenderId,
                         iconColor: settings.androidIconColor
-                    }).then(function() {
-                        var deregFn = $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
-                            if (notification.regid.length > 0 ) {
-                                deregFn();
-                                deferred.resolve(notification.regid);
-                            }
-                        });
-                    }).catch(function(reason) {
-                        deferred.reject(reason);
-                    });
-                } else {
-                    deferred.resolve(null);
-                }
-                return deferred.promise.then(sendDeviceInfos);
+                    },
+                    windows: {}
+                };
+                return $cordovaPushV5.init(config).then($cordovaPushV5.register).then(sendDeviceInfos);
             };
+
 
             var getItems = function(force) {
                 return $http.get(settings.apiUrl + '/items?force=' + force).then(function(result) {
