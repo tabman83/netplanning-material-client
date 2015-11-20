@@ -115,6 +115,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                 } else if(platform === 'Android') {
                     $cordovaPush.register({
                         senderID: settings.androidSenderId,
+                        iconColor: settings.androidIconColor
                     }).then(function() {
                         var deregFn = $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
                             if (notification.regid.length > 0 ) {
