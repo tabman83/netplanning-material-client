@@ -54,12 +54,12 @@
             <md-list-item md-ink-ripple ng-click="app.navigateAndToggleSidenav('/Today', 'left')">
                 <md-icon md-svg-src="images/ic_today_48px.svg" class="md-primary" aria-label="today"></md-icon>
                 <p class="capitalize" flex translate>TODAY</p>
-                <span ng-bind="(app.$storage.items | filter : {isToday: true}).length"></span>
+                <span ng-bind="(app.$storage.items | filter : {isToday: true} | showOnlyLessons : true).length"></span>
             </md-list-item>
             <md-list-item md-ink-ripple ng-click="app.navigateAndToggleSidenav('/Tomorrow', 'left')">
                 <md-icon md-svg-src="images/ic_event_note_48px.svg" class="md-primary" aria-label="tomorrow"></md-icon>
                 <p class="capitalize" flex translate>TOMORROW</p>
-                <span ng-bind="(app.$storage.items | filter : {isTomorrow: true}).length"></span>
+                <span ng-bind="(app.$storage.items | filter : {isTomorrow: true} | showOnlyLessons : true).length"></span>
             </md-list-item>
             <md-list-item md-ink-ripple ng-click="app.navigateAndToggleSidenav('/All', 'left')">
                 <md-icon md-svg-src="images/ic_view_week_48px.svg" class="md-primary" aria-label="all"></md-icon>
