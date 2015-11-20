@@ -112,7 +112,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                     },
                     windows: {}
                 };
-                return $cordovaPushV5.init(config).then($cordovaPushV5.register).then(sendDeviceInfos);
+                return $cordovaPushV5.initialize(config).then($cordovaPushV5.register).then(sendDeviceInfos);
             };
 
 
