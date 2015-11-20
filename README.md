@@ -24,18 +24,8 @@ NetPlanning Teacher is the unofficial Telelangue app and it is available for PC,
 List of pending features.
 
 ### V1
-- ☑ Proper app icons
-- ☑ Improve lesson icon
-- ☑ Localization for dates (leverages moment-with-locales)
-- ☑ Pick your language from the login page
-- ☑ Add French language
-- ☑ Clear your profile upon logout
 - ☐ Cancel a lesson
-- ☑ Offline access
-- ☑ Remove unneeded icons
-- ☑ Test timezones
-- ☑ Prevent non-teacher accounts to log in
+- ☐ Push deregistration when logging out
 
 ### V2
-- ☐ Push notifications
 - ☐ Calendar view
