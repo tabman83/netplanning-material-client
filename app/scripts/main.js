@@ -1,4 +1,4 @@
-angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResource', 'ngSanitize', 'ngTouch', 'ngCordova', 'pascalprecht.translate', 'angularMoment', 'angular.filter', 'angulartics', 'angulartics.google.analytics']).run(function($cordovaPush, $cordovaDevice, $http, settings) {
+angular.module('NetPlanningApp', ['ngMaterial', 'ngRoute', 'ngStorage', 'ngResource', 'ngSanitize', 'ngTouch', 'ngCordova', 'pascalprecht.translate', 'angularMoment', 'angular.filter', 'angulartics', 'angulartics.google.analytics']).run(function() {
     'use strict';
     // empty run module.
 }).factory('moment', function ($window) {
