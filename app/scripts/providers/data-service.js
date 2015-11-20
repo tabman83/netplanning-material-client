@@ -88,10 +88,10 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                 return new Item(rawItem);
             };
 
-            var sendDeviceInfos = function(registrationResult) {
+            var sendDeviceInfos = function(token) {
                 var device = $cordovaDevice.getDevice();
                 return $http.post(settings.apiUrl + '/Tokens', {
-                    registrationResult: registrationResult,
+                    token: token,
                     device: device.platform,
                     uuid: device.uuid,
                     model: device.model,
