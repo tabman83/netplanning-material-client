@@ -145,6 +145,17 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                 });
             };
 
+            this.delete = function(ids) {
+                return $http.delete(settings.apiUrl + '/items', ids).then(function(result) {
+                    console.log(result);
+                    return result;
+                }).catch(function(reason) {
+                    $log.log('Error in getItems()', reason.status, reason.statusText);
+                    console.log(reason);
+                    return $q.reject(reason);
+                });
+            }
+
             this.loadData = function(force) {
                 this.isLoading = true;
                 var getItemsPromise = getItems(force);

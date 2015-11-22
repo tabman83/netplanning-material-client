@@ -1,4 +1,4 @@
-angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localStorage, $mdDialog, $translate) {
+angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localStorage, $mdDialog, $translate, $timeout, DataService) {
 	'use strict';
 
 	var vm = this;
@@ -17,6 +17,10 @@ angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localSt
 		}).length;
 	}, true);
 
+	var toIds = function(item) {
+		return item._id;
+	};
+
 	vm.cancelSelection = function() {
 		angular.forEach($localStorage.items, function(item) {
 			item.isSelected = false;
@@ -24,12 +28,12 @@ angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localSt
 	};
 
 	vm.cancelLessons = function() {
-		var numLessons = $localStorage.items.filter(function(item) {
+		var selectedLessons = $localStorage.items.filter(function(item) {
 			return item.isSelected;
-		}).length;
+		});
 
 		var title = $translate.instant('LESSONS_CANCELLATION').capitalize();
-		var content = $translate.instant('YOU_ARE_ABOUT_TO_CANCEL', { num: numLessons }).capitalize() + '.';
+		var content = $translate.instant('YOU_ARE_ABOUT_TO_CANCEL', { num: selectedLessons.length }).capitalize() + '.';
 		var btnOk = $translate.instant('CONFIRM');
 		var btnCancel = $translate.instant('BACK');
 
@@ -43,9 +47,8 @@ angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localSt
 		$mdDialog
 			.show(dialog)
 			.then(function() {
-				console.log('Promise resolved');
-			}, function() {
-				console.log('Promise rejected');
+				var ids = selectedLessons.map(toIds);
+				DataService.delete(ids);
 			});
 	};
 
