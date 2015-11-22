@@ -84,6 +84,12 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             this.isLoading = false;
             this.isLoggedIn = false;
 
+            $window.document.addEventListener('resume', function() {
+                if(self.isLoggedIn) {
+                    self.loadData(false);
+                }
+            }, false);
+
             var toItems = function(rawItem) {
                 return new Item(rawItem);
             };
