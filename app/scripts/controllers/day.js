@@ -17,10 +17,6 @@ angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localSt
 		}).length;
 	}, true);
 
-	var toIds = function(item) {
-		return item._id;
-	};
-
 	vm.cancelSelection = function() {
 		angular.forEach($localStorage.items, function(item) {
 			item.isSelected = false;
@@ -28,12 +24,12 @@ angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localSt
 	};
 
 	vm.cancelLessons = function() {
-		var selectedLessons = $localStorage.items.filter(function(item) {
+		var selectedItems = $localStorage.items.filter(function(item) {
 			return item.isSelected;
 		});
 
 		var title = $translate.instant('LESSONS_CANCELLATION').capitalize();
-		var content = $translate.instant('YOU_ARE_ABOUT_TO_CANCEL', { num: selectedLessons.length }).capitalize() + '.';
+		var content = $translate.instant('YOU_ARE_ABOUT_TO_CANCEL', { num: selectedItems.length }).capitalize() + '.';
 		var btnOk = $translate.instant('CONFIRM');
 		var btnCancel = $translate.instant('BACK');
 
@@ -47,8 +43,11 @@ angular.module('NetPlanningApp').controller('DayCtrl', function($scope, $localSt
 		$mdDialog
 			.show(dialog)
 			.then(function() {
-				var ids = selectedLessons.map(toIds);
-				DataService.delete(ids);
+				return DataService.deleteItems(selectedItems);
+			}).catch(function(reason) {
+				var errorMessage = reason.status > -1 ? reason.data.message : $translate.instant('NETWORK_ERROR');
+				var alert = $mdDialog.alert().textContent(errorMessage).ok(btnOk);
+ 				$mdDialog.show( alert );
 			});
 	};
 

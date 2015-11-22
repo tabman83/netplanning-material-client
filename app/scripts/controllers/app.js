@@ -32,7 +32,7 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	vm.update = function() {
 		var errorMessage = '<md-icon md-svg-src="images/ic_settings_48px.svg" class="md-warn" aria-label="settings"></md-icon>';
 		errorMessage += $translate.instant('ERROR_LOADING_DATA');
-		DataService.loadData(true).catch(function() {
+		DataService.loadItems(true).catch(function() {
 			$mdToast.show({
 				templateUrl: 'partials/toast-error.html',
 				position: 'top right',
@@ -44,7 +44,7 @@ angular.module('NetPlanningApp').controller('AppCtrl', function($mdSidenav, $mdD
 	vm.login = function() {
 		vm.errorMessage = null;
 		DataService.login(vm.username, vm.password).then(function() {
-			DataService.loadData(false);
+			DataService.loadItems(false);
 		}).catch(function(reason) {
 			vm.errorMessage = reason.status > -1 ? reason.data.message : $translate.instant('NETWORK_ERROR');
 		}).finally(function() {

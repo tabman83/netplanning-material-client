@@ -86,7 +86,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
 
             $window.document.addEventListener('resume', function() {
                 if(self.isLoggedIn) {
-                    self.loadData(false);
+                    self.loadItems(false);
                 }
             }, false);
 
@@ -145,18 +145,25 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                 });
             };
 
-            this.delete = function(ids) {
-                return $http.delete(settings.apiUrl + '/items', ids).then(function(result) {
-                    console.log(result);
-                    return result;
-                }).catch(function(reason) {
-                    $log.log('Error in getItems()', reason.status, reason.statusText);
-                    console.log(reason);
-                    return $q.reject(reason);
+            this.deleteItems = function(items) {
+                this.isLoading = true;
+                var promises = [];
+                items.forEach(function(item) {
+                    var promise = $http.delete(settings.apiUrl + '/items/' + item._id);
+                    promises.push(promise);
                 });
-            }
+                return $q.all(promises).catch(function(reason) {
+                    $log.log('Error in delete()', reason.status, reason.statusText);
+                    if(reason.status > 0 && reason.status < 500 && reason.status !== 400) {
+                        self.logout();
+                    }
+                    return $q.reject(reason);
+                }).finally(function() {
+                    self.isLoading = false;
+                });
+            };
 
-            this.loadData = function(force) {
+            this.loadItems = function(force) {
                 this.isLoading = true;
                 var getItemsPromise = getItems(force);
                 var loadPromise = null;
@@ -212,7 +219,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
 
             if ($localStorage.authToken) {
                 this.isLoggedIn = true;
-                this.loadData(false);
+                this.loadItems(false);
                 if(!!$window.cordova) {
                     registerForPushNotifications();
                 }
