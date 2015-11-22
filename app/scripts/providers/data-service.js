@@ -105,6 +105,12 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                 });
             };
 
+            var unregisterForPushNotifications = function() {
+                var device = $cordovaDevice.getDevice();
+                var uuid = device.uuid;
+                return $http.delete(settings.apiUrl + '/Tokens/' + uuid);
+            };
+
             var registerForPushNotifications = function() {
                 var config = {
                     ios: {
@@ -185,7 +191,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
             };
 
             this.logout = function() {
-                return $timeout(0).then(function() {
+                return unregisterForPushNotifications.then(function() {
                     self.isLoggedIn = false;
                     $localStorage.language = settings.defaultLanguage;
                     $localStorage.items.length = 0;
