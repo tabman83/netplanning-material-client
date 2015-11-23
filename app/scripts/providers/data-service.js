@@ -158,7 +158,17 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                     var promise = $http.delete(settings.apiUrl + '/items/' + item._id);
                     promises.push(promise);
                 });
-                return $q.all(promises).catch(function(reason) {
+                return $q.all(promises).then(function(results) {
+                    var ids = results.map(function(result) {
+                        return result.data.id;
+                    });
+                    for(var i = $localStorage.items.length - 1; i--;) {
+                        if (ids.indexOf($localStorage.items[i]._id) > -1) {
+                            $localStorage.items.splice(i, 1);
+                        }
+                    }
+                    return results;
+                }).catch(function(reason) {
                     $log.log('Error in delete()', reason.status, reason.statusText);
                     if(reason.status > 0 && reason.status < 500 && reason.status !== 400) {
                         self.logout();
