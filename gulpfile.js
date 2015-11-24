@@ -230,7 +230,7 @@ gulp.task('cordova:build:all', function (done) {
     sh.exec('cordova prepare');
     sh.exec('copy ..\\resources\\*.* resources\\');
     sh.exec('ionic resources');
-    sh.exec('cordova build');
+    sh.exec('cordova build --release');
     sh.cd('..');
     done();
 });
