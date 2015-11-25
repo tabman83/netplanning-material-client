@@ -209,6 +209,7 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                 }
                 return promise.then(function(result) {
                     self.isLoggedIn = false;
+                    delete $localStorage.authToken;
                     $localStorage.language = settings.defaultLanguage;
                     $localStorage.items.length = 0;
                     $localStorage.changes.length = 0;
