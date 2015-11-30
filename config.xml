@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ninonet.netplanning" version="1.0.7" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ninonet.netplanning" version="1.0.7" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:rim="http://www.blackberry.com/ns/widgets">
     <name>NetPlanning</name>
     <description>Unofficial NetPlanning client application.</description>
     <author email="tabman83@gmail.com" href="http://netplanning.thenino.net">Antonino Parisi</author>
