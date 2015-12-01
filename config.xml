@@ -3,7 +3,7 @@
     <name>NetPlanning</name>
     <description>Unofficial NetPlanning client application.</description>
     <author email="tabman83@gmail.com" href="http://netplanning.thenino.net">Antonino Parisi</author>
-    <content src="dist/index.html" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

@@ -7,13 +7,19 @@ NetPlanning Teacher is the unofficial Telelangue app and it is available for PC,
 
 ## Commands
 
-- Run `yo gulp-webapp` to scaffold your webapp
 - Run `gulp serve` to preview and watch for changes
 - Run `gulp serve:test` to run the tests in the browser
 - Run `gulp` to build the webapp for production
 - Run `gulp serve:dist` to preview the production build
 - Run `gulp nwjs` to build the standalone app for production
-- Run `gulp cordova` to build the cordova app for production
+- Run `cordova build` to build the cordova app for debug
+- Run `cordova build --release` to build the cordova app for production
+- Run `cordova run android` to run the cordova app on a connected device
+
+# Build the Android production package
+- Create a keystore named `netplanning` following the official documentation [here](http://developer.android.com/tools/publishing/app-signing.html) and store it in the root app folder
+- Run `cordova build --release` to build the cordova app for production
+- Find the package in the folder `platforms/android/build/outputs/apk`
 
 ## Cordova plugins
 Install with `cordova plugin add <plugin_name>` from within the cordova/ folder.

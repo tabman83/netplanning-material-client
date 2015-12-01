@@ -1,0 +1,14 @@
+{
+     "android": {
+         "debug": {
+             "keystore": "netplanning.keystore",
+             "alias": "netplanning",
+             "keystoreType": ""
+         },
+         "release": {
+             "keystore": "netplanning.keystore",
+             "alias": "netplanning",
+             "keystoreType": ""
+         }
+     }
+}
