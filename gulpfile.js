@@ -42,7 +42,7 @@ gulp.task('html', ['styles'], function () {
         .pipe(assets.restore())
         .pipe($.useref())
         .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('www'));
 });
 
 gulp.task('images', function () {
@@ -54,7 +54,7 @@ gulp.task('images', function () {
             // as hooks for embedding and styling
             svgoPlugins: [{cleanupIDs: false}]
         })))
-        .pipe(gulp.dest('dist/images'));
+        .pipe(gulp.dest('www/images'));
 });
 
 gulp.task('fonts', function () {
@@ -62,7 +62,7 @@ gulp.task('fonts', function () {
         filter: '**/*.{eot,svg,ttf,woff,woff2}'
     }).concat('app/fonts/**/*'))
         .pipe(gulp.dest('.tmp/fonts'))
-        .pipe(gulp.dest('dist/fonts'));
+        .pipe(gulp.dest('www/fonts'));
 });
 
 gulp.task('extras', function () {
@@ -71,7 +71,7 @@ gulp.task('extras', function () {
         '!app/*.html'
     ], {
         dot: true
-    }).pipe(gulp.dest('dist'));
+    }).pipe(gulp.dest('www'));
 });
 
 gulp.task('locales', function () {
@@ -79,7 +79,7 @@ gulp.task('locales', function () {
         'app/locales/*'
     ], {
         dot: true
-    }).pipe(gulp.dest('dist/locales'));
+    }).pipe(gulp.dest('www/locales'));
 });
 
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
@@ -89,7 +89,7 @@ gulp.task('serve:dist', ['styles', 'fonts'], function () {
         notify: false,
         port: 9000,
         server: {
-            baseDir: ['dist'],
+            baseDir: ['www'],
             middleware: [
                 modRewrite([
                     '^[^\\.]*$ /index.html [L]'
@@ -141,7 +141,7 @@ gulp.task('wiredep', function () {
 });
 
 gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras', 'locales'], function () {
-    return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+    return gulp.src('www/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
 gulp.task('default', function (done) {
@@ -165,7 +165,7 @@ gulp.task('nwjs', function (done) {
 
 gulp.task('nwjs:build', function () {
 	
-	var files = ['package.json', 'dist/**/*'];
+	var files = ['package.json', 'www/**/*'];
 
 	installed(process.cwd(), {
 		dev: false,
@@ -216,7 +216,7 @@ gulp.task('cordova:clean', function (done) {
 });
 
 gulp.task('cordova:copy-source', function () {
-	return gulp.src('dist/**').pipe(gulp.dest('cordova/www'));
+	return gulp.src('www/**').pipe(gulp.dest('cordova/www'));
 });
 
 gulp.task('cordova:config-for-default', function () {
