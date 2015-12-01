@@ -23,6 +23,7 @@ NetPlanning Teacher is the unofficial Telelangue app and it is available for PC,
 
 # Build the Windows production package
 - Run `cordova build windows --release` to build the cordova app for production
+- Find the package in the folder `platforms/windows/AppPackages`
 
 # Build the iOS production package
 - Run `cordova build ios --release` to build the cordova app for production
