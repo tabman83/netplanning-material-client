@@ -8,7 +8,9 @@
   "author": "Antonino Parisi",
   "description": "Unofficial NetPlanning client application.",
   "main": "dist/index.html",
-  "scripts": "postinstall": "bower install && cordova platform add android blackberry10 windows ios",
+  "scripts": {
+	"postinstall": "npm install --global yo gulp bower cordova nwjs ionic && bower install && cordova platform add android blackberry10 windows ios"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tabman83/netplanning-material-client.git"
