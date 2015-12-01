@@ -9,7 +9,7 @@
   "description": "Unofficial NetPlanning client application.",
   "main": "dist/index.html",
   "scripts": {
-	"postinstall": "npm install --global yo gulp bower cordova nwjs ionic && bower install && cordova platform add android blackberry10 windows ios"
+	"postinstall": "bower install && cordova platform add android blackberry10 windows ios"
   },
   "repository": {
     "type": "git",
