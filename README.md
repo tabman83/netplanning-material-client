@@ -18,8 +18,17 @@ NetPlanning Teacher is the unofficial Telelangue app and it is available for PC,
 
 # Build the Android production package
 - Create a keystore named `netplanning` following the official documentation [here](http://developer.android.com/tools/publishing/app-signing.html) and store it in the root app folder
-- Run `cordova build --release` to build the cordova app for production
+- Run `cordova build android --release` to build the cordova app for production
 - Find the package in the folder `platforms/android/build/outputs/apk`
+
+# Build the Windows production package
+- Run `cordova build windows --release` to build the cordova app for production
+
+# Build the iOS production package
+- Run `cordova build ios --release` to build the cordova app for production
+
+# Build the Blackberry production package
+- Run `cordova build blackberry10 --release` to build the cordova app for production
 
 ## Cordova plugins
 Install with `cordova plugin add <plugin_name>` from within the cordova/ folder.
@@ -39,6 +48,8 @@ Install with `cordova plugin add <plugin_name>` from within the cordova/ folder.
 List of pending features.
 
 ### V1
+- ☐ Deregister device when a notification delivery fails
+- ☐ Activate periodic planning refresh
 
 ### V2
 - ☐ Cancel a lesson
