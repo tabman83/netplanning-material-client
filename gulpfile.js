@@ -181,7 +181,7 @@ gulp.task('nwjs:build', function () {
 			version: '0.12.3',
 			files: files,
 			buildDir: 'nwjs',
-			//winIco: "./app/resources/icon.png",
+			winIco: "./res/icon.ico",
 			//macIcns: path.join(buildConfig.targets.resourcesFolder, 'icon.icns'),
 			platforms: ['win32', 'osx64', 'linux32']
 		});
@@ -193,44 +193,4 @@ gulp.task('nwjs:clean', function (done) {
     del('nwjs').then(function() {
 		done();
 	});
-});
-
-
-/** cordova gulp tasks **************************/
-
-gulp.task('cordova', function (done) {
-    runSequence(
-        'cordova:clean',
-        'default',
-        'cordova:copy-source',
-        'cordova:config-for-default',
-        'cordova:build:all',
-        done
-    );
-});
-
-gulp.task('cordova:clean', function (done) {
-    del('cordova/www').then(function() {
-		done();
-	});
-});
-
-gulp.task('cordova:copy-source', function () {
-	return gulp.src('www/**').pipe(gulp.dest('cordova/www'));
-});
-
-gulp.task('cordova:config-for-default', function () {
-    gulp.src('config.xml', { 
-		base: '.'
-	}).pipe(gulp.dest('cordova/'));	
-});
-
-gulp.task('cordova:build:all', function (done) {
-    sh.cd('cordova');
-    sh.exec('cordova prepare');
-    sh.exec('copy ..\\resources\\*.* resources\\');
-    sh.exec('ionic resources');
-    sh.exec('cordova build --release');
-    sh.cd('..');
-    done();
 });

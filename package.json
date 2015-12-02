@@ -7,7 +7,7 @@
   "version": "1.0.0",
   "author": "Antonino Parisi",
   "description": "Unofficial NetPlanning client application.",
-  "main": "dist/index.html",
+  "main": "www/index.html",
   "scripts": {
 	"postinstall": "bower install && cordova platform add android blackberry10 windows ios"
   },
@@ -17,6 +17,7 @@
   },
   "window": {
     "title": "NetPlanning Teacher",
+	"icon": "www/images/icon.png",
     "toolbar": false,
     "resizable": true,
     "fullscreen": false,
