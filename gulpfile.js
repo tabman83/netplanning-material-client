@@ -11,6 +11,7 @@ var NwBuilder = require('nw-builder');
 var runSequence = require('run-sequence');
 var installed = require('installed');
 var sh = require('shelljs');
+var evb = require("enigmavirtualbox");
 
 gulp.task('styles', function () {
     return gulp.src('app/styles/main.css')
@@ -163,7 +164,7 @@ gulp.task('nwjs', function (done) {
     );
 });
 
-gulp.task('nwjs:build', function () {
+gulp.task('nwjs:build', function (done) {
 	
 	var files = ['package.json', 'www/**/*'];
 
@@ -182,10 +183,25 @@ gulp.task('nwjs:build', function () {
 			files: files,
 			buildDir: 'nwjs',
 			winIco: "./res/icon.ico",
-			//macIcns: path.join(buildConfig.targets.resourcesFolder, 'icon.icns'),
 			platforms: ['win32', 'osx64', 'linux32']
 		});
-		nw.build();		
+		var basePath = 'nwjs/netplanning-material-client/win32/';
+		nw.build().then(function () {			
+			evb.gen(basePath + 'app.evp', basePath + 'NetPlanning.exe', basePath + 'netplanning-material-client.exe', basePath + 'nw.pak', basePath + 'icudtl.dat').then(function() {
+				evb.cli(basePath + 'app.evp').then(function() {
+					done();
+				}).catch(function (error) {
+					console.error(error);
+					done();
+				});
+			}).catch(function (error) {
+				console.error(error);
+				done();
+			});
+		}).catch(function (error) {
+			console.error(error);
+			done();
+		});		
 	});
 });
 
