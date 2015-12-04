@@ -9,7 +9,7 @@
   "description": "Unofficial NetPlanning client application.",
   "main": "www/index.html",
   "scripts": {
-	"postinstall": "bower install && cordova platform add android blackberry10 windows ios"
+	"postinstall": "bower install && cordova platform add android ios windows amazon-fireos"
   },
   "repository": {
     "type": "git",
