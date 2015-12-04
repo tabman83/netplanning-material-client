@@ -207,14 +207,13 @@ angular.module('NetPlanningApp').provider('DataService', function () {
                 } else {
                     promise = $timeout(0);
                 }
-                return promise.then(function(result) {
+                return promise.finally(function() {
                     self.isLoggedIn = false;
                     delete $localStorage.authToken;
                     $localStorage.language = settings.defaultLanguage;
                     $localStorage.items.length = 0;
                     $localStorage.changes.length = 0;
                     $localStorage.lastUpdate = 0;
-                    return result;
                 });
             };
 
