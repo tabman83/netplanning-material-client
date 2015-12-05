@@ -58,9 +58,7 @@ Install with `cordova plugin add <plugin_name>` from within the cordova/ folder.
 ## Amazon FireOS / Blackberry
 ### Prerequisites
 - Download and install the [Amazon WebView API SDK](https://developer.amazon.com/public/solutions/platforms/android-fireos/docs/building-and-testing-your-hybrid-app)
-- Copy `awv_interface.jar` from the downloaded SDK to Cordova's working directory. Create commonlibs(shown below) folder if it doesn't exist:
--- Mac/Linux: ~/.cordova/lib/commonlibs/
--- Windows: %USERPROFILE%\.cordova\lib\commonlibs
+- Following this [instructions](https://cordova.apache.org/docs/en/latest/guide/platforms/amazonfireos/index.html)
 
 ### Build
 - Run `gulp` to build the web app for production
