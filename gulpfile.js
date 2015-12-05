@@ -11,7 +11,6 @@ var NwBuilder = require('nw-builder');
 var runSequence = require('run-sequence');
 var installed = require('installed');
 var sh = require('shelljs');
-var evb = require("enigmavirtualbox");
 
 gulp.task('styles', function () {
     return gulp.src('app/styles/main.css')
@@ -187,6 +186,7 @@ gulp.task('nwjs:build', function (done) {
 		});
 		var basePath = 'nwjs/netplanning-material-client/win32/';
 		nw.build().then(function () {			
+			var evb = require("enigmavirtualbox");
 			evb.gen(basePath + 'app.evp', basePath + 'NetPlanning.exe', basePath + 'netplanning-material-client.exe', basePath + 'nw.pak', basePath + 'icudtl.dat').then(function() {
 				evb.cli(basePath + 'app.evp').then(function() {
 					done();

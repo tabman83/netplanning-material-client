@@ -13,3 +13,4 @@ plugins
 
 # don't save the keystore
 netplanning.keystore
+npm-debug.log
