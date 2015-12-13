@@ -3,8 +3,9 @@ NetPlanning Teacher is the unofficial Telelangue app and it is available for PC,
 
 ## Installation
 
-- Run in an elevated command line: `npm install --global yo gulp bower cordova nwjs`
-- Only under windows, run: `npm install --global enigmavirtualbox`
+- Install [GIT](https://git-scm.com/downloads) (SDK tools only is fine)
+- Run (in an elevated command line): `npm install --global yo gulp bower cordova nwjs`
+- Run (Windows only): `npm install --global enigmavirtualbox`
 - Optionally complete the Amazon/FireOS prerequisites steps
 - Then run: `npm install`
 
