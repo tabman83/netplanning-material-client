@@ -86,9 +86,15 @@ angular.module('NetPlanningApp').provider('DataService', function () {
 
             $window.document.addEventListener('resume', function() {
                 if(self.isLoggedIn) {
-                    self.loadItems(false);
+                    $timeout(function() {
+                        self.loadItems(false);
+                    });
                 }
             }, false);
+
+            $rootScope.$on('$cordovaPushV5:notificationReceived', function(event, notification) {
+                $cordovaPush.setBadgeNumber(notification.badge || 99);
+            });
 
             var toItems = function(rawItem) {
                 return new Item(rawItem);

@@ -15,7 +15,6 @@
     "angulartics": "~0.20.1",
     "angulartics-google-analytics": "~0.1.1",
     "angular-sanitize": "~1.4.7",
-    "angular-touch": "~1.4.7",
     "ngCordova": "~0.1.23-alpha"
   },
   "overrides": {

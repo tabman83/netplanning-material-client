@@ -4,7 +4,7 @@
     "node": ">=0.10.0"
   },
   "name": "netplanning-material-client",
-  "version": "1.0.0",
+  "version": "1.0.17",
   "author": "Antonino Parisi",
   "description": "Unofficial NetPlanning client application.",
   "main": "www/index.html",
